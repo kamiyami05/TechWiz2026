@@ -1,0 +1,43 @@
+{
+  "suggestedPrompts": [
+    "Which markets are open right now?",
+    "What produce is in peak season?",
+    "Where can I buy fresh strawberries?",
+    "What are Tay Ho EcoMarket hours?",
+    "How does the local Food-Miles calculator work?"
+  ],
+  "disclaimer": "FarmBot AI provides real-time market schedules and seasonal produce guidance grounded in FreshFind's verified local agriculture database.",
+  "fallbackMessage": "I couldn't find a direct match for that question in my agricultural database. Feel free to ask about: 'Open markets today', 'Autumn produce', 'Strawberries', 'Avocados', or market addresses!",
+  "knowledgeBase": [
+    {
+      "keywords": ["open", "today", "now", "open now", "open right now", "hours"],
+      "answer": "FreshFind tracks live market schedules in real time: 'Ha Dong Safe Agricultural Trade Fair' is open 7 days a week from 05:30 AM to 07:30 PM. In addition, 'Cau Giay Green Farmers Market' operates on Mon, Wed, Fri, Sat, and Sun from 06:00 AM to 06:30 PM! Look for the pulsing green 'OPEN NOW' badge on each market card.",
+      "relatedSection": "directory"
+    },
+    {
+      "keywords": ["season", "in season", "fruits", "vegetables", "autumn", "peak"],
+      "answer": "Currently in peak harvest: Moc Chau Chocolate Cherry Tomatoes, Crisp Organic Kale, Ham Yen King Oranges, and Da Lat Butter Avocados! Check out our 'Seasonal Recommendations' and 'Produce Guide' sections for in-depth nutritional profiles and storage advice.",
+      "relatedSection": "seasonal"
+    },
+    {
+      "keywords": ["strawberry", "strawberries", "moc chau", "hana"],
+      "answer": "Fresh morning-picked Japanese Hana strawberries from Moc Chau are available at two partner venues: 1. Cau Giay Green Farmers Market (122 Xuan Thuy) and 2. Tay Ho EcoMarket (To Ngoc Van on weekends). Click the Bookmark icon to save them to your shopping trip!",
+      "relatedSection": "directory"
+    },
+    {
+      "keywords": ["tay ho", "ecomarket", "to ngoc van", "weekend"],
+      "answer": "Tay Ho EcoMarket specializes in organic artisanal foods, natural sourdoughs, mountain avocados, and free-range farm eggs. It opens every Saturday and Sunday from 07:30 AM to 05:00 PM.",
+      "relatedSection": "directory"
+    },
+    {
+      "keywords": ["food miles", "carbon", "eco", "calculator", "green"],
+      "answer": "Our Eco Food-Miles Calculator measures the transit distance from regional farms to your neighborhood market, demonstrating how buying local saves an average of 2.4 kg of CO2e per trip compared to industrial imported groceries!",
+      "relatedSection": "directory"
+    },
+    {
+      "keywords": ["bookmark", "save", "favorites", "shopping list", "notes"],
+      "answer": "Simply tap the Bookmark ribbon icon on any market or produce card. Your picks persist in your browser, and you can add personalized shopping notes and export a downloadable shopping list (.TXT) anytime!",
+      "relatedSection": "bookmarks"
+    }
+  ]
+}
