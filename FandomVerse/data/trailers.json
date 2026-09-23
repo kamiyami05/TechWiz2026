@@ -1,0 +1,68 @@
+[
+  {
+    "id": "tr_1",
+    "title": "Demon Slayer: Infinity Castle Arc - Official Teaser",
+    "category": "Anime",
+    "status": "Upcoming",
+    "releaseDate": "Fall 2026",
+    "duration": "2:15",
+    "thumbnail": "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "views": "14.2M views"
+  },
+  {
+    "id": "tr_2",
+    "title": "Grand Theft Auto VI - Gameplay Reveal Trailer 2",
+    "category": "Gaming",
+    "status": "Upcoming",
+    "releaseDate": "Spring 2026",
+    "duration": "1:58",
+    "thumbnail": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "views": "108M views"
+  },
+  {
+    "id": "tr_3",
+    "title": "Dune: Part Two - Final Theatrical IMAX Trailer",
+    "category": "Movies",
+    "status": "Recently Released",
+    "releaseDate": "In Theaters Now",
+    "duration": "2:45",
+    "thumbnail": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "views": "38.5M views"
+  },
+  {
+    "id": "tr_4",
+    "title": "Stranger Things Season 5 - The Final Chapter Sneak Peek",
+    "category": "TV Shows",
+    "status": "Upcoming",
+    "releaseDate": "Winter 2026",
+    "duration": "1:40",
+    "thumbnail": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "views": "24.1M views"
+  },
+  {
+    "id": "tr_5",
+    "title": "Stray Kids - 'ATE' Comeback Official Music Video",
+    "category": "K-Pop",
+    "status": "Recently Released",
+    "releaseDate": "New Release",
+    "duration": "3:22",
+    "thumbnail": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "views": "52M views"
+  },
+  {
+    "id": "tr_6",
+    "title": "Spider-Man: Beyond the Spider-Verse - First Look",
+    "category": "Comics",
+    "status": "Upcoming",
+    "releaseDate": "Late 2026",
+    "duration": "2:08",
+    "thumbnail": "https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=600&q=80",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "views": "45M views"
+  }
+]

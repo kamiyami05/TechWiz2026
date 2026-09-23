@@ -1,0 +1,358 @@
+[
+  {
+    "id": "c_anime_1",
+    "name": "Son Goku",
+    "category": "Anime",
+    "franchise": "Dragon Ball",
+    "series": "Dragon Ball Super",
+    "image": "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80",
+    "bio": "Legendary Saiyan warrior raised on Earth who continuously breaks all physical limits through martial arts, compassion, and divine Ultra Instinct mastery.",
+    "traits": ["Ultra Instinct", "Super Saiyan", "Kamehameha", "Pure Hearted"]
+  },
+  {
+    "id": "c_anime_2",
+    "name": "Monkey D. Luffy",
+    "category": "Anime",
+    "franchise": "One Piece",
+    "series": "One Piece",
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80",
+    "bio": "Captain of the Straw Hat Pirates who ate the Gum-Gum Fruit and awakened Gear 5 Sun God Nika, dreaming of ultimate ocean freedom as King of the Pirates.",
+    "traits": ["Gear 5 Nika", "Conqueror Haki", "Rubber Body", "Boundless Optimism"]
+  },
+  {
+    "id": "c_anime_3",
+    "name": "Naruto Uzumaki",
+    "category": "Anime",
+    "franchise": "Naruto",
+    "series": "Naruto Shippuden",
+    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80",
+    "bio": "Seventh Hokage of the Hidden Leaf Village, former pariah who conquered hatred through relentless grit, Sage Mode, and the Nine-Tails Kurama partnership.",
+    "traits": ["Sage Mode", "Rasenshuriken", "Shadow Clones", "Unshakable Will"]
+  },
+  {
+    "id": "c_anime_4",
+    "name": "Levi Ackerman",
+    "category": "Anime",
+    "franchise": "Attack on Titan",
+    "series": "Attack on Titan",
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80",
+    "bio": "Humanity's strongest soldier and Captain of the Special Operations Squad, possessing unmatched lethal precision with Omni-Directional Mobility gear.",
+    "traits": ["Ackerman Awakening", "ODM Mastery", "Tactical Genius", "Stoic Leader"]
+  },
+  {
+    "id": "c_anime_5",
+    "name": "Tanjiro Kamado",
+    "category": "Anime",
+    "franchise": "Demon Slayer",
+    "series": "Demon Slayer: Kimetsu no Yaiba",
+    "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80",
+    "bio": "Gentle demon slayer who wields Sun Breathing (Hinokami Kagura) to restore his sister Nezuko and end Muzan's reign of terror.",
+    "traits": ["Sun Breathing", "Water Breathing", "Keen Sense of Smell", "Unwavering Empathy"]
+  },
+
+  {
+    "id": "c_game_1",
+    "name": "Geralt of Rivia",
+    "category": "Gaming",
+    "franchise": "The Witcher",
+    "series": "The Witcher 3: Wild Hunt",
+    "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80",
+    "bio": "Mutated monster hunter known as the White Wolf, wandering the Continent guided by his Witcher swords, Signs, and cynical moral code.",
+    "traits": ["Witcher Signs", "Silver & Steel Swords", "Enhanced Reflexes", "Alchemy"]
+  },
+  {
+    "id": "c_game_2",
+    "name": "Kratos",
+    "category": "Gaming",
+    "franchise": "God of War",
+    "series": "God of War Ragnarök",
+    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80",
+    "bio": "Former Spartan general who vanquished Olympus and now strives to be a better father to Atreus while defying the fate of the Norse realms.",
+    "traits": ["Leviathan Axe", "Blades of Chaos", "Spartan Rage", "Godly Strength"]
+  },
+  {
+    "id": "c_game_3",
+    "name": "Master Chief (John-117)",
+    "category": "Gaming",
+    "franchise": "Halo",
+    "series": "Halo Infinite",
+    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80",
+    "bio": "Decorated SPARTAN-II commando in MJOLNIR Powered Assault Armor, humanity's greatest shield against the Covenant and the Banished.",
+    "traits": ["MJOLNIR Armor", "Energy Shielding", "Combat AI Integration", "Indomitable Luck"]
+  },
+  {
+    "id": "c_game_4",
+    "name": "Ellie Williams",
+    "category": "Gaming",
+    "franchise": "The Last of Us",
+    "series": "The Last of Us Part II",
+    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+    "bio": "Immune survivor navigating a fungal cordyceps wasteland, defined by fierce loyalty, acoustic guitar melodies, and survival archery.",
+    "traits": ["Cordyceps Immunity", "Guerilla Stealth", "Survival Crafting", "Deadly Marksmanship"]
+  },
+  {
+    "id": "c_game_5",
+    "name": "Link",
+    "category": "Gaming",
+    "franchise": "The Legend of Zelda",
+    "series": "Tears of the Kingdom",
+    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80",
+    "bio": "Legendary Champion of Hyrule wielding the Master Sword and the Zonai Ultrahand to rescue Princess Zelda and vanquish the Demon King.",
+    "traits": ["Master Sword", "Ultrahand Fusion", "Triforce of Courage", "Paraglider Mastery"]
+  },
+
+  {
+    "id": "c_movie_1",
+    "name": "Tony Stark (Iron Man)",
+    "category": "Movies",
+    "franchise": "Marvel Cinematic Universe",
+    "series": "Avengers: Endgame",
+    "image": "https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=600&q=80",
+    "bio": "Genius, billionaire, playboy, philanthropist who revolutionized superhero armor and made the ultimate sacrifice to restore half the universe.",
+    "traits": ["Nanotech Armor", "Arc Reactor", "Genius Intellect", "Repulsor Blasts"]
+  },
+  {
+    "id": "c_movie_2",
+    "name": "Neo (Thomas Anderson)",
+    "category": "Movies",
+    "franchise": "The Matrix",
+    "series": "The Matrix Trilogy",
+    "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "bio": "The One, prophesied savior of Zion who bends the digital laws of the simulated reality through code sight, bullet-time, and flight.",
+    "traits": ["Reality Manipulation", "Bullet Time", "Code Sight", "Superhuman Martial Arts"]
+  },
+  {
+    "id": "c_movie_3",
+    "name": "Darth Vader",
+    "category": "Movies",
+    "franchise": "Star Wars",
+    "series": "Star Wars Saga",
+    "image": "https://images.unsplash.com/photo-1546776310-eef45dd6d63c?auto=format&fit=crop&w=600&q=80",
+    "bio": "Fallen Jedi Knight Anakin Skywalker turned Sith Lord, enforcer of the Galactic Empire whose red lightsaber commands fear across star systems.",
+    "traits": ["The Dark Side", "Telekinetic Choke", "Crimson Lightsaber", "Cybernetic Armor"]
+  },
+  {
+    "id": "c_movie_4",
+    "name": "Paul Atreides",
+    "category": "Movies",
+    "franchise": "Dune",
+    "series": "Dune: Part Two",
+    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+    "bio": "Duke of House Atreides and the Fremen messiah Muad'Dib, who masters the desert dunes of Arrakis, the Voice, and prescient spice visions.",
+    "traits": ["Prescience Sight", "The Voice", "Sandworm Riding", "Bene Gesserit Training"]
+  },
+  {
+    "id": "c_movie_5",
+    "name": "John Wick",
+    "category": "Movies",
+    "franchise": "John Wick",
+    "series": "John Wick: Chapter 4",
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80",
+    "bio": "The legendary assassin known as Baba Yaga, driven by unbreakable focus, ballistic tactical suits, and flawless gun-fu choreography.",
+    "traits": ["Gun-Fu Mastery", "Relentless Focus", "High Table Veteran", "Armored Bespoke Suits"]
+  },
+
+  {
+    "id": "c_tv_1",
+    "name": "Walter White (Heisenberg)",
+    "category": "TV Shows",
+    "franchise": "Breaking Bad",
+    "series": "Breaking Bad",
+    "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "bio": "High school chemistry teacher whose terminal diagnosis ignites a ruthless transformation into the legendary Southwest empire kingpin.",
+    "traits": ["Chemical Mastery", "Ruthless Strategy", "Psychological Manipulation", "Alter-Ego Heisenberg"]
+  },
+  {
+    "id": "c_tv_2",
+    "name": "Eleven (Jane Hopper)",
+    "category": "TV Shows",
+    "franchise": "Stranger Things",
+    "series": "Stranger Things",
+    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+    "bio": "Hawkins lab escapee endowed with telekinetic and remote sensory abilities, serving as the sole bulwark against the terrifying Upside Down.",
+    "traits": ["Telekinesis", "Remote Viewing", "Interdimensional Gate Closing", "Eggo Waffles"]
+  },
+  {
+    "id": "c_tv_3",
+    "name": "Daemon Targaryen",
+    "category": "TV Shows",
+    "franchise": "Game of Thrones",
+    "series": "House of the Dragon",
+    "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80",
+    "bio": "Rogue Prince of Westeros, master of the Blood Wyrm Caraxes, wielding Valyrian steel blade Dark Sister in the brutal Targaryen civil war.",
+    "traits": ["Dragonrider Caraxes", "Dark Sister Valyrian Steel", "Fearless Combat", "Unpredictable"]
+  },
+  {
+    "id": "c_tv_4",
+    "name": "Ted Lasso",
+    "category": "TV Shows",
+    "franchise": "Ted Lasso",
+    "series": "Ted Lasso",
+    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80",
+    "bio": "American college football coach hired to lead AFC Richmond soccer, transforming cynical locker rooms through biscuit diplomacy and boundless belief.",
+    "traits": ["Relentless Optimism", "Homemade Shortbread", "Locker Room Culture", "Believe Sign"]
+  },
+  {
+    "id": "c_tv_5",
+    "name": "Homelander (John)",
+    "category": "TV Shows",
+    "franchise": "The Boys",
+    "series": "The Boys",
+    "image": "https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=600&q=80",
+    "bio": "Vought International's Godlike supe leader, masking deep narcissistic instability behind patriotic corporate marketing and heat vision.",
+    "traits": ["Heat Vision", "Supersonic Flight", "Invulnerability", "Psychopathic Charisma"]
+  },
+
+  {
+    "id": "c_kpop_1",
+    "name": "RM (Kim Namjoon)",
+    "category": "K-Pop",
+    "franchise": "BTS",
+    "series": "HYBE / Big Hit",
+    "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=600&q=80",
+    "bio": "Leader, rapper, and philosophic lyricist of 21st-century pop icons BTS, known for intellectual solo projects 'Indigo' and speech at the United Nations.",
+    "traits": ["Lyricist & Producer", "Art Connoisseur", "UN Ambassador", "148 IQ Rap Flow"]
+  },
+  {
+    "id": "c_kpop_2",
+    "name": "Jennie Kim",
+    "category": "K-Pop",
+    "franchise": "BLACKPINK",
+    "series": "YG Entertainment / OA",
+    "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+    "bio": "Global fashion icon, vocalist, and charismatic main rapper of BLACKPINK, breaking global streaming records with hit anthems 'SOLO' and 'You & Me'.",
+    "traits": ["Versatile Rap Flow", "Fashion Trendsetter", "Charismatic Stage Presence", "Global Ambassador"]
+  },
+  {
+    "id": "c_kpop_3",
+    "name": "Felix (Lee Yongbok)",
+    "category": "K-Pop",
+    "franchise": "Stray Kids",
+    "series": "JYP Entertainment",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+    "bio": "Australian dancer and rapper of self-producing powerhouse Stray Kids, internationally recognized for his signature ultra-deep bass vocal tone.",
+    "traits": ["Deep Bass Voice", "Main Dancer", "Baking & Philanthropy", "Global Phenomenon"]
+  },
+  {
+    "id": "c_kpop_4",
+    "name": "Karina (Yoo Jimin)",
+    "category": "K-Pop",
+    "franchise": "aespa",
+    "series": "SM Entertainment",
+    "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
+    "bio": "Leader of metaverse pop group aespa, celebrated for virtual avatar chemistry, sharp synchronized choreography, and global hit 'Supernova'.",
+    "traits": ["Virtual Avatar Sync", "Main Dancer", "Center Visual", "Hypnotic Stage Aura"]
+  },
+  {
+    "id": "c_kpop_5",
+    "name": "Jungkook (Jeon Jungkook)",
+    "category": "K-Pop",
+    "franchise": "BTS",
+    "series": "HYBE / Big Hit",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80",
+    "bio": "The 'Golden Maknae' of BTS who topped global Billboard charts with multi-platinum pop album 'Golden' and FIFA World Cup anthem 'Dreamers'.",
+    "traits": ["Golden Vocalist", "Acrobatic Dancing", "All-Rounder Genius", "Billboard Chart Topper"]
+  },
+
+  {
+    "id": "c_comics_1",
+    "name": "Bruce Wayne (Batman)",
+    "category": "Comics",
+    "franchise": "DC Comics",
+    "series": "Detective Comics",
+    "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    "bio": "The Dark Knight of Gotham City who forged himself into the world's greatest detective through martial discipline, Wayne tech, and contingency plans.",
+    "traits": ["World's Greatest Detective", "Batmobile & Gadgets", "Peak Human Condition", "Contingency Strategist"]
+  },
+  {
+    "id": "c_comics_2",
+    "name": "Peter Parker (Spider-Man)",
+    "category": "Comics",
+    "franchise": "Marvel Comics",
+    "series": "The Amazing Spider-Man",
+    "image": "https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=600&q=80",
+    "bio": "Friendly neighborhood hero guided by Uncle Ben's creed: 'With great power comes great responsibility', balancing everyday struggles with heroics.",
+    "traits": ["Spider-Sense", "Wall-Crawling", "Web-Shooters", "Agile Acrobatics"]
+  },
+  {
+    "id": "c_comics_3",
+    "name": "Clark Kent (Superman)",
+    "category": "Comics",
+    "franchise": "DC Comics",
+    "series": "Action Comics",
+    "image": "https://images.unsplash.com/photo-1546776310-eef45dd6d63c?auto=format&fit=crop&w=600&q=80",
+    "bio": "The Last Son of Krypton powered by Earth's yellow sun, standing as an eternal beacon of truth, justice, and compassionate human optimism.",
+    "traits": ["Solar Absorption", "Heat Vision & Freeze Breath", "Invulnerability", "Flight"]
+  },
+  {
+    "id": "c_comics_4",
+    "name": "Logan (Wolverine)",
+    "category": "Comics",
+    "franchise": "Marvel Comics",
+    "series": "X-Men",
+    "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80",
+    "bio": "Feral Canadian mutant blessed with a regenerative healing factor, heightened senses, and a bonded unbreakable Adamantium skeletal claw frame.",
+    "traits": ["Adamantium Claws", "Accelerated Healing", "Feral Senses", "Berserker Rage"]
+  },
+  {
+    "id": "c_comics_5",
+    "name": "Diana Prince (Wonder Woman)",
+    "category": "Comics",
+    "franchise": "DC Comics",
+    "series": "Wonder Woman",
+    "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
+    "bio": "Amazonian warrior princess of Themyscira and diplomat of peace, armed with the Lasso of Truth, indestructible gauntlets, and divine gifts.",
+    "traits": ["Lasso of Truth", "Amazonian Combat", "Deflection Bracelets", "Divine Blessing"]
+  },
+
+  {
+    "id": "c_manga_1",
+    "name": "Guts (The Black Swordsman)",
+    "category": "Manga",
+    "franchise": "Berserk",
+    "series": "Berserk by Kentaro Miura",
+    "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80",
+    "bio": "Branded mercenary defying grim demonic fate, cleaving monstrous Apostles with his colossal iron Dragon Slayer blade and Berserker Armor.",
+    "traits": ["Dragon Slayer Sword", "Berserker Armor", "Cannon Arm", "Indomitable Struggle"]
+  },
+  {
+    "id": "c_manga_2",
+    "name": "Roronoa Zoro",
+    "category": "Manga",
+    "franchise": "One Piece",
+    "series": "One Piece by Eiichiro Oda",
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80",
+    "bio": "First mate of the Straw Hats pursuing the title of World's Strongest Swordsman with his fearsome Three-Sword Style (Santoryu) and King of Hell Haki.",
+    "traits": ["Three-Sword Style", "Enma Haki", "Asura Manifestation", "Absolute Loyalty"]
+  },
+  {
+    "id": "c_manga_3",
+    "name": "Satoru Gojo",
+    "category": "Manga",
+    "franchise": "Jujutsu Kaisen",
+    "series": "Jujutsu Kaisen by Gege Akutami",
+    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80",
+    "bio": "The strongest contemporary Jujutsu Sorcerer, bearer of the Six Eyes and Limitless cursed technique whose Infinite Void domain overwhelms reality.",
+    "traits": ["Six Eyes", "Limitless Infinity", "Hollow Purple", "Domain Unlimited Void"]
+  },
+  {
+    "id": "c_manga_4",
+    "name": "Edward Elric",
+    "category": "Manga",
+    "franchise": "Fullmetal Alchemist",
+    "series": "Fullmetal Alchemist by Hiromu Arakawa",
+    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80",
+    "bio": "The Fullmetal Alchemist who bypassed transmutation circles after beholding the Truth, searching for the Philosopher's Stone to restore his brother.",
+    "traits": ["Circle-less Alchemy", "Automail Arm & Leg", "Prodigy Intellect", "Brotherly Devotion"]
+  },
+  {
+    "id": "c_manga_5",
+    "name": "Ken Kaneki",
+    "category": "Manga",
+    "franchise": "Tokyo Ghoul",
+    "series": "Tokyo Ghoul:re by Sui Ishida",
+    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80",
+    "bio": "Former literature student turned One-Eyed King who endures horrific tragedy to build a bridge of understanding between ghouls and humanity.",
+    "traits": ["Rinkaku Kagune", "Kakuja Centipede", "Regeneration", "The One-Eyed King"]
+  }
+]

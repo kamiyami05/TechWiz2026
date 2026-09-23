@@ -1,0 +1,49 @@
+{
+  "greeting": "Welcome to FandomVerse! I am VerseBot, your portal guide across Anime, Gaming, Movies, TV, K-Pop, Comics, and Manga. What can I explore with you today?",
+  "prompts": [
+    "Who is the strongest character in Anime?",
+    "What gaming conventions are coming up?",
+    "Where can I find One Piece merchandise?",
+    "Tell me about Denis Villeneuve's Dune.",
+    "How does the bookmarking system work?"
+  ],
+  "rules": [
+    {
+      "keywords": ["anime", "goku", "luffy", "naruto", "levi", "tanjiro", "strongest"],
+      "response": "In our **Anime & Manga** rosters, legends like **Son Goku** (Ultra Instinct), **Monkey D. Luffy** (Gear 5 Sun God Nika), and **Satoru Gojo** (Six Eyes & Limitless) stand at the peak! Explore full biographies, combat power traits, and series overviews in our Character Profiles!",
+      "link": "#characters",
+      "linkLabel": "View Anime Character Profiles"
+    },
+    {
+      "keywords": ["game", "gaming", "geralt", "kratos", "zelda", "halo", "convention", "gamescom"],
+      "response": "Major gaming conventions on our calendar include **Gamescom 2026** in Cologne, Germany, and **Tokyo Game Show (TGS)** in Chiba, Japan! Check out iconic gaming champions like Geralt of Rivia, Kratos, and Link in our database.",
+      "link": "#events",
+      "linkLabel": "Browse Upcoming Events"
+    },
+    {
+      "keywords": ["merch", "merchandise", "shop", "hoodie", "lightstick", "cart", "buy"],
+      "response": "Our **Merchandise Showcase** features officially styled apparel and collectibles, including the **Straw Hat Pirates Oversized Hoodie**, **BTS Official Lightstick**, and **Witcher 3 Silver Sword Replica**. You can add items to your temporary cart to calculate total billing amounts!",
+      "link": "#merchandise",
+      "linkLabel": "Open Merch Showcase"
+    },
+    {
+      "keywords": ["movie", "movies", "film", "dune", "iron man", "john wick", "trailer"],
+      "response": "Check out our Featured Articles exploring Denis Villeneuve's **Dune: Part Two**, plus watch high-definition video trailers for upcoming blockbusters in our Trailers theater!",
+      "link": "#trailers",
+      "linkLabel": "Watch Video Trailers"
+    },
+    {
+      "keywords": ["kpop", "bts", "blackpink", "stray kids", "aespa", "jungkook", "felix"],
+      "response": "K-Pop fans can discover detailed artist profiles for **RM**, **Jennie**, **Felix**, **Karina**, and **Jungkook**, plus festival schedules for **MAMA Awards** and **KCON Worldwide**!",
+      "link": "#characters",
+      "linkLabel": "Explore K-Pop Profiles"
+    },
+    {
+      "keywords": ["bookmark", "favorite", "save", "note", "export"],
+      "response": "You can bookmark your favorite characters, articles, events, and merchandise items across all 7 categories by clicking the star ribbon icon. Your bookmarks are saved in LocalStorage, and you can add private session notes in SessionStorage!",
+      "link": "#bookmarks",
+      "linkLabel": "View Saved Bookmarks"
+    }
+  ],
+  "fallback": "I'm your all-in-one guide to Anime, Gaming, Movies, TV, K-Pop, Comics, and Manga! Ask me about character lore, upcoming fan conventions, or fan merchandise."
+}

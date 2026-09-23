@@ -1,0 +1,57 @@
+[
+  {
+    "id": "art_1",
+    "title": "The Evolution of Gear 5: How Eiichiro Oda Redefined Shonen Climax",
+    "category": "Anime",
+    "author": "Marcus Sterling",
+    "date": "September 18, 2026",
+    "readTime": "6 min read",
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=700&q=80",
+    "snippet": "An in-depth analysis of how Luffy's Sun God Nika awakening subverted gritty modern shonen tropes by bringing vintage slapstick rubber-hose animation to the battlefield of Wano.",
+    "content": "For nearly twenty-five years, shonen power-ups adhered strictly to a formula of escalating brooding fury, spiky hair, and darker color palettes. When Eiichiro Oda revealed Luffy's Gear 5 at the climax of the Raid on Onigashima, it was not an explosion of vengeance, but of laughter. Inspired by early 1930s Fleischer Studios cartoon logic, Luffy's awakened Hito Hito no Mi: Model Nika allows him to fight with boundless cartoon freedom, bouncing on lightning bolts and running on air. This creative gamble reminded the global fandom that the true heart of One Piece has always been freedom and infectious joy."
+  },
+  {
+    "id": "art_2",
+    "title": "Next-Gen Unreal Engine 5.5: How RPG Worlds Are Achieving Photorealism",
+    "category": "Gaming",
+    "author": "Elena Rostova",
+    "date": "September 15, 2026",
+    "readTime": "8 min read",
+    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=700&q=80",
+    "snippet": "Exploring Nanite virtual geometry and Lumen hardware raytracing in the next wave of open-world fantasy masterpieces.",
+    "content": "From the sprawling tundras of The Witcher 4 to CD Projekt RED's new tech pipelines, Unreal Engine 5.5 represents a generational leap in game immersion. Nanite geometry enables artists to import film-grade ZBrush sculpts without polycount decimation, while Lumen global illumination calculates real-time light bounces with cinematic fidelity. For players, this means environmental storytelling where every mossy rock and sunlit forest clearing feels tangible."
+  },
+  {
+    "id": "art_3",
+    "title": "Denis Villeneuve's Dune Universe: The Triumphant Return of Serious Sci-Fi",
+    "category": "Movies",
+    "author": "David Chen",
+    "date": "September 12, 2026",
+    "readTime": "5 min read",
+    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=80",
+    "snippet": "Why the sweeping desert soundscapes of Hans Zimmer and Greig Fraser's IMAX cinematography proved audiences crave mythic science fiction.",
+    "content": "In an era crowded with green-screen fatigue, Denis Villeneuve delivered an operatic masterclass with Dune: Part Two. By filming primarily on practical desert locations in Jordan and the UAE, paired with custom infrared sensor cameras for the Harkonnen homeworld of Giedi Prime, the production created tactile cinematic majesty. The film's unprecedented global box office proved that audiences will passionately champion complex, patient worldbuilding."
+  },
+  {
+    "id": "art_4",
+    "title": "The Golden Maknae Era: How Jungkook Reshaped 2020s Western Pop Radio",
+    "category": "K-Pop",
+    "author": "Chloe Park",
+    "date": "September 10, 2026",
+    "readTime": "7 min read",
+    "image": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=700&q=80",
+    "snippet": "Examining the multi-platinum UK garage and R&B crossover success of 'Seven' and 'Standing Next to You' on global Billboard charts.",
+    "content": "When BTS entered their individual chapters, main vocalist Jungkook proved that K-Pop artists could effortlessly conquer Western top-40 radio while retaining pristine technical choreography. Working with producers Andrew Watt and Latto, his debut solo LP 'Golden' merged early-2000s Justin Timberlake funk with cutting-edge Seoul vocal arrangements, cementing his status as the premier pop royalty of his generation."
+  },
+  {
+    "id": "art_5",
+    "title": "The Legacy of Berserk: Kentaro Miura’s Dark Fantasy Masterwork",
+    "category": "Manga",
+    "author": "Kenji Takahashi",
+    "date": "September 05, 2026",
+    "readTime": "9 min read",
+    "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=700&q=80",
+    "snippet": "A tribute to the breathtaking ink-and-quill crosshatching of Kentaro Miura, inspiring Dark Souls, Elden Ring, and a generation of writers.",
+    "content": "Berserk is not merely a tale of a giant sword; it is a profound philosophical treatise on human trauma, trauma recovery, camaraderie, and destiny. Kentaro Miura's microscopic hatching technique turned every double-page spread into a Renaissance canvas. Today, Studio Gaga and Kouji Mori carry forward the Black Swordsman's journey with solemn artistic reverence."
+  }
+]

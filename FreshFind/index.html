@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreshFind - Fresh All Along | eGreen Basket Farmers Market Discovery</title>
+  <meta name="description" content="Discover vibrant local farmers markets, seasonal organic produce guides, and direct farm-to-table schedules on FreshFind.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 1. Top Real-time Bar -->
+  <aside class="top-notice-bar" aria-label="Real-time status">
+    <div class="container top-notice-content">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span class="notice-badge">
+          <span class="live-indicator"></span>
+          <span id="live-open-count">Discovering Open Markets...</span>
+        </span>
+        <span id="live-clock">Loading live time...</span>
+      </div>
+      <div>
+        <span>🌱 Supporting 120+ Regional Family Farms • Zero Middlemen</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 2. Main Site Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="#home" class="brand-logo" aria-label="FreshFind Home">
+        <div class="brand-icon-box">🥦</div>
+        <div>
+          <h1 class="brand-title">Fresh<span>Find</span></h1>
+          <span class="brand-tagline">Fresh All Along • eGreen Basket</span>
+        </div>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#directory" class="nav-link">Market Directory</a></li>
+          <li><a href="#produce" class="nav-link">Produce Guide</a></li>
+          <li><a href="#bookmarks" class="nav-link">Bookmarks (<span id="bookmarks-count-badge">0</span>)</a></li>
+          <li><a href="#about" class="nav-link">About Us</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline trigger-auth">Log In</button>
+        <button class="btn btn-primary trigger-auth">Join Free</button>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. Breadcrumb Navigation Bar -->
+  <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb-list">
+        <li><a href="#home">Home</a></li>
+        <li class="breadcrumb-separator">/</li>
+        <li><span id="active-breadcrumb">Farmers Market Directory & Seasonal Produce Guide</span></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 4. Hero Section -->
+  <main id="main-content">
+    <section id="home" class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <span class="pill-badge">✨ Official TechWiz 7 • Web Innovation Unleashed</span>
+          <h2 class="hero-title">
+            Discover Fresh, Local <span>Farmers Markets</span> Near You
+          </h2>
+          <p class="hero-subtitle">
+            Connect directly with sustainable growers, plan your market visits around seasonal produce, and bring farm-fresh organic food to your family table.
+          </p>
+        </div>
+
+        <!-- Quick Search & Filter Card -->
+        <div class="quick-search-card">
+          <div class="search-field">
+            <label for="search-input">Search Markets or Produce</label>
+            <input type="text" id="search-input" placeholder="e.g. Heirloom tomatoes, honey...">
+          </div>
+
+          <div class="search-field">
+            <label for="filter-area">Neighborhood / Area</label>
+            <select id="filter-area">
+              <option value="all">All Coverage Areas</option>
+            </select>
+          </div>
+
+          <div class="search-field">
+            <label for="filter-day">Day of the Week</label>
+            <select id="filter-day">
+              <option value="all">Any Day</option>
+              <option value="Saturday">Saturday</option>
+              <option value="Sunday">Sunday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Monday">Monday</option>
+            </select>
+          </div>
+
+          <div class="search-field">
+            <label for="filter-produce">Produce Category</label>
+            <select id="filter-produce">
+              <option value="all">All Produce</option>
+              <option value="Vegetables">Vegetables</option>
+              <option value="Fruits">Fruits</option>
+              <option value="Herbs">Herbs</option>
+              <option value="Dairy & Eggs">Dairy & Eggs</option>
+              <option value="Honey & Preserves">Honey & Preserves</option>
+            </select>
+          </div>
+
+          <div class="search-field" style="align-self: flex-end;">
+            <a href="#directory" class="btn btn-primary" style="height: 42px;">Find Markets &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Platform Stats & Simulated Visitor Counter -->
+    <section class="stats-banner">
+      <div class="container stats-grid">
+        <div class="stat-item">
+          <h4 id="visitor-count">14,280</h4>
+          <p>Total Community Visitors</p>
+        </div>
+        <div class="stat-item">
+          <h4>38+</h4>
+          <p>Active Verified Markets</p>
+        </div>
+        <div class="stat-item">
+          <h4>100%</h4>
+          <p>Local & Organic Standard</p>
+        </div>
+        <div class="stat-item">
+          <h4>$0</h4>
+          <p>Free Community Access</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Farmers Market Directory Section -->
+    <section id="directory" class="section-block">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="pill-badge">Neighborhood Directory</span>
+            <h3 class="section-title">Explore Certified Farmers Markets</h3>
+            <p class="section-desc">
+              Browse weekly schedules, operating hours, vendor counts, and available fresh harvests.
+            </p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <label for="sort-by" style="font-size: 0.8125rem; font-weight: 700; color: #64748b;">Sort By:</label>
+            <select id="sort-by" style="padding: 0.4rem 0.75rem; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 0.8125rem;">
+              <option value="name">Market Name (A-Z)</option>
+              <option value="rating">Top Rated</option>
+              <option value="vendors">Most Vendors</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="cards-grid" id="markets-grid">
+          <!-- Dynamically populated via js/directory.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Produce Guide Section -->
+    <section id="produce" class="section-block" style="background-color: #f1f5f9;">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="pill-badge">Nutritional Awareness</span>
+            <h3 class="section-title">Seasonal Produce Guide</h3>
+            <p class="section-desc">
+              Learn what is in season right now, how to properly store fresh harvests, and which markets carry them.
+            </p>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+            <button class="btn btn-primary produce-cat-btn active" data-category="all">All Items</button>
+            <button class="btn btn-outline produce-cat-btn" data-category="Vegetables">Vegetables</button>
+            <button class="btn btn-outline produce-cat-btn" data-category="Fruits">Fruits</button>
+            <button class="btn btn-outline produce-cat-btn" data-category="Herbs">Herbs</button>
+            <button class="btn btn-outline produce-cat-btn" data-category="Dairy & Eggs">Dairy & Eggs</button>
+            <button class="btn btn-outline produce-cat-btn" data-category="Honey & Preserves">Honey</button>
+          </div>
+        </div>
+
+        <div class="cards-grid" id="produce-grid">
+          <!-- Dynamically populated via js/produce.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Bookmarks & Personal Notes Section -->
+    <section id="bookmarks" class="section-block">
+      <div class="container" style="max-width: 860px;">
+        <div class="section-header" style="align-items: center;">
+          <div>
+            <span class="pill-badge">My Saved Plan</span>
+            <h3 class="section-title">Saved Markets & Personal Notes</h3>
+            <p class="section-desc">
+              Favorites are stored safely in LocalStorage. Your personal shopping notes are saved for this active browser session.
+            </p>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem;">
+            <button id="export-bookmarks-btn" class="btn btn-outline" style="font-size: 0.8125rem;">
+              📥 Export Formatted List
+            </button>
+            <button id="share-bookmarks-btn" class="btn btn-primary" style="font-size: 0.8125rem;">
+              🔗 Share
+            </button>
+          </div>
+        </div>
+
+        <div id="bookmarks-list-container">
+          <!-- Populated via js/bookmarks.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. About Us Section -->
+    <section id="about" class="section-block" style="background-color: #ffffff; border-top: 1px solid #e2e8f0;">
+      <div class="container">
+        <div style="max-width: 780px; margin: 0 auto; text-align: center;">
+          <span class="pill-badge">Our Mission</span>
+          <h3 class="section-title">Bridging Urban Communities & Regional Farmers</h3>
+          <p style="font-size: 1.05rem; color: #475569; margin: 1rem 0 2rem; line-height: 1.6;">
+            FreshFind is built to democratize access to wholesome, sustainable, chemical-free food. By connecting neighborhood residents with independent growers, we reduce food transport emissions, eliminate supermarket packaging waste, and ensure farmers receive fair prices for their hard work.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+          <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0;">
+            <span style="font-size: 2rem;">🚜</span>
+            <h4 style="font-size: 1.1rem; font-weight: 800; margin: 0.5rem 0 0.25rem;">100% Direct From Source</h4>
+            <p style="font-size: 0.8125rem; color: #64748b;">No intermediate middlemen or speculative wholesalers. Every dollar directly supports local agriculture.</p>
+          </div>
+
+          <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0;">
+            <span style="font-size: 2rem;">🐝</span>
+            <h4 style="font-size: 1.1rem; font-weight: 800; margin: 0.5rem 0 0.25rem;">Ecological Biodiversity</h4>
+            <p style="font-size: 0.8125rem; color: #64748b;">Partner farms practice regenerative agriculture, crop rotation, and bee-friendly pollination zones.</p>
+          </div>
+
+          <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0;">
+            <span style="font-size: 2rem;">💳</span>
+            <h4 style="font-size: 1.1rem; font-weight: 800; margin: 0.5rem 0 0.25rem;">Food Equity & Accessibility</h4>
+            <p style="font-size: 0.8125rem; color: #64748b;">All featured markets offer SNAP/EBT access and nutrition education programs for families in need.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Contact Us Section -->
+    <section id="contact" class="section-block" style="background-color: #f8fafc; border-top: 1px solid #e2e8f0;">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="pill-badge">Get In Touch</span>
+            <h3 class="section-title">Contact FreshFind Team</h3>
+            <p class="section-desc">Have a local farmers market you want featured, or questions about produce availability? Send us a message.</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+          <form id="contact-form" style="background: #fff; padding: 1.5rem; border-radius: 18px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-sm);" onsubmit="event.preventDefault(); alert('Thank you! Your message has been received by the FreshFind team.'); this.reset();">
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #64748b; margin-bottom: 0.35rem;">Full Name *</label>
+              <input type="text" required placeholder="Eleanor Vance" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.875rem;">
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #64748b; margin-bottom: 0.35rem;">Email Address *</label>
+              <input type="email" required placeholder="eleanor@example.com" style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.875rem;">
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #64748b; margin-bottom: 0.35rem;">Topic / Market Inquiry</label>
+              <select style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.875rem;">
+                <option>Suggest a New Farmers Market</option>
+                <option>Vendor Participation Information</option>
+                <option>Seasonal Harvest Information</option>
+                <option>General Feedback</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom: 1.25rem;">
+              <label style="display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #64748b; margin-bottom: 0.35rem;">Message *</label>
+              <textarea rows="4" required placeholder="Tell us how we can help..." style="width: 100%; padding: 0.65rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.875rem;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message &rarr;</button>
+          </form>
+
+          <div style="background: #fff; padding: 1.5rem; border-radius: 18px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h4 style="font-size: 1.15rem; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem;">Central Community Headquarters</h4>
+              <p style="font-size: 0.875rem; color: #64748b; margin-bottom: 1rem;">
+                📍 500 Market Square Parkway, Suite 300<br>
+                📞 Hotline: +1 (800) 555-FARM<br>
+                ✉ Support: help@freshfind.greenbasket.org
+              </p>
+
+              <!-- Interactive Simulated Map Widget -->
+              <div style="height: 200px; border-radius: 12px; background: #e2e8f0; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; border: 1px solid #cbd5e1;">
+                <iframe 
+                  title="FreshFind Central Map"
+                  width="100%" 
+                  height="100%" 
+                  frameborder="0" 
+                  scrolling="no" 
+                  marginheight="0" 
+                  marginwidth="0" 
+                  src="https://maps.google.com/maps?q=41.8781,-87.6298&hl=en&z=13&output=embed"
+                  style="border:0;">
+                </iframe>
+              </div>
+            </div>
+
+            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #f1f5f9; font-size: 0.75rem; color: #94a3b8;">
+              Operating Support: Monday - Saturday 08:00 AM - 05:00 PM CST
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 11. Market Detail Modal -->
+  <div class="modal-overlay" id="market-detail-modal" role="dialog" aria-modal="true" aria-labelledby="market-modal-title">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="market-modal-title">Market Details & Schedule</h3>
+        <button class="close-btn" id="close-market-modal" aria-label="Close dialog">✕</button>
+      </div>
+      <div class="modal-body" id="market-modal-content">
+        <!-- Content populated via js/directory.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. Dummy Auth Modal -->
+  <div class="modal-overlay" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+    <div class="modal-container" style="max-width: 420px;">
+      <div class="modal-header">
+        <h3 id="auth-modal-title">FreshFind Community Portal</h3>
+        <button class="close-btn" id="close-auth-modal" aria-label="Close dialog">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.8125rem; color: #64748b; margin-bottom: 1.25rem;">
+          Sign in to sync your bookmarks across browsers. (Design demonstration per SRS 1.6 - no backend session storage).
+        </p>
+        <form id="dummy-auth-form">
+          <div style="margin-bottom: 1rem;">
+            <label style="font-size: 0.75rem; font-weight: 800; color: #64748b; display: block; margin-bottom: 0.25rem;">Email Address</label>
+            <input type="email" required placeholder="name@example.com" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px;">
+          </div>
+          <div style="margin-bottom: 1.25rem;">
+            <label style="font-size: 0.75rem; font-weight: 800; color: #64748b; display: block; margin-bottom: 0.25rem;">Password</label>
+            <input type="password" required placeholder="••••••••" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px;">
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Continue &rarr;</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. Floating AI Chatbot Assistant (Sprout) -->
+  <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open Virtual Assistant Sprout" title="Ask Sprout AI Assistant">
+    💬
+  </button>
+
+  <aside class="chatbot-widget" id="chatbot-widget" aria-label="AI Chatbot Assistant">
+    <div class="chat-header">
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <span style="font-size: 1.4rem;">🌱</span>
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 800;">Sprout • Market AI</h4>
+          <span style="font-size: 0.7rem; opacity: 0.9;">Rule-Based Knowledge Assistant</span>
+        </div>
+      </div>
+      <button class="close-btn" id="close-chatbot" style="color: #fff;" aria-label="Close assistant">✕</button>
+    </div>
+
+    <div class="chat-messages" id="chat-messages">
+      <!-- Chat bubbles populated via js/chatbot.js -->
+    </div>
+
+    <!-- Suggested Prompt Chips -->
+    <div class="chat-prompts-bar" id="chat-prompts-bar">
+      <!-- Populated from data/chatbot-faq.json -->
+    </div>
+
+    <div class="chat-input-bar">
+      <input type="text" id="chat-input" placeholder="Ask about markets, hours, or produce...">
+      <button id="send-chat-btn" class="btn btn-primary" style="padding: 0.5rem 0.85rem;">Send</button>
+    </div>
+  </aside>
+
+  <!-- 14. Master Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem;">
+            <div class="brand-icon-box" style="width: 36px; height: 36px; font-size: 1.2rem;">🥦</div>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: #fff;">FreshFind</h3>
+          </div>
+          <p style="font-size: 0.875rem; line-height: 1.6; max-width: 320px;">
+            A premier community agricultural discovery initiative. Championing direct farm-to-table access, seasonal eating, and local economic resilience.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#directory">Market Directory</a></li>
+            <li><a href="#produce">Produce Guide</a></li>
+            <li><a href="#bookmarks">Saved Bookmarks</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About Our Mission</a></li>
+            <li><a href="#contact">Contact Support</a></li>
+            <li><a href="docs/Project_Report.md">Project Report</a></li>
+            <li><a href="docs/ReadMe.md">ReadMe & Setup</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contest Compliance</h4>
+          <p style="font-size: 0.8125rem; margin-bottom: 0.75rem;">
+            <strong>TechWiz 7 World Tech Championship</strong><br>
+            Category: Web Innovation Unleashed<br>
+            Theme: eGreen Basket<br>
+            Data: Static Pre-populated JSON Engine
+          </p>
+          <span style="font-size: 0.75rem; color: #4ade80;">✓ 100% Client-Side • Cross-Browser Certified</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 FreshFind • eGreen Basket. All rights reserved.</p>
+        <p>Built for TechWiz 7 Competition • Aptech Limited</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/bookmarks.js"></script>
+  <script src="js/directory.js"></script>
+  <script src="js/produce.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

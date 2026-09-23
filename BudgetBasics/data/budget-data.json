@@ -1,0 +1,88 @@
+{
+  "quotesTicker": [
+    "“Do not save what is left after spending, but spend what is left after saving.” — Warren Buffett",
+    "“A budget is telling your money where to go instead of wondering where it went.” — Dave Ramsey",
+    "“Small daily leaks sink great financial ships. Track even the minor costs.” — BudgetBasics Rule",
+    "“Beware of little expenses; a small leak will sink a great ship.” — Benjamin Franklin",
+    "“Financial peace isn't the acquisition of stuff. It's learning to live on less than you make.”"
+  ],
+  "sampleStudentBudget": {
+    "monthlyIncome": 1200,
+    "categories": [
+      { "category": "Shared Room Rent & Utilities", "type": "Need", "amount": 500, "percent": 41.7 },
+      { "category": "Groceries & Meal Prep", "type": "Need", "amount": 250, "percent": 20.8 },
+      { "category": "Public Transit & Bike Commute", "type": "Need", "amount": 80, "percent": 6.7 },
+      { "category": "Campus Textbooks & Supplies", "type": "Need", "amount": 60, "percent": 5.0 },
+      { "category": "Dining Out & Coffee with Friends", "type": "Want", "amount": 110, "percent": 9.2 },
+      { "category": "Streaming & Gaming Subscriptions", "type": "Want", "amount": 30, "percent": 2.5 },
+      { "category": "Emergency Fund & Savings Goal", "type": "Savings", "amount": 170, "percent": 14.1 }
+    ]
+  },
+  "moneyMistakes": [
+    {
+      "id": "m1",
+      "title": "Impulse Buying & Sale Traps",
+      "scenario": "Buying a $60 jacket simply because it was advertised as '50% off', even though you did not need a jacket and had not budgeted for it.",
+      "impact": "Leaves you short on essential textbook purchases or rent at month-end.",
+      "fix": "Institute the **48-Hour Rule**: wait two full days before completing any non-essential purchase over $30. In 80% of cases, the impulse fades."
+    },
+    {
+      "id": "m2",
+      "title": "Ignoring Small Daily Cash Leaks",
+      "scenario": "Buying a $5.50 specialty iced caramel latte every weekday morning before campus lecture.",
+      "impact": "$5.50 × 20 class days = **$110 per month** or **$1,320 per academic year** spent entirely on coffee.",
+      "fix": "Brew quality coffee at home in an insulated tumbler. Treat cafe drinks as a once-a-week reward to save $85+ each month."
+    },
+    {
+      "id": "m3",
+      "title": "Zombie / Unused Subscriptions",
+      "scenario": "Signing up for 3 video streaming services, a cloud storage tier, and a gym pass that hasn't been visited in 4 months.",
+      "impact": "Silent recurring monthly auto-charges siphon $45-$90 without active awareness.",
+      "fix": "Conduct a **Monthly Subscription Audit**. Cancel recurring apps you haven't opened in the past 14 days."
+    },
+    {
+      "id": "m4",
+      "title": "Spending Without a Written Monthly Plan",
+      "scenario": "Assuming you will 'just be frugal' without allocating specific spending limits to food, transit, and social activities.",
+      "impact": "Money disappears into unexplained transactions, leading to end-of-month panic.",
+      "fix": "Adopt the **50-30-20 Guideline**: 50% for Needs, 30% for Wants, and 20% for Savings immediately upon receiving income."
+    },
+    {
+      "id": "m5",
+      "title": "Neglecting an Emergency Buffer Fund",
+      "scenario": "Living paycheck-to-paycheck with $0 saved for unexpected medical bills, laptop repairs, or transit breakdowns.",
+      "impact": "Forces students into high-interest payday loans or credit card debt balances.",
+      "fix": "Build a beginner **$500 Starter Emergency Fund** first before expanding non-essential recreational spending."
+    }
+  ],
+  "infographics": [
+    {
+      "id": "info-1",
+      "title": "The 50-30-20 Rule Explained",
+      "topic": "budgeting",
+      "desc": "How to split your monthly income into three foundational buckets: 50% Needs, 30% Wants, and 20% Savings.",
+      "tag": "Core Formula"
+    },
+    {
+      "id": "info-2",
+      "title": "Needs vs. Wants Decision Tree",
+      "topic": "needs-wants",
+      "desc": "A visual flow diagram to evaluate every upcoming purchase: Is it essential for survival, health, or education?",
+      "tag": "Decision Guide"
+    },
+    {
+      "id": "info-3",
+      "title": "The Student Emergency Fund Ladder",
+      "topic": "savings",
+      "desc": "Three progressive milestone tiers: $250 Quick Buffer, $500 Starter Safety Net, and 1-Month Living Expenses.",
+      "tag": "Milestone Map"
+    },
+    {
+      "id": "info-4",
+      "title": "The Lattee Factor: Small Leaks Compounded",
+      "topic": "mistakes",
+      "desc": "Visualizing how $5 saved daily grows to $1,825 in one year, or $10,000+ invested over 5 years.",
+      "tag": "Growth Chart"
+    }
+  ]
+}

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BudgetBasics - NextGen BudgetBee | Student Financial Literacy & Budgeting Hub</title>
+  <meta name="description" content="Master personal budgeting, the 50-30-20 rule, needs vs. wants, and student savings goals with interactive tools on BudgetBasics.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 1. Quotes Ticker & Clock Bar -->
+  <aside class="ticker-bar" aria-label="Financial Tips Ticker">
+    <div class="container ticker-inner">
+      <div style="display: flex; align-items: center; gap: 0.6rem; overflow: hidden;">
+        <span style="background: rgba(255, 255, 255, 0.2); padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 800;">
+          💡 TIP
+        </span>
+        <span id="quotes-ticker-text" style="transition: opacity 0.3s ease;">
+          “A budget is telling your money where to go instead of wondering where it went.”
+        </span>
+      </div>
+      <div style="font-size: 0.75rem; font-weight: 600; opacity: 0.95;">
+        <span id="live-clock">Loading live time...</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 2. Master Header -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="#home" class="brand-logo" aria-label="BudgetBasics Home">
+        <div class="brand-icon">🐝</div>
+        <div>
+          <h1 class="brand-title">Budget<span>Basics</span></h1>
+          <span class="brand-tagline">NextGen BudgetBee • Financial Literacy</span>
+        </div>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#budget-basics" class="nav-link">Basics</a></li>
+          <li><a href="#needs-wants" class="nav-link">Needs vs Wants</a></li>
+          <li><a href="#calculator" class="nav-link">50-30-20</a></li>
+          <li><a href="#savings" class="nav-link">Goals</a></li>
+          <li><a href="#planner" class="nav-link">Planner</a></li>
+          <li><a href="#mistakes" class="nav-link">Mistakes</a></li>
+          <li><a href="#gallery" class="nav-link">Infographics</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-controls">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark or Light theme">
+          🌙 Dark Mode
+        </button>
+        <a href="#calculator" class="btn btn-primary" style="font-size: 0.8125rem;">
+          Try Calculator &rarr;
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. Hero Section -->
+  <main id="main-content">
+    <section id="home" class="hero-section">
+      <div class="container hero-grid">
+        <div>
+          <span class="pill-badge">🎓 TechWiz 7 • Web Innovation Unleashed</span>
+          <h2 class="hero-title">
+            Take Control of Your Money. <span>Build Lasting Wealth.</span>
+          </h2>
+          <p class="hero-desc">
+            BudgetBasics equips college learners and students with clear financial principles, interactive 50-30-20 calculators, needs vs. wants classification games, and savings roadmap tools.
+          </p>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <a href="#calculator" class="btn btn-primary">50-30-20 Rule Calculator</a>
+            <a href="#needs-wants" class="btn btn-outline">Play Needs vs Wants Game</a>
+          </div>
+        </div>
+
+        <!-- Hero Budget Preview Card -->
+        <div class="budget-preview-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main);">
+              Sample Student Budget ($1,200/mo)
+            </h3>
+            <span style="font-size: 0.75rem; font-weight: 800; color: var(--primary); background: var(--primary-light); padding: 0.2rem 0.6rem; border-radius: 9999px;">
+              50-30-20 Model
+            </span>
+          </div>
+
+          <div class="preview-bar-row">
+            <div class="bar-label">
+              <span>Essential Needs (50%)</span>
+              <strong style="color: #0284c7;">$600.00</strong>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 50%; background-color: #0284c7;"></div>
+            </div>
+          </div>
+
+          <div class="preview-bar-row">
+            <div class="bar-label">
+              <span>Discretionary Wants (30%)</span>
+              <strong style="color: #d97706;">$360.00</strong>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 30%; background-color: #d97706;"></div>
+            </div>
+          </div>
+
+          <div class="preview-bar-row">
+            <div class="bar-label">
+              <span>Savings & Emergency Fund (20%)</span>
+              <strong style="color: #10b981;">$240.00</strong>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 20%; background-color: #10b981;"></div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1rem; text-align: center;">
+            *Educational baseline. No banking services or server records stored.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Stats & Visitor Counter Bar -->
+    <section style="background: var(--bg-card); border-bottom: 1px solid var(--border-light); padding: 1.25rem 0;">
+      <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; text-align: center;">
+        <div>
+          <h4 id="visitor-count" style="font-size: 1.75rem; font-weight: 900; color: var(--primary);">28,450</h4>
+          <p style="font-size: 0.8125rem; color: var(--text-muted); font-weight: 600;">Learners Reached</p>
+        </div>
+        <div>
+          <h4 style="font-size: 1.75rem; font-weight: 900; color: var(--accent-blue);">50-30-20</h4>
+          <p style="font-size: 0.8125rem; color: var(--text-muted); font-weight: 600;">AHA Financial Standard</p>
+        </div>
+        <div>
+          <h4 style="font-size: 1.75rem; font-weight: 900; color: var(--accent-green);">100% Free</h4>
+          <p style="font-size: 0.8125rem; color: var(--text-muted); font-weight: 600;">Open Educational Resource</p>
+        </div>
+        <div>
+          <h4 style="font-size: 1.75rem; font-weight: 900; color: var(--primary);">0 Tracking</h4>
+          <p style="font-size: 0.8125rem; color: var(--text-muted); font-weight: 600;">Client-Side Privacy Safe</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Module 1: Budgeting Basics Module -->
+    <section id="budget-basics" class="section-block">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-badge">Module 1</span>
+          <h3 class="section-title">Foundations of Personal Budgeting</h3>
+          <p class="section-desc">
+            Understand where money flows, how fixed and variable expenses differ, and why small planning decisions create long-term stability.
+          </p>
+        </div>
+
+        <div class="grid-3" style="margin-bottom: 3rem;">
+          <div class="feature-card">
+            <div class="card-icon" style="background: #e0f2fe; color: #0284c7;">💵</div>
+            <h4 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem;">Income Inflow</h4>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">
+              Allowances, campus scholarships, paid internships, or part-time wages. Knowing your true net monthly cash flow is Step 1.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="card-icon" style="background: #fef3c7; color: #d97706;">🔒</div>
+            <h4 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem;">Fixed Expenses</h4>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">
+              Predictable costs that don't fluctuate month-to-month: student housing rent, Wi-Fi, tuition payments, and transit passes.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="card-icon" style="background: #dcfce7; color: #16a34a;">🌊</div>
+            <h4 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem;">Variable Expenses</h4>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.5;">
+              Spending that varies based on behavior: groceries, dining out, entertainment, laundry, and discretionary purchases.
+            </p>
+          </div>
+        </div>
+
+        <!-- Sample Student Monthly Budget Table -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 3rem;">
+          <h4 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">
+            Real-World Student Monthly Budget Case Study ($1,200 Total)
+          </h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+            A breakdown of an average undergraduate's monthly living allowance:
+          </p>
+
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--border-light); text-align: left; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase;">
+                <th style="padding: 0.75rem;">Category</th>
+                <th style="padding: 0.75rem;">Classification</th>
+                <th style="padding: 0.75rem; text-align: right;">Amount ($)</th>
+                <th style="padding: 0.75rem; text-align: right;">% of Budget</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-light);">
+                <td style="padding: 0.75rem; font-weight: 600;">Shared Room Rent & Power</td>
+                <td style="padding: 0.75rem;"><span style="background: #e0f2fe; color: #0284c7; padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">Need</span></td>
+                <td style="padding: 0.75rem; text-align: right; font-weight: 800;">$500.00</td>
+                <td style="padding: 0.75rem; text-align: right;">41.7%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-light);">
+                <td style="padding: 0.75rem; font-weight: 600;">Groceries & Cooking Staples</td>
+                <td style="padding: 0.75rem;"><span style="background: #e0f2fe; color: #0284c7; padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">Need</span></td>
+                <td style="padding: 0.75rem; text-align: right; font-weight: 800;">$250.00</td>
+                <td style="padding: 0.75rem; text-align: right;">20.8%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-light);">
+                <td style="padding: 0.75rem; font-weight: 600;">Public Transit Metro Pass</td>
+                <td style="padding: 0.75rem;"><span style="background: #e0f2fe; color: #0284c7; padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">Need</span></td>
+                <td style="padding: 0.75rem; text-align: right; font-weight: 800;">$80.00</td>
+                <td style="padding: 0.75rem; text-align: right;">6.7%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-light);">
+                <td style="padding: 0.75rem; font-weight: 600;">Weekend Dining Out & Coffee</td>
+                <td style="padding: 0.75rem;"><span style="background: #fef3c7; color: #d97706; padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">Want</span></td>
+                <td style="padding: 0.75rem; text-align: right; font-weight: 800;">$110.00</td>
+                <td style="padding: 0.75rem; text-align: right;">9.2%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-light);">
+                <td style="padding: 0.75rem; font-weight: 600;">Emergency Buffer & Savings</td>
+                <td style="padding: 0.75rem;"><span style="background: #dcfce7; color: #16a34a; padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">Savings</span></td>
+                <td style="padding: 0.75rem; text-align: right; font-weight: 800;">$170.00</td>
+                <td style="padding: 0.75rem; text-align: right;">14.1%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Interactive Knowledge Check Quiz -->
+        <div id="quiz-container" style="max-width: 760px; margin: 0 auto;">
+          <!-- Dynamically populated via js/learning.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Module 2: Needs vs. Wants Module -->
+    <section id="needs-wants" class="section-block" style="background-color: rgba(254, 243, 199, 0.25);">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-badge">Module 2</span>
+          <h3 class="section-title">Needs vs. Wants Classification Game</h3>
+          <p class="section-desc">
+            Test your spending discernment! Decide whether each realistic student purchase represents a non-negotiable Need or a flexible Want.
+          </p>
+        </div>
+
+        <div class="game-container">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 800; font-size: 0.8125rem; color: var(--primary);">Interactive Challenge</span>
+            <span id="game-score" style="font-weight: 800; font-size: 0.8125rem; color: var(--text-main);">Score: 0 / 6</span>
+          </div>
+
+          <div class="game-card-display" id="game-item-display">
+            <!-- Dynamically populated via js/learning.js -->
+          </div>
+
+          <div class="game-actions">
+            <button id="btn-classify-need" class="btn" style="background-color: #0284c7; color: #fff; padding: 0.75rem 1.5rem;">
+              🏠 Classify as NEED
+            </button>
+            <button id="btn-classify-want" class="btn" style="background-color: #d97706; color: #fff; padding: 0.75rem 1.5rem;">
+              🎉 Classify as WANT
+            </button>
+          </div>
+
+          <div id="game-feedback-box" style="display: none; margin-top: 1.25rem;"></div>
+
+          <!-- Visual Decision Guide for Impulse Delay -->
+          <div style="margin-top: 2rem; padding: 1.25rem; background: var(--bg-page); border: 1px solid var(--border-light); border-radius: var(--radius-md); text-align: left; font-size: 0.8125rem;">
+            <strong style="color: var(--text-main); display: block; margin-bottom: 0.35rem;">
+              💡 The 3-Question Purchase Filter:
+            </strong>
+            <ol style="margin-left: 1.25rem; color: var(--text-muted); line-height: 1.5;">
+              <li>Would my health, safety, or academic performance suffer without this item? (If No &rarr; Want)</li>
+              <li>Can I borrow it, rent it, or buy it secondhand? (If Yes &rarr; Save money)</li>
+              <li>Can I wait 48 hours before purchasing? (80% of impulse wants disappear after 48 hours!)</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Module 3: 50-30-20 Rule Budget Calculator -->
+    <section id="calculator" class="section-block">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-badge">Module 3</span>
+          <h3 class="section-title">50-30-20 Budget Calculator</h3>
+          <p class="section-desc">
+            Enter your monthly allowance or part-time salary to generate an instant, balanced allocation.
+          </p>
+        </div>
+
+        <div class="calc-wrapper">
+          <form id="calc-503020-form">
+            <div class="input-group">
+              <label for="calc-income-input">Your Monthly Net Income / Allowance ($)</label>
+              <input type="number" id="calc-income-input" required min="1" step="any" placeholder="e.g. 1200">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Calculate 50-30-20 Allocation &rarr;</button>
+          </form>
+
+          <div class="calc-results-box" id="calc-503020-results" style="display: none;">
+            <!-- Rendered by js/calculators.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Module 4: Savings Goals Planner -->
+    <section id="savings" class="section-block" style="background-color: var(--bg-card); border-top: 1px solid var(--border-light);">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-badge">Module 4</span>
+          <h3 class="section-title">Savings Goals Planner</h3>
+          <p class="section-desc">
+            Define a financial target (e.g. Starter Emergency Fund, Semester Laptop) and see your timeline to completion.
+          </p>
+        </div>
+
+        <div class="calc-wrapper">
+          <form id="savings-goal-form">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+              <div class="input-group">
+                <label for="goal-name">Savings Goal Name</label>
+                <input type="text" id="goal-name" required placeholder="e.g. $500 Starter Emergency Fund">
+              </div>
+
+              <div class="input-group">
+                <label for="goal-target">Target Goal Amount ($)</label>
+                <input type="number" id="goal-target" required min="1" step="any" placeholder="500">
+              </div>
+
+              <div class="input-group">
+                <label for="goal-current">Current Savings So Far ($)</label>
+                <input type="number" id="goal-current" min="0" step="any" placeholder="100">
+              </div>
+
+              <div class="input-group">
+                <label for="goal-monthly">Planned Monthly Contribution ($)</label>
+                <input type="number" id="goal-monthly" required min="1" step="any" placeholder="50">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+              Calculate Goal Timeline &rarr;
+            </button>
+          </form>
+
+          <div id="savings-goal-results" style="display: none;">
+            <!-- Rendered by js/calculators.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Module 5: Interactive Expense Planner Demonstration -->
+    <section id="planner" class="section-block">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-badge">Module 5</span>
+          <h3 class="section-title">Session Expense Planner Demonstration</h3>
+          <p class="section-desc">
+            Log your daily expenses in real time during this session. Test how daily purchases impact your remaining balance.
+          </p>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <label for="planner-income-input" style="font-size: 0.8125rem; font-weight: 800; color: var(--text-muted);">
+                Monthly Allowance ($):
+              </label>
+              <input type="number" id="planner-income-input" value="800" style="width: 110px; padding: 0.4rem 0.6rem; border: 1px solid var(--border-light); border-radius: 6px; font-weight: 700;">
+            </div>
+
+            <div style="display: flex; gap: 1.5rem; font-size: 0.875rem;">
+              <div>
+                <span style="color: var(--text-muted);">Total Planned:</span>
+                <strong id="expense-total-display" style="color: #f43f5e; font-weight: 800;">$0.00</strong>
+              </div>
+              <div>
+                <span style="color: var(--text-muted);">Remaining Balance:</span>
+                <strong id="expense-balance-display" style="color: #10b981; font-weight: 800;">$800.00</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add Entry Form -->
+          <form id="expense-add-form" style="display: grid; grid-template-columns: 1fr 1.2fr 2fr 1.2fr auto; gap: 0.75rem; margin-bottom: 1.5rem; align-items: flex-end;">
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 800; color: var(--text-muted); margin-bottom: 0.2rem;">Date</label>
+              <input type="date" id="exp-date" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-light); border-radius: 6px; font-size: 0.8125rem;">
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 800; color: var(--text-muted); margin-bottom: 0.2rem;">Category</label>
+              <select id="exp-category" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-light); border-radius: 6px; font-size: 0.8125rem;">
+                <option value="Food">Food & Groceries</option>
+                <option value="Transport">Transport</option>
+                <option value="Education">Education</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Misc">Miscellaneous</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 800; color: var(--text-muted); margin-bottom: 0.2rem;">Description</label>
+              <input type="text" id="exp-desc" placeholder="e.g. Bus fare, meal prep..." required style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-light); border-radius: 6px; font-size: 0.8125rem;">
+            </div>
+
+            <div>
+              <label style="display: block; font-size: 0.75rem; font-weight: 800; color: var(--text-muted); margin-bottom: 0.2rem;">Amount ($)</label>
+              <input type="number" id="exp-amount" min="0.01" step="any" placeholder="25.00" required style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-light); border-radius: 6px; font-size: 0.8125rem;">
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1rem; height: 38px;">+ Add</button>
+          </form>
+
+          <!-- Expense Table -->
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr style="border-bottom: 2px solid var(--border-light); text-align: left; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted);">
+                  <th style="padding: 0.75rem 1rem;">Date</th>
+                  <th style="padding: 0.75rem 1rem;">Category</th>
+                  <th style="padding: 0.75rem 1rem;">Description</th>
+                  <th style="padding: 0.75rem 1rem; text-align: right;">Amount</th>
+                  <th style="padding: 0.75rem 1rem; text-align: center;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="expense-table-body">
+                <!-- Dynamically rendered via js/calculators.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Module 6: Money Mistakes Expandable Accordion -->
+    <section id="mistakes" class="section-block" style="background-color: var(--bg-card); border-top: 1px solid var(--border-light);">
+      <div class="container" style="max-width: 820px;">
+        <div class="section-header">
+          <span class="pill-badge">Module 6</span>
+          <h3 class="section-title">Common Money Mistakes & How to Fix Them</h3>
+          <p class="section-desc">
+            Explore realistic student scenarios and discover simple behavioral tweaks to protect your wallet.
+          </p>
+        </div>
+
+        <div id="mistakes-accordion-container">
+          <!-- Dynamically populated via js/learning.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. Module 7: Infographics & Learning Gallery -->
+    <section id="gallery" class="section-block">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-badge">Module 7</span>
+          <h3 class="section-title">Infographics & Visual Knowledge Gallery</h3>
+          <p class="section-desc">
+            High-impact visual infographics breaking down key financial formulas into bite-sized concepts.
+          </p>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap;">
+          <button class="btn btn-primary gallery-filter-btn active" data-topic="all">All Visual Guides</button>
+          <button class="btn btn-outline gallery-filter-btn" data-topic="budgeting">50-30-20 Split</button>
+          <button class="btn btn-outline gallery-filter-btn" data-topic="needs-wants">Needs vs Wants</button>
+          <button class="btn btn-outline gallery-filter-btn" data-topic="savings">Savings Milestones</button>
+          <button class="btn btn-outline gallery-filter-btn" data-topic="mistakes">Small Leaks</button>
+        </div>
+
+        <div class="grid-3" id="infographics-grid">
+          <!-- Dynamically rendered via js/learning.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. Feedback & Contact Section (Module 10) -->
+    <section id="contact" class="section-block" style="background-color: var(--bg-card); border-top: 1px solid var(--border-light);">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+          <!-- Feedback Form -->
+          <div style="background: var(--bg-page); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2rem;">
+            <span class="pill-badge">Client Validated</span>
+            <h4 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">
+              Student Feedback Form
+            </h4>
+            <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+              Let us know how BudgetBasics helped your financial habits. Validated client-side only.
+            </p>
+
+            <form id="feedback-form">
+              <div class="input-group">
+                <label for="feedback-name">Your Full Name *</label>
+                <input type="text" id="feedback-name" required placeholder="Marcus Vance">
+              </div>
+
+              <div class="input-group">
+                <label for="feedback-email">Email Address *</label>
+                <input type="email" id="feedback-email" required placeholder="marcus@campus.edu">
+              </div>
+
+              <div class="input-group">
+                <label for="feedback-rating">Rate BudgetBasics</label>
+                <select id="feedback-rating">
+                  <option value="5">⭐⭐⭐⭐⭐ 5 Stars (Extremely Helpful)</option>
+                  <option value="4">⭐⭐⭐⭐ 4 Stars (Very Good)</option>
+                  <option value="3">⭐⭐⭐ 3 Stars (Satisfactory)</option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <label for="feedback-comments">Comments / Experience *</label>
+                <textarea id="feedback-comments" required rows="3" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-light); background: var(--bg-card); color: var(--text-main);"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Feedback</button>
+            </form>
+          </div>
+
+          <!-- Contact Form & Headquarters -->
+          <div style="background: var(--bg-page); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 2rem;">
+            <span class="pill-badge">Support Desk</span>
+            <h4 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">
+              Get in Touch with BeeBot Labs
+            </h4>
+            <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+              Campus partnership inquiries, student workshop requests, or questions.
+            </p>
+
+            <form id="contact-form" style="margin-bottom: 1.5rem;">
+              <div class="input-group">
+                <label>Email Support Desk</label>
+                <input type="email" required placeholder="contact@budgetbasics.org">
+              </div>
+              <div class="input-group">
+                <label>Inquiry Message</label>
+                <textarea rows="3" required placeholder="How can our financial education team assist you?" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-light); background: var(--bg-card); color: var(--text-main);"></textarea>
+              </div>
+              <button type="submit" class="btn btn-outline" style="width: 100%;">Send Message</button>
+            </form>
+
+            <div style="font-size: 0.8125rem; color: var(--text-muted); border-top: 1px solid var(--border-light); pt: 1rem;">
+              <p>📍 Campus Student Financial Health Initiative</p>
+              <p>📞 Phone: +1 (800) 555-BUZZ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 13. Floating AI Chatbot Assistant (BeeBot) -->
+  <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open AI Assistant BeeBot" title="Ask BeeBot Financial Assistant">
+    🐝
+  </button>
+
+  <aside class="chatbot-widget" id="chatbot-widget" aria-label="Financial Learning Assistant">
+    <div class="chat-header">
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <span style="font-size: 1.4rem;">🐝</span>
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 800;">BeeBot • Financial Guide</h4>
+          <span style="font-size: 0.7rem; opacity: 0.9;">Rule-Based Financial Assistant</span>
+        </div>
+      </div>
+      <button class="close-btn" id="close-chatbot" style="color: #fff;" aria-label="Close assistant">✕</button>
+    </div>
+
+    <div class="chat-messages" id="chat-messages">
+      <!-- Populated via js/chatbot.js -->
+    </div>
+
+    <div class="chat-prompts-bar" id="chat-prompts-bar">
+      <!-- Suggested prompt chips populated via js/chatbot.js -->
+    </div>
+
+    <div class="chat-input-bar">
+      <input type="text" id="chat-input" placeholder="Ask about 50-30-20, savings, or needs...">
+      <button id="send-chat-btn" class="btn btn-primary" style="padding: 0.5rem 0.85rem;">Ask</button>
+    </div>
+  </aside>
+
+  <!-- 14. Master Footer with Sitemap -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem;">
+            <div class="brand-icon" style="width: 36px; height: 36px; font-size: 1.2rem;">🐝</div>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: #fff;">BudgetBasics</h3>
+          </div>
+          <p style="font-size: 0.875rem; line-height: 1.6; max-width: 320px;">
+            NextGen BudgetBee student financial literacy project. Teaching foundational money habits, conscious spending, and emergency fund formation.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Interactive Tools</h4>
+          <ul class="footer-links">
+            <li><a href="#calculator">50-30-20 Calculator</a></li>
+            <li><a href="#needs-wants">Needs vs. Wants Game</a></li>
+            <li><a href="#savings">Savings Goals Planner</a></li>
+            <li><a href="#planner">Session Expense Tracker</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 id="sitemap">Sitemap</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home Banner</a></li>
+            <li><a href="#budget-basics">Budgeting Basics</a></li>
+            <li><a href="#mistakes">Money Mistakes</a></li>
+            <li><a href="#gallery">Infographics Gallery</a></li>
+            <li><a href="#contact">Feedback & Contact</a></li>
+            <li><a href="docs/Project_Report.md">Project Report</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contest Compliance</h4>
+          <p style="font-size: 0.8125rem; margin-bottom: 0.75rem;">
+            <strong>TechWiz 7 World Tech Championship</strong><br>
+            Category: Web Innovation Unleashed<br>
+            Theme: NextGen BudgetBee<br>
+            Constraint: Single Page Application (SPA), zero server DB, client-side validation only.
+          </p>
+          <span style="font-size: 0.75rem; color: #fbbf24;">✓ 100% Client-Side • WCAG 2.1 Compliant</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 BudgetBasics • NextGen BudgetBee. Educational Project.</p>
+        <p>Built for TechWiz 7 Competition • Aptech Limited</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/calculators.js"></script>
+  <script src="js/learning.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "greeting": "Hello! I am BeeBot, your BudgetBasics Financial Learning Guide. How can I help you master your student budget today?",
+  "disclaimer": "Educational Note: BeeBot provides foundational financial literacy concepts for learning purposes only, not licensed investment or banking advice.",
+  "prompts": [
+    "What is a need vs. a want?",
+    "How does the 50-30-20 rule work?",
+    "How do I avoid impulse spending?",
+    "How much should a student save?",
+    "What is an emergency fund?"
+  ],
+  "rules": [
+    {
+      "keywords": ["need", "want", "difference", "essential", "discretionary"],
+      "response": "A **Need** is an essential required for survival, health, or mandatory education (e.g. basic shelter, groceries, prescribed medicines, transit to work). A **Want** is something that increases comfort or entertainment (e.g. food delivery, designer apparel, gaming skins). Try our interactive **Needs vs. Wants Classification Module**!",
+      "link": "#needs-wants",
+      "linkLabel": "Play Classification Game"
+    },
+    {
+      "keywords": ["50", "30", "20", "rule", "split", "formula", "percent"],
+      "response": "The **50-30-20 Rule** divides your monthly after-tax income into: **50% for Needs** (rent, food, bills), **30% for Wants** (hobbies, dining out, streaming), and **20% for Savings / Debt Repayments**. Test your monthly allowance in our real-time calculator!",
+      "link": "#calculator",
+      "linkLabel": "Launch 50-30-20 Calculator"
+    },
+    {
+      "keywords": ["impulse", "overspending", "stop", "leak", "coffee", "mistake"],
+      "response": "To curb impulse buying: (1) Use the **48-Hour Waiting Rule** before checking out online carts. (2) Unsubscribe from marketing sales emails. (3) Never grocery shop when hungry. (4) Audit zombie subscriptions every month!",
+      "link": "#mistakes",
+      "linkLabel": "Read Money Mistakes Guide"
+    },
+    {
+      "keywords": ["save", "saving", "goal", "target", "months", "how much"],
+      "response": "Even saving $15 to $30 a week builds powerful financial momentum. Aim to save at least **10% to 20%** of your monthly allowance or part-time earnings. Use our **Savings Goals Planner** to estimate how many months it takes to reach your milestone!",
+      "link": "#savings",
+      "linkLabel": "Calculate Savings Goal"
+    },
+    {
+      "keywords": ["emergency", "buffer", "crisis", "fund", "repair"],
+      "response": "An **Emergency Fund** is a cash buffer set aside strictly for unplanned crises (medical emergencies, emergency laptop replacement, dental visits). Students should aim for a **$250 to $500 starter buffer** before aggressive non-essential spending.",
+      "link": "#budget-basics",
+      "linkLabel": "Explore Budget Fundamentals"
+    }
+  ],
+  "fallback": "I'm specialized in student budgeting concepts, Needs vs. Wants, 50-30-20 splits, and saving habit formation. Try clicking one of the suggested prompts above or check our interactive calculators!"
+}
