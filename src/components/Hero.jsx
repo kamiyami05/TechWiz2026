@@ -232,7 +232,7 @@ export default function Hero({ onApplyQuickFilter }) {
           >
             <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-sm shrink-0 border border-emerald-200 dark:border-emerald-800/80 bg-emerald-50 dark:bg-emerald-950">
               <img 
-                src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=300&q=80" 
+                src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=300&q=80" 
                 alt="Ha Dong Trade Fair" 
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=300&q=80"; }}
@@ -293,11 +293,12 @@ export default function Hero({ onApplyQuickFilter }) {
 
         {/* Visual Trust Strips */}
         <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
-          <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm">
+          <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm bg-slate-100 dark:bg-slate-800">
             <img 
               src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=500&q=80" 
               alt="Fresh Produce Stalls" 
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=500&q=80"; }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-2.5 flex flex-col justify-end">
               <span className="text-white text-xs font-bold leading-tight">Fresh Market Stalls</span>
@@ -305,11 +306,12 @@ export default function Hero({ onApplyQuickFilter }) {
             </div>
           </div>
 
-          <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm">
+          <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm bg-slate-100 dark:bg-slate-800">
             <img 
               src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=500&q=80" 
               alt="Certified Organic Farms" 
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=500&q=80"; }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-2.5 flex flex-col justify-end">
               <span className="text-white text-xs font-bold leading-tight">Organic Certification</span>
@@ -317,11 +319,12 @@ export default function Hero({ onApplyQuickFilter }) {
             </div>
           </div>
 
-          <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm">
+          <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm bg-slate-100 dark:bg-slate-800">
             <img 
-              src="https://images.unsplash.com/photo-1524179091875-bf99a9a6fa57?auto=format&fit=crop&w=500&q=80" 
+              src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=500&q=80" 
               alt="Zero Pesticides" 
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=500&q=80"; }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-2.5 flex flex-col justify-end">
               <span className="text-white text-xs font-bold leading-tight">Microgreen & Kale</span>
@@ -329,11 +332,12 @@ export default function Hero({ onApplyQuickFilter }) {
             </div>
           </div>
 
-          <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm">
+          <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm bg-slate-100 dark:bg-slate-800">
             <img 
               src="https://images.unsplash.com/photo-1506484381205-f7945653044d?auto=format&fit=crop&w=500&q=80" 
               alt="Community Growers" 
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=500&q=80"; }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-2.5 flex flex-col justify-end">
               <span className="text-white text-xs font-bold leading-tight">Regional Family Farms</span>

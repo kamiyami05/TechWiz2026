@@ -47,7 +47,7 @@ const SEASONS_DATA = {
         title: 'Crisp Lang Son Persimmons',
         category: 'Highland Orchard Crop',
         icon: '🍅',
-        image: 'https://images.unsplash.com/photo-1577003833174-0c2cf59a401b?auto=format&fit=crop&w=800&q=80',
+        image: 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Daily Influx',
         nutrition: 'Rich in dietary fiber, provitamin A carotenoids, and polyphenols to revitalize skin health.',
         culinaryTip: 'Slice chilled into artisanal goat cheese salads, or enjoy raw with no astringency whatsoever.',
