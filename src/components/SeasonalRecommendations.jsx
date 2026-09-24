@@ -4,6 +4,7 @@ import {
   Wind, Bookmark, Check, ArrowRight, HeartHandshake,
   ShieldCheck, Leaf, ShoppingBag, Info, Grid, Layers
 } from 'lucide-react';
+import { scrollToSection } from '../utils/navigation';
 
 const SEASONS_DATA = {
   autumn: {
@@ -292,8 +293,7 @@ export default function SeasonalRecommendations({ onToggleBookmark, isBookmarked
                             <span>Available at:&nbsp;</span>
                             <span 
                               onClick={() => {
-                                const el = document.getElementById('directory');
-                                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                                scrollToSection('directory', 20);
                               }}
                               className="font-semibold text-emerald-700 dark:text-emerald-400 hover:underline cursor-pointer"
                               title="Click to view in Directory"

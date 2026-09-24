@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import markets from '../data/markets.json';
 import produce from '../data/produce.json';
+import { scrollToSection } from '../utils/navigation';
 
 export default function Hero({ onApplyQuickFilter }) {
   const [selectedArea, setSelectedArea] = useState('all');
@@ -47,8 +48,7 @@ export default function Hero({ onApplyQuickFilter }) {
       day: selectedDay,
       produceType: selectedProduceType
     });
-    const el = document.getElementById('directory');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    scrollToSection('directory', 20);
   };
 
   // Breakthrough Feature: Web Speech API Audio Market Briefing
@@ -216,8 +216,7 @@ export default function Hero({ onApplyQuickFilter }) {
           <div 
             onClick={() => {
               onApplyQuickFilter({ area: 'Ha Dong District, Hanoi', day: 'all', produceType: 'all' });
-              const el = document.getElementById('directory');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
+              scrollToSection('directory', 20);
             }}
             className="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-500 rounded-3xl p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all group"
           >
@@ -245,8 +244,7 @@ export default function Hero({ onApplyQuickFilter }) {
           {/* Seasonal Pick Highlight */}
           <div 
             onClick={() => {
-              const el = document.getElementById('seasonal');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
+              scrollToSection('seasonal', 20);
             }}
             className="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 hover:border-rose-400 dark:hover:border-rose-500 rounded-3xl p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all group"
           >

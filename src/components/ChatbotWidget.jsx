@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  MessageSquare, X, Send, Bot, AlertCircle, RefreshCw, Sparkles 
+import {
+  MessageSquare, X, Send, Bot, AlertCircle, RefreshCw, Sparkles
 } from 'lucide-react';
 import chatbotKB from '../data/chatbot-kb.json';
 
@@ -10,7 +10,7 @@ export default function ChatbotWidget() {
     {
       id: 1,
       sender: 'bot',
-      text: 'Hello! 🌿 I am FarmBot AI—your personal assistant for locating verified organic farmers markets, checking live stall hours, and discovering peak seasonal produce. How can I help your market trip today?',
+      text: 'Hello! I am FarmBot AI—your personal assistant for locating verified organic farmers markets, checking live stall hours, and discovering peak seasonal produce. How can I help your market trip today?',
       time: 'Just now'
     }
   ]);
@@ -88,7 +88,7 @@ export default function ChatbotWidget() {
 
       {isOpen && (
         <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[92vw] sm:w-[400px] h-[550px] max-h-[85vh] bg-white dark:bg-slate-900 border border-emerald-200 dark:border-slate-800 rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-slide-up">
-          
+
           {/* Header */}
           <div className="p-4 bg-gradient-to-r from-emerald-600 to-green-600 text-white flex items-center justify-between">
             <div className="flex items-center gap-2.5">
@@ -142,11 +142,10 @@ export default function ChatbotWidget() {
                   </div>
                 )}
                 <div
-                  className={`p-3.5 rounded-2xl max-w-[82%] leading-relaxed ${
-                    m.sender === 'user'
-                      ? 'bg-emerald-600 text-white rounded-br-none'
-                      : 'bg-stone-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-bl-none border border-slate-200 dark:border-slate-700'
-                  }`}
+                  className={`p-3.5 rounded-2xl max-w-[82%] leading-relaxed ${m.sender === 'user'
+                    ? 'bg-emerald-600 text-white rounded-br-none'
+                    : 'bg-stone-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-bl-none border border-slate-200 dark:border-slate-700'
+                    }`}
                 >
                   <p>{m.text}</p>
                   {m.relatedSection && (
@@ -160,9 +159,8 @@ export default function ChatbotWidget() {
                       </a>
                     </div>
                   )}
-                  <span className={`block text-[9px] mt-1 text-right ${
-                    m.sender === 'user' ? 'text-emerald-200' : 'text-slate-400'
-                  }`}>
+                  <span className={`block text-[9px] mt-1 text-right ${m.sender === 'user' ? 'text-emerald-200' : 'text-slate-400'
+                    }`}>
                     {m.time}
                   </span>
                 </div>

@@ -5,6 +5,7 @@ import {
   ChevronDown, LogOut, ShieldCheck, Search, Calendar,
   Heart, MessageSquare
 } from 'lucide-react';
+import { scrollToSection } from '../utils/navigation';
 
 export default function Navbar({ 
   darkMode, 
@@ -92,20 +93,8 @@ export default function Navbar({
   const handleNavClick = (e, href) => {
     e.preventDefault();
     const id = href.replace('#', '');
-    const el = document.getElementById(id);
-    if (el) {
-      const navOffset = 88;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = el.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - navOffset;
-
-      window.scrollTo({
-        top: Math.max(0, offsetPosition),
-        behavior: 'smooth'
-      });
-      setCurrentActive(id);
-    }
+    scrollToSection(id, 16);
+    setCurrentActive(id);
     setMobileMenuOpen(false);
   };
 

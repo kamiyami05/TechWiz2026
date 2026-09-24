@@ -5,6 +5,7 @@ import {
   X, Truck, Sprout, Award, CheckCircle2, Leaf
 } from 'lucide-react';
 import produceData from '../data/produce.json';
+import { scrollToSection } from '../utils/navigation';
 
 export default function ProduceGuide({ onToggleBookmark, isBookmarked }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -142,8 +143,7 @@ export default function ProduceGuide({ onToggleBookmark, isBookmarked }) {
                         <span
                           key={idx}
                           onClick={() => {
-                            const el = document.getElementById('directory');
-                            if (el) el.scrollIntoView({ behavior: 'smooth' });
+                            scrollToSection('directory', 20);
                           }}
                           className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-stone-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 cursor-pointer transition-colors"
                           title="Click to view market schedule"
