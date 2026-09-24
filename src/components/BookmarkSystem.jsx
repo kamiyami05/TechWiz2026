@@ -127,14 +127,28 @@ export default function BookmarkSystem({
                     </button>
                   </div>
 
-                  <h4 className="font-bold text-sm text-slate-900 dark:text-white">
-                    {item.title}
-                  </h4>
-                  {item.info && (
-                    <p className="text-xs text-slate-500 dark:text-slate-400 font-mono">
-                      {item.info}
-                    </p>
-                  )}
+                  <div className="flex items-start gap-3">
+                    {item.image && (
+                      <div className="w-14 h-14 rounded-xl overflow-hidden shadow-xs shrink-0 border border-slate-200 dark:border-slate-700 bg-slate-100">
+                        <img 
+                          src={item.image} 
+                          alt={item.title} 
+                          className="w-full h-full object-cover"
+                          onError={(e) => { e.target.style.display = 'none'; }}
+                        />
+                      </div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-bold text-sm text-slate-900 dark:text-white leading-snug">
+                        {item.title}
+                      </h4>
+                      {item.info && (
+                        <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5 line-clamp-1">
+                          {item.info}
+                        </p>
+                      )}
+                    </div>
+                  </div>
 
                   {/* Personal Note in Session Storage */}
                   <div className="pt-2 border-t border-slate-200 dark:border-slate-700">

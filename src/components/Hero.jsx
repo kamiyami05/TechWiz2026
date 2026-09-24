@@ -81,6 +81,16 @@ export default function Hero({ onApplyQuickFilter }) {
   return (
     <section className="relative overflow-hidden pt-8 pb-16 md:pt-14 md:pb-24 bg-gradient-to-b from-emerald-500/10 via-emerald-500/5 to-transparent dark:from-emerald-950/40 dark:via-slate-900/60 dark:to-slate-900">
       
+      {/* Ambient Farm Atmosphere Background */}
+      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+        <img 
+          src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=2000&q=80" 
+          alt=""
+          className="w-full h-full object-cover opacity-15 dark:opacity-10 filter blur-[1px] scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-emerald-50/70 via-transparent to-stone-50 dark:from-slate-900/80 dark:to-slate-900" />
+      </div>
+
       {/* Background Glow */}
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-emerald-400/20 dark:bg-emerald-500/10 blur-[110px] rounded-full -z-10 pointer-events-none" />
 
@@ -210,7 +220,7 @@ export default function Hero({ onApplyQuickFilter }) {
         </div>
 
         {/* Highlights Bar */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
           
           {/* Open Markets Highlight */}
           <div 
@@ -218,10 +228,15 @@ export default function Hero({ onApplyQuickFilter }) {
               onApplyQuickFilter({ area: 'Ha Dong District, Hanoi', day: 'all', produceType: 'all' });
               scrollToSection('directory', 20);
             }}
-            className="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-500 rounded-3xl p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all group"
+            className="bg-white/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-500 rounded-3xl p-4 sm:p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all group"
           >
-            <div className="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">
-              🏪
+            <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-sm shrink-0 border border-emerald-200 dark:border-emerald-800/80 bg-emerald-50 dark:bg-emerald-950">
+              <img 
+                src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=300&q=80" 
+                alt="Ha Dong Trade Fair" 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=300&q=80"; }}
+              />
             </div>
             <div className="flex-1">
               <div className="flex items-center justify-between">
@@ -233,10 +248,10 @@ export default function Hero({ onApplyQuickFilter }) {
                 </span>
               </div>
               <h4 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                Ha Dong Safe Agricultural Trade Fair (05:30 AM - 07:30 PM)
+                Ha Dong Safe Agricultural Trade Fair
               </h4>
-              <p className="text-xs text-slate-500 mt-0.5">
-                Heirloom sweet corn, herbal brown rice, and seasonal root crops.
+              <p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
+                05:30 AM - 07:30 PM • Heirloom sweet corn & organic root crops.
               </p>
             </div>
           </div>
@@ -246,10 +261,15 @@ export default function Hero({ onApplyQuickFilter }) {
             onClick={() => {
               scrollToSection('seasonal', 20);
             }}
-            className="bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 hover:border-rose-400 dark:hover:border-rose-500 rounded-3xl p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all group"
+            className="bg-white/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 hover:border-rose-400 dark:hover:border-rose-500 rounded-3xl p-4 sm:p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all group"
           >
-            <div className="w-12 h-12 rounded-2xl bg-rose-100 dark:bg-rose-950 flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">
-              🍓
+            <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-sm shrink-0 border border-rose-200 dark:border-rose-900/80 bg-rose-50 dark:bg-rose-950">
+              <img 
+                src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=300&q=80" 
+                alt="Moc Chau Strawberries" 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=300&q=80"; }}
+              />
             </div>
             <div className="flex-1">
               <div className="flex items-center justify-between">
@@ -261,14 +281,65 @@ export default function Hero({ onApplyQuickFilter }) {
                 </span>
               </div>
               <h4 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
-                Moc Chau Strawberries & Highland Avocados
+                Moc Chau Strawberries & Avocados
               </h4>
-              <p className="text-xs text-slate-500 mt-0.5">
-                Pure natural sweetness and creamy texture, available at Tay Ho & Cau Giay.
+              <p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
+                Pure natural sweetness, harvested at dawn for peak aroma.
               </p>
             </div>
           </div>
 
+        </div>
+
+        {/* Visual Trust Strips */}
+        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm">
+            <img 
+              src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=500&q=80" 
+              alt="Fresh Produce Stalls" 
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-2.5 flex flex-col justify-end">
+              <span className="text-white text-xs font-bold leading-tight">Fresh Market Stalls</span>
+              <span className="text-[10px] text-emerald-300 font-medium">Daily Dawn Arrivals</span>
+            </div>
+          </div>
+
+          <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm">
+            <img 
+              src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=500&q=80" 
+              alt="Certified Organic Farms" 
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-2.5 flex flex-col justify-end">
+              <span className="text-white text-xs font-bold leading-tight">Organic Certification</span>
+              <span className="text-[10px] text-emerald-300 font-medium">VietGAP & GlobalGAP</span>
+            </div>
+          </div>
+
+          <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm">
+            <img 
+              src="https://images.unsplash.com/photo-1524179091875-bf99a9a6fa57?auto=format&fit=crop&w=500&q=80" 
+              alt="Zero Pesticides" 
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-2.5 flex flex-col justify-end">
+              <span className="text-white text-xs font-bold leading-tight">Microgreen & Kale</span>
+              <span className="text-[10px] text-emerald-300 font-medium">100% Pesticide-Free</span>
+            </div>
+          </div>
+
+          <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm">
+            <img 
+              src="https://images.unsplash.com/photo-1506484381205-f7945653044d?auto=format&fit=crop&w=500&q=80" 
+              alt="Community Growers" 
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-2.5 flex flex-col justify-end">
+              <span className="text-white text-xs font-bold leading-tight">Regional Family Farms</span>
+              <span className="text-[10px] text-emerald-300 font-medium">Fair Trade Supported</span>
+            </div>
+          </div>
         </div>
 
       </div>

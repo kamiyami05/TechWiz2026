@@ -23,6 +23,7 @@ const SEASONS_DATA = {
         title: 'Young Green Rice Flakes & Sweet Bananas',
         category: 'Autumn Heritage Special',
         icon: '🌾',
+        image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Peak Harvest 100%',
         nutrition: 'Abundant in natural prebiotic starch, vitamin B6, and potassium to nurture healthy digestion.',
         culinaryTip: 'Wrap in fragrant lotus leaves, enjoy fresh with ripe dwarf bananas, or simmer into sweet lotus seed dessert soup.',
@@ -34,6 +35,7 @@ const SEASONS_DATA = {
         title: 'Phuc Trach & Pink-Flesh Green Pomelos',
         category: 'Specialty Citrus',
         icon: '🍈',
+        image: 'https://images.unsplash.com/photo-1557800636-894a64c1696f?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Prime Citrus Sweetness',
         nutrition: 'Extremely high in Vitamin C and natural naringin, supporting balanced cholesterol and liver wellness.',
         culinaryTip: 'Juicy firm sacs with crisp crunch, sublime for shrimp and herb pomelo salads or refreshing cold-pressed juice.',
@@ -45,6 +47,7 @@ const SEASONS_DATA = {
         title: 'Crisp Lang Son Persimmons',
         category: 'Highland Orchard Crop',
         icon: '🍅',
+        image: 'https://images.unsplash.com/photo-1577003833174-0c2cf59a401b?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Daily Influx',
         nutrition: 'Rich in dietary fiber, provitamin A carotenoids, and polyphenols to revitalize skin health.',
         culinaryTip: 'Slice chilled into artisanal goat cheese salads, or enjoy raw with no astringency whatsoever.',
@@ -56,6 +59,7 @@ const SEASONS_DATA = {
         title: 'Early Crop Asian Mustard Greens & Bok Choy',
         category: 'Safe Organic Greens',
         icon: '🥬',
+        image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Hand-Picked at Dawn',
         nutrition: 'High concentrations of glucosinolate antioxidants, natural plant calcium, and dietary folate.',
         culinaryTip: 'Simmer into comforting broth with minced lean pork, flash-steam, or stir-fry with wild oyster mushrooms.',
@@ -80,6 +84,7 @@ const SEASONS_DATA = {
         title: 'Moc Chau Hana White-Snow Strawberries',
         category: 'Temperate Berries',
         icon: '🍓',
+        image: 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Early Crop Mellow',
         nutrition: 'Supercharged Vitamin C content and anthocyanins to protect winter cellular immunity.',
         culinaryTip: 'Pair with organic chia yogurt bowls, blend into antioxidant smoothies, or enjoy fresh right off the vine.',
@@ -91,6 +96,7 @@ const SEASONS_DATA = {
         title: 'Broccoli Crowns & Romanesco Cauliflower',
         category: 'Cruciferous Powerhouse',
         icon: '🥦',
+        image: 'https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Tight Crisp Florets',
         nutrition: 'Features Sulforaphane - a potent bioactive compound known for anti-inflammatory and cellular protection properties.',
         culinaryTip: 'Steam for 4 minutes to preserve delicate heat-sensitive enzymes, or roast lightly with garlic and sea salt.',
@@ -115,6 +121,7 @@ const SEASONS_DATA = {
         title: 'Heirloom Snow Peas & Tender Pea Shoots',
         category: 'Spring Harvest',
         icon: '🫛',
+        image: 'https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Sweet & Tender',
         nutrition: 'Rich in plant-based proteins, vitamin K1 for bone health, and essential minerals.',
         culinaryTip: 'Quickly wok-toss with garlic on high heat for 60 seconds to lock in bright emerald color and sweet snap.',
@@ -139,6 +146,7 @@ const SEASONS_DATA = {
         title: 'Dak Lak Butter Avocados & Golden Melons',
         category: 'Highland Summer Pick',
         icon: '🥑',
+        image: 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Rich & Creamy',
         nutrition: 'Packed with oleic acid, lutein for vision support, and natural vitamin E.',
         culinaryTip: 'Mash onto whole grain artisanal toast with sea salt flakes, or blend into creamy vegan smoothies.',
@@ -267,25 +275,48 @@ export default function SeasonalRecommendations({ onToggleBookmark, isBookmarked
                     className="bg-stone-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:border-emerald-500/60 transition-all duration-300 flex flex-col justify-between group"
                   >
                     <div>
-                      {/* Top Badges */}
-                      <div className="flex items-center justify-between gap-2 mb-4">
-                        <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${currentSeasonData.tagBg}`}>
-                          {item.category}
-                        </span>
+                      {/* Seasonal Produce Photo Banner */}
+                      <div className="relative h-44 sm:h-48 w-full rounded-2xl overflow-hidden mb-4 bg-slate-100 dark:bg-slate-700">
+                        <img 
+                          src={item.image} 
+                          alt={item.title}
+                          loading="lazy"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80";
+                          }}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/10 pointer-events-none" />
 
-                        <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                          {item.harvestStatus}
-                        </span>
+                        {/* Top Badges */}
+                        <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+                          <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full backdrop-blur-md shadow-xs ${currentSeasonData.tagBg}`}>
+                            {item.category}
+                          </span>
+
+                          <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-emerald-300 border border-emerald-500/40 flex items-center gap-1.5 shadow-xs">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                            {item.harvestStatus}
+                          </span>
+                        </div>
+
+                        {/* Bottom Tag on Photo */}
+                        <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white pointer-events-none">
+                          <span className="text-[11px] font-semibold text-white/90 bg-black/50 backdrop-blur-md px-2.5 py-0.5 rounded-lg flex items-center gap-1">
+                            <Sparkles className="w-3 h-3 text-amber-300" />
+                            {currentSeasonData.name} Pick
+                          </span>
+                        </div>
                       </div>
 
                       {/* Header with Icon */}
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-3xl shadow-inner group-hover:scale-110 transition-transform shrink-0">
+                      <div className="flex items-start gap-3.5 mb-3.5">
+                        <div className="w-11 h-11 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-2xl shadow-inner group-hover:scale-105 transition-transform shrink-0">
                           {item.icon}
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-extrabold text-base sm:text-lg text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                          <h3 className="font-extrabold text-base sm:text-lg text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors leading-snug">
                             {item.title}
                           </h3>
                           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1">
@@ -336,7 +367,8 @@ export default function SeasonalRecommendations({ onToggleBookmark, isBookmarked
                           title: item.title,
                           type: 'Seasonal Produce',
                           category: item.category,
-                          info: `${currentSeasonData.name} • ${item.harvestStatus}`
+                          info: `${currentSeasonData.name} • ${item.harvestStatus}`,
+                          image: item.image
                         })}
                         className={`px-3 py-1.5 rounded-xl font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
                           bookmarked

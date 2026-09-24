@@ -250,52 +250,84 @@ export default function MarketDirectory({
                   }`}
                 >
                   <div>
-                    {/* Top Bar inside Card */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">
-                          {mkt.area}
-                        </span>
+                    {/* Market Photography Banner */}
+                    <div className="relative h-48 sm:h-52 w-full rounded-2xl overflow-hidden mb-4 bg-slate-100 dark:bg-slate-700">
+                      <img 
+                        src={mkt.image} 
+                        alt={mkt.name}
+                        loading="lazy"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=800&q=80";
+                        }}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10 pointer-events-none" />
 
-                        {/* Live 'Open Right Now' Status Indicator */}
-                        <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${
-                          openNow 
-                            ? 'bg-emerald-600 text-white shadow-sm shadow-emerald-600/30' 
-                            : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400'
-                        }`}>
-                          <span className={`w-1.5 h-1.5 rounded-full ${openNow ? 'bg-white animate-pulse' : 'bg-slate-400'}`} />
-                          <span>{openNow ? 'OPEN NOW' : 'CLOSED'}</span>
-                        </span>
+                      {/* Badges on Top of Photo */}
+                      <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/90 dark:bg-slate-900/90 text-emerald-800 dark:text-emerald-300 backdrop-blur-md shadow-xs">
+                            {mkt.area.split(',')[0]}
+                          </span>
+
+                          <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider backdrop-blur-md shadow-xs ${
+                            openNow 
+                              ? 'bg-emerald-600/95 text-white' 
+                              : 'bg-black/60 text-slate-200'
+                          }`}>
+                            <span className={`w-1.5 h-1.5 rounded-full ${openNow ? 'bg-white animate-pulse' : 'bg-slate-400'}`} />
+                            <span>{openNow ? 'OPEN NOW' : 'CLOSED'}</span>
+                          </span>
+                        </div>
+
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onToggleBookmark({
+                              id: mkt.id,
+                              title: mkt.name,
+                              type: 'Market',
+                              category: mkt.area,
+                              info: mkt.operatingHours,
+                              image: mkt.image
+                            });
+                          }}
+                          title={bookmarked ? "Saved in Notebook" : "Save to Notebook"}
+                          className={`p-2 rounded-xl backdrop-blur-md transition-all cursor-pointer ${
+                            bookmarked 
+                              ? 'bg-emerald-600 text-white shadow-md' 
+                              : 'bg-white/80 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 hover:bg-white'
+                          }`}
+                        >
+                          <Bookmark className="w-4 h-4" />
+                        </button>
                       </div>
 
-                      <button
-                        onClick={() => onToggleBookmark({
-                          id: mkt.id,
-                          title: mkt.name,
-                          type: 'Market',
-                          category: mkt.area,
-                          info: mkt.operatingHours
-                        })}
-                        title={bookmarked ? "Saved in Notebook" : "Save to Notebook"}
-                        className={`p-2 rounded-xl transition-all cursor-pointer ${
-                          bookmarked 
-                            ? 'bg-emerald-600 text-white shadow-sm' 
-                            : 'bg-slate-100 dark:bg-slate-700 text-slate-400 hover:text-slate-600 hover:bg-slate-200'
-                        }`}
-                      >
-                        <Bookmark className="w-4 h-4" />
-                      </button>
+                      {/* Bottom Info on Photo */}
+                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white pointer-events-none">
+                        <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-xl text-xs font-bold">
+                          <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                          <span>{mkt.rating}</span>
+                          <span className="text-[10px] text-slate-300 font-normal">({mkt.rating >= 4.9 ? 'Exceptional' : 'Verified'})</span>
+                        </div>
+
+                        <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-xl text-[11px] text-emerald-300 font-semibold">
+                          <Leaf className="w-3 h-3 text-emerald-400" />
+                          <span>{mkt.distanceKm || 3.5} km away</span>
+                        </div>
+                      </div>
                     </div>
 
                     {/* Header info */}
-                    <div className="flex items-start gap-3.5 mb-3">
-                      <div className="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 flex items-center justify-center text-2xl shrink-0 group-hover:scale-105 transition-transform">
+                    <div className="flex items-start gap-3 mb-2.5">
+                      <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 flex items-center justify-center text-xl shrink-0 group-hover:scale-105 transition-transform">
                         {mkt.thumbnailIcon}
                       </div>
                       <div>
                         <h3 
                           onClick={() => onSelectMarket(mkt)}
-                          className="font-extrabold text-lg text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors cursor-pointer"
+                          className="font-extrabold text-base sm:text-lg text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors cursor-pointer leading-snug"
                         >
                           {mkt.name}
                         </h3>

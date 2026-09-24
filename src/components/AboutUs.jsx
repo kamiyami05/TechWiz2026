@@ -38,16 +38,18 @@ export default function AboutUs() {
 
   const teamMembers = [
     {
-      name: 'FreshFind Leadership & Engineering Team',
-      role: 'Core Platform Architects',
+      name: 'FreshFind Core Platform Architects',
+      role: 'Technology & Eco-System Design',
       quote: 'Leveraging modern client-side web innovation to bridge the information divide between sustainable regional farms and neighborhood dining tables.',
-      icon: '🌱'
+      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80',
+      badge: 'Engineering Hub'
     },
     {
       name: 'Alliance of Clean Agriculture Cooperatives',
-      role: 'Certified Supply Network',
+      role: 'Certified VietGAP Supply Network',
       quote: 'Dedicated to natural regenerative farming practices that honor topsoil health and groundwater reserves for future generations.',
-      icon: '🚜'
+      image: 'https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=400&q=80',
+      badge: '150+ Family Farms'
     }
   ];
 
@@ -132,19 +134,29 @@ export default function AboutUs() {
         </div>
 
         {/* Team & Partners Quotes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {teamMembers.map((m, idx) => (
             <div 
               key={idx}
-              className="bg-stone-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-7 shadow-sm flex items-start gap-4"
+              className="bg-stone-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-7 shadow-sm flex items-start gap-4 group hover:border-emerald-500/60 transition-all"
             >
-              <div className="w-14 h-14 rounded-2xl bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center text-3xl shrink-0 shadow-inner">
-                {m.icon}
+              <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-md shrink-0 border border-emerald-300 dark:border-emerald-800 bg-emerald-100">
+                <img 
+                  src={m.image} 
+                  alt={m.name} 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=400&q=80"; }}
+                />
               </div>
-              <div>
-                <h4 className="font-extrabold text-base text-slate-900 dark:text-white">
-                  {m.name}
-                </h4>
+              <div className="flex-1">
+                <div className="flex items-center justify-between gap-2">
+                  <h4 className="font-extrabold text-base text-slate-900 dark:text-white">
+                    {m.name}
+                  </h4>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">
+                    {m.badge}
+                  </span>
+                </div>
                 <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 block mb-2">
                   {m.role}
                 </span>
@@ -154,6 +166,56 @@ export default function AboutUs() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Visual Story: From Soil to Stall */}
+        <div className="rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 p-6 sm:p-8">
+          <div className="text-center max-w-xl mx-auto mb-6">
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 block mb-1">
+              Field Moments • Visual Archive
+            </span>
+            <h3 className="text-lg sm:text-2xl font-extrabold text-slate-900 dark:text-white">
+              From Soil to Market Stall: A Visual Journey
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="relative rounded-2xl overflow-hidden h-48 group shadow-sm">
+              <img 
+                src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=600&q=80" 
+                alt="Highland Terraces & Soil" 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 flex flex-col justify-end">
+                <span className="text-white text-xs font-bold">1. Ecological Terraces & Soil</span>
+                <span className="text-[11px] text-emerald-300">Clean irrigation & bio-composting</span>
+              </div>
+            </div>
+
+            <div className="relative rounded-2xl overflow-hidden h-48 group shadow-sm">
+              <img 
+                src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=600&q=80" 
+                alt="Morning Dawn Harvest" 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 flex flex-col justify-end">
+                <span className="text-white text-xs font-bold">2. Hand-Harvesting at Dawn</span>
+                <span className="text-[11px] text-emerald-300">Preserving crisp freshness & vitamins</span>
+              </div>
+            </div>
+
+            <div className="relative rounded-2xl overflow-hidden h-48 group shadow-sm">
+              <img 
+                src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=600&q=80" 
+                alt="Community Market Morning" 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 flex flex-col justify-end">
+                <span className="text-white text-xs font-bold">3. Direct Market Fair</span>
+                <span className="text-[11px] text-emerald-300">Fair trade without middlemen</span>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>

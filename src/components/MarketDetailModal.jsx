@@ -40,6 +40,30 @@ export default function MarketDetailModal({
           <span className="font-bold text-slate-800 dark:text-slate-200 line-clamp-1">{market.name}</span>
         </div>
 
+        {/* Market Cover Photography Banner */}
+        <div className="relative h-48 sm:h-56 w-full rounded-2xl overflow-hidden mb-6 bg-slate-100 dark:bg-slate-800 shadow-sm">
+          <img 
+            src={market.image} 
+            alt={market.name} 
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=1000&q=80";
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+          
+          <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white pointer-events-none">
+            <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-600/90 backdrop-blur-md shadow-sm">
+              {market.area}
+            </span>
+            <span className="text-xs bg-black/60 backdrop-blur-md px-3 py-1 rounded-full font-bold flex items-center gap-1 text-amber-300">
+              <Star className="w-3.5 h-3.5 fill-amber-300 text-amber-300" />
+              {market.rating} / 5.0 Rating
+            </span>
+          </div>
+        </div>
+
         {/* Market Title & Icon */}
         <div className="flex items-center gap-4 mb-6">
           <div className="w-16 h-16 rounded-2xl bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center text-4xl shadow-md shrink-0">
