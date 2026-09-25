@@ -212,13 +212,12 @@ export default function MarketReviews({
             </span>
           </div>
 
-          {/* Interactive Star & Number Rating Selector */}
+          {/* Unified Star Rating Selector */}
           <div>
-            <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+            <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
               Select Your Rating (1 - 5 Stars):
             </label>
-            <div className="flex flex-wrap items-center gap-4">
-              {/* Clickable Star Row */}
+            <div className="flex items-center gap-3">
               <div className="flex items-center gap-1">
                 {[1, 2, 3, 4, 5].map(star => (
                   <button
@@ -240,43 +239,34 @@ export default function MarketReviews({
                 ))}
               </div>
 
-              {/* Number Buttons (1, 2, 3, 4, 5) for quick numeric selection */}
-              <div className="flex items-center gap-1">
-                {[1, 2, 3, 4, 5].map(num => (
-                  <button
-                    type="button"
-                    key={`num-${num}`}
-                    onClick={() => setRating(num)}
-                    className={`w-7 h-7 rounded-lg text-xs font-black transition-all cursor-pointer ${
-                      rating === num
-                        ? 'bg-emerald-600 text-white shadow-xs scale-105'
-                        : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 hover:bg-slate-100'
-                    }`}
-                  >
-                    {num}★
-                  </button>
-                ))}
-              </div>
-
-              {/* Textual Rating Label */}
-              <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400">
+              {/* Score and text label */}
+              <span className="text-xs font-extrabold text-emerald-700 dark:text-emerald-400">
                 {starLabels[hoverRating || rating]}
               </span>
             </div>
           </div>
 
-          {/* Review Textarea */}
+          {/* Review Textarea and Submit Button side by side */}
           <div>
-            <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+            <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
               Your Review & Comments:
             </label>
-            <textarea
-              rows="3"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              placeholder="Write your feedback regarding produce freshness, prices, or market experience..."
-              className="w-full text-xs p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 leading-relaxed"
-            />
+            <div className="flex flex-col sm:flex-row items-stretch gap-3">
+              <textarea
+                rows="2"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                placeholder="Write your feedback regarding produce freshness, prices, or market experience..."
+                className="flex-1 text-xs p-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 leading-relaxed resize-none"
+              />
+              <button
+                type="submit"
+                className="px-7 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-emerald-600/20 shrink-0 cursor-pointer self-stretch sm:self-auto"
+              >
+                <Send className="w-4 h-4" />
+                <span>Submit</span>
+              </button>
+            </div>
           </div>
 
           {/* Error Message */}
@@ -294,20 +284,6 @@ export default function MarketReviews({
               <span>Thank you! Your verified review has been published.</span>
             </div>
           )}
-
-          {/* Submit Button */}
-          <div className="flex items-center justify-between pt-1">
-            <span className="text-[11px] text-slate-400">
-              Saved locally to your browser storage.
-            </span>
-            <button
-              type="submit"
-              className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-md shadow-emerald-600/20 cursor-pointer"
-            >
-              <Send className="w-3.5 h-3.5" />
-              <span>Submit Rating & Review</span>
-            </button>
-          </div>
         </form>
       )}
 
