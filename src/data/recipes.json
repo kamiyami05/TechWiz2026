@@ -1,0 +1,244 @@
+[
+  {
+    "id": "rec-1",
+    "title": "Heirloom Cherry Tomato & Sweet Basil Bruschetta",
+    "title_vi": "Bánh Mì Nướng Cà Chua Bi & Húng Quế Nông Trại",
+    "time": "15 mins",
+    "difficulty": "Easy",
+    "difficulty_vi": "Dễ",
+    "servings": "2 - 3 portions",
+    "season": "Autumn - Winter",
+    "season_vi": "Thu - Đông",
+    "calories": "180 kcal / serving",
+    "image": "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&fit=crop&w=800&q=80",
+    "produceId": "p-4",
+    "produceName": "Chocolate Heirloom Cherry Tomatoes",
+    "produceName_vi": "Cà Chua Bi Socola Hữu Cơ",
+    "description": "Crispy toasted country sourdough loaded with marinated heirloom cherry tomatoes, fragrant garden sweet basil, cold-pressed olive oil, and aged balsamic glaze.",
+    "description_vi": "Bánh mì men tự nhiên giòn rụm kết hợp cùng cà chua bi socola mọng nước, lá húng quế tươi ngát hương và dầu oliu nguyên chất ép lạnh.",
+    "ingredients": [
+      { "name": "Chocolate Cherry Tomatoes", "name_vi": "Cà chua bi socola", "amount": "250g (halved)", "isFarm": true },
+      { "name": "Fresh Sweet Basil leaves", "name_vi": "Lá húng quế tươi", "amount": "1 handful (chiffonade)", "isFarm": true },
+      { "name": "Artisanal Sourdough Bread", "name_vi": "Bánh mì sourdough nướng", "amount": "4 thick slices", "isFarm": false },
+      { "name": "Garlic clove", "name_vi": "Tỏi tươi", "amount": "1 clove (rubbed)", "isFarm": true },
+      { "name": "Extra Virgin Olive Oil & Sea Salt", "name_vi": "Dầu ô-liu & muối biển", "amount": "2 tbsp", "isFarm": false }
+    ],
+    "instructions": [
+      "Dice chocolate cherry tomatoes and toss in a wooden bowl with torn basil, extra virgin olive oil, sea salt, and freshly cracked black pepper. Rest for 10 minutes.",
+      "Toast sourdough slices until deeply golden and crunchy on the crust.",
+      "Lightly rub a cut garlic clove directly across the warm toasted bread surface to impart subtle aroma.",
+      "Generously spoon the marinated tomato-basil mixture onto the toast and drizzle with aged balsamic glaze."
+    ],
+    "instructions_vi": [
+      "Cắt đôi cà chua bi, trộn đều trong tô cùng húng quế thái nhỏ, dầu ô-liu, chút muối biển và tiêu đen. Để ngấm trong 10 phút.",
+      "Nướng bánh mì sourdough cho đến khi vỏ bánh vàng giòn rụm.",
+      "Dùng tép tỏi tươi chà nhẹ lên bề mặt bánh mì còn nóng để tạo hương thơm dịu nhẹ tự nhiên.",
+      "Múc hỗn hợp cà chua lên bánh mì và rưới thêm chút giấm thơm balsamic trước khi thưởng thức."
+    ],
+    "chefTip": "Don't refrigerate your heirloom cherry tomatoes before prep! Keeping them at room temperature preserves their volatile aroma and natural honeyed sweetness.",
+    "chefTip_vi": "Không nên để cà chua bi trong tủ lạnh trước khi chế biến. Giữ ở nhiệt độ phòng giúp giữ trọn vẹn hương thơm tự nhiên và vị ngọt thanh đặc trưng."
+  },
+  {
+    "id": "rec-2",
+    "title": "Moc Chau Strawberry & Wild Honey Breakfast Parfait",
+    "title_vi": "Parfait Dâu Tây Mộc Châu & Mật Ong Rừng Buổi Sáng",
+    "time": "10 mins",
+    "difficulty": "Easy",
+    "difficulty_vi": "Dễ",
+    "servings": "2 jars",
+    "season": "Winter - Spring",
+    "season_vi": "Đông - Xuân",
+    "calories": "210 kcal / jar",
+    "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80",
+    "produceId": "p-1",
+    "produceName": "Moc Chau Morning-Picked Strawberries",
+    "produceName_vi": "Dâu Tây Mộc Châu Hái Sớm",
+    "description": "Layered morning indulgence featuring chilled Ba Vi raw yogurt, hand-sliced highland strawberries, rolled toasted oats, and raw mountain honey.",
+    "description_vi": "Bữa sáng thanh lành nhiều tầng với sữa chua Ba Vì sánh mịn, dâu tây ngọt mát hái từ cao nguyên Mộc Châu, yến mạch nướng giòn và mật ong rừng.",
+    "ingredients": [
+      { "name": "Fresh Moc Chau Strawberries", "name_vi": "Dâu tây tươi Mộc Châu", "amount": "200g (sliced)", "isFarm": true },
+      { "name": "Ba Vi Fresh Greek Yogurt", "name_vi": "Sữa chua Hy Lạp Ba Vì", "amount": "300g", "isFarm": true },
+      { "name": "Raw Highlands Forest Honey", "name_vi": "Mật ong rừng nguyên chất", "amount": "2 tbsp", "isFarm": true },
+      { "name": "Toasted Rolled Oats & Chia Seeds", "name_vi": "Yến mạch & hạt chia", "amount": "4 tbsp", "isFarm": false },
+      { "name": "Fresh Mint sprigs", "name_vi": "Ngọn bạc hà trang trí", "amount": "2 sprigs", "isFarm": true }
+    ],
+    "instructions": [
+      "Wash and hull fresh strawberries, then slice into thin quarters.",
+      "In two clear glass jars, spoon a foundation layer of thick chilled Greek yogurt.",
+      "Add a generous layer of toasted oats and crunchy chia seeds.",
+      "Layer sliced strawberries along the glass sides and fill the center with more yogurt.",
+      "Top with remaining strawberries, a heavy drizzle of golden wild honey, and garnish with fresh mint."
+    ],
+    "instructions_vi": [
+      "Rửa sạch dâu tây, bỏ cuống và thái lát mỏng vừa ăn.",
+      "Chuẩn bị 2 ly thủy tinh, múc lớp sữa chua Ba Vì sánh mịn làm đế.",
+      "Rắc lớp yến mạch nướng giòn rụm cùng hạt chia giàu dinh dưỡng.",
+      "Xếp các lát dâu tây quanh thành ly và phủ tiếp một lớp sữa chua lên trên.",
+      "Trang trí bằng dâu tây tươi, rưới mật ong rừng tự nhiên và điểm xuyết nhánh bạc hà thơm mát."
+    ],
+    "chefTip": "Toss half the strawberries with a teaspoon of honey 5 minutes beforehand to release their glorious ruby-red juices!",
+    "chefTip_vi": "Trộn trước một nửa số dâu với 1 thìa mật ong trong 5 phút để dâu tiết ra phần nước cốt đỏ mọng tự nhiên tuyệt đẹp!"
+  },
+  {
+    "id": "rec-3",
+    "title": "Highland Butter Avocado & Sourdough Power Toast",
+    "title_vi": "Bánh Mì Nướng Quả Bơ Sáp 034 & Trứng Lòng Đào",
+    "time": "12 mins",
+    "difficulty": "Easy",
+    "difficulty_vi": "Dễ",
+    "servings": "2 portions",
+    "season": "Summer - Autumn",
+    "season_vi": "Hạ - Thu",
+    "calories": "290 kcal / serving",
+    "image": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=800&q=80",
+    "produceId": "p-2",
+    "produceName": "Highland Butter Avocado 034",
+    "produceName_vi": "Bơ Sáp 034 Tây Nguyên",
+    "description": "Creamy mashed 034 butter avocado crowned with pasture-raised soft-boiled egg, lime juice, red chili flakes, and toasted sesame seeds.",
+    "description_vi": "Quả bơ sáp 034 Tây Nguyên béo ngậy tán mịn, phủ lên bánh mì nướng cùng trứng gà thảo mộc lòng đào, nước cốt chanh và ớt bột paprika.",
+    "ingredients": [
+      { "name": "Ripe 034 Butter Avocado", "name_vi": "Bơ sáp 034 chín tới", "amount": "1 large fruit", "isFarm": true },
+      { "name": "Free-Range Herbal Eggs", "name_vi": "Trứng gà nuôi thảo mộc", "amount": "2 eggs (soft boiled)", "isFarm": true },
+      { "name": "Artisan Multigrain Bread", "name_vi": "Bánh mì ngũ cốc nướng", "amount": "2 thick slices", "isFarm": false },
+      { "name": "Fresh Lime Juice", "name_vi": "Nước cốt chanh tươi", "amount": "1 tsp", "isFarm": true },
+      { "name": "Flaky Sea Salt & Chili Flakes", "name_vi": "Muối hạt & ớt mảnh", "amount": "To taste", "isFarm": false }
+    ],
+    "instructions": [
+      "Boil pasture-raised eggs for exactly 6 minutes and 30 seconds, then immediately shock in an ice bath to create jammy yolks.",
+      "Scoop golden avocado flesh into a shallow bowl, season with fresh lime juice, sea salt, and lightly mash with a fork leaving slight texture.",
+      "Toast artisan multigrain bread until golden and crisp.",
+      "Smear generous heaps of mashed avocado over warm bread slices.",
+      "Peel and slice eggs in half, place gently on top, and dust with flaky sea salt and smoked chili flakes."
+    ],
+    "instructions_vi": [
+      "Luộc trứng gà trong đúng 6 phút 30 giây rồi vớt ra ngâm ngay vào âu nước đá để lòng đào dẻo quánh.",
+      "Nạo phần thịt bơ sáp vàng óng vào bát, thêm vài giọt nước cốt chanh tươi, muối biển và tán thô bằng nĩa.",
+      "Nướng vàng giòn 2 lát bánh mì ngũ cốc.",
+      "Phết phần bơ sáp béo ngậy phủ đều lên mặt bánh mì nóng hổi.",
+      "Bóc vỏ trứng lòng đào, cắt đôi đặt lên trên, rắc muối hạt và chút ớt khô tạo điểm nhấn vị giác."
+    ],
+    "chefTip": "The natural acidity of lime juice not only awakens the buttery richness of the avocado but also prevents oxidation and browning.",
+    "chefTip_vi": "Vài giọt nước cốt chanh không chỉ cân bằng độ béo ngậy của quả bơ mà còn giúp bơ giữ được màu xanh vàng tươi sáng không bị thâm."
+  },
+  {
+    "id": "rec-4",
+    "title": "Crisp Hydroponic Kale & Citrus Superfood Salad",
+    "title_vi": "Salad Cải Kale Thủy Canh & Cam Vàng Sốt Mè Rang",
+    "time": "15 mins",
+    "difficulty": "Easy",
+    "difficulty_vi": "Dễ",
+    "servings": "3 - 4 portions",
+    "season": "Year-Round",
+    "season_vi": "Quanh năm",
+    "calories": "160 kcal / serving",
+    "image": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80",
+    "produceId": "p-3",
+    "produceName": "Hydroponic Organic Curly Kale",
+    "produceName_vi": "Cải Xoăn Kale Thủy Canh",
+    "description": "Massaged organic curly kale leaves tossed with sweet citrus wedges, toasted pumpkin seeds, crumbled goat cheese, and citrus vinaigrette.",
+    "description_vi": "Lá cải kale hữu cơ được mát-xa mềm mại cùng múi cam vàng mọng nước, hạt bí rang giòn bùi và sốt dầu giấm cam thanh tao.",
+    "ingredients": [
+      { "name": "Hydroponic Curly Kale leaves", "name_vi": "Lá cải xoăn kale tươi", "amount": "200g (stems removed)", "isFarm": true },
+      { "name": "Fresh Sweet Orange or Pomelo", "name_vi": "Cam vàng hoặc bưởi da xanh", "amount": "1 fruit (segmented)", "isFarm": true },
+      { "name": "Toasted Pumpkin / Sunflower Seeds", "name_vi": "Hạt bí rang giòn", "amount": "3 tbsp", "isFarm": false },
+      { "name": "Crumbled Farm Feta / Goat Cheese", "name_vi": "Phô mai feta tươi", "amount": "50g", "isFarm": true },
+      { "name": "Citrus Dijon Vinaigrette", "name_vi": "Sốt dầu giấm Dijon", "amount": "3 tbsp", "isFarm": false }
+    ],
+    "instructions": [
+      "Strip kale leaves from tough central stems and tear into bite-sized pieces into a large salad bowl.",
+      "Drizzle with 1 tablespoon of olive oil and a pinch of salt. Massage leaves firmly with clean hands for 2 minutes until dark and tender.",
+      "Segment orange or sweet pomelo into clean pith-free supreme slices.",
+      "Toss the softened kale with citrus segments and toasted crunchy seeds.",
+      "Drizzle citrus dressing and finish by crumbling fresh farm feta cheese over the top."
+    ],
+    "instructions_vi": [
+      "Tước bỏ phần cuống cứng của cải kale, xé lá thành từng miếng vừa ăn cho vào tô lớn.",
+      "Rưới 1 thìa dầu ô-liu và chút muối, dùng tay bóp nhẹ và mát-xa lá khoảng 2 phút cho lá cải mềm và đậm màu.",
+      "Tách cam hoặc bưởi thành từng múi nhỏ bỏ hạt và xơ trắng.",
+      "Trộn đều cải kale với múi cam ngọt mát và các loại hạt dinh dưỡng rang thơm.",
+      "Rưới sốt dầu giấm cam và rắc phô mai lên trên cùng trước khi dùng."
+    ],
+    "chefTip": "Massaging kale with olive oil breaks down the tough plant cell walls, transforming bitterness into velvety, tender crunchiness!",
+    "chefTip_vi": "Mát-xa lá cải kale bằng tay với chút dầu ô-liu giúp làm mềm các thớ xơ thực vật, loại bỏ vị đắng ngăm và giúp lá giòn ngon tuyệt đối!"
+  },
+  {
+    "id": "rec-5",
+    "title": "Rustic Pan-Seared Forest Mushrooms with Garlic & Herbs",
+    "title_vi": "Nấm Rừng Áp Chảo Bơ Tỏi & Thảo Mộc Tươi",
+    "time": "18 mins",
+    "difficulty": "Medium",
+    "difficulty_vi": "Trung bình",
+    "servings": "2 - 3 portions",
+    "season": "Autumn - Winter",
+    "season_vi": "Thu - Đông",
+    "calories": "190 kcal / serving",
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80",
+    "produceId": "p-3",
+    "produceName": "King Oyster & Forest Mushrooms",
+    "produceName_vi": "Nấm Đùi Gà & Nấm Rừng",
+    "description": "Caramelized wild king oyster mushrooms seared in grass-fed farm butter with crushed purple garlic, fresh rosemary sprigs, and lemon zest.",
+    "description_vi": "Nấm đùi gà hữu cơ áp chảo xém cạnh cùng bơ tươi Ba Vì, tỏi tím thơm lừng, lá hương thảo ngát hương và vỏ chanh bào.",
+    "ingredients": [
+      { "name": "Mixed Forest & King Oyster Mushrooms", "name_vi": "Nấm đùi gà & nấm hương tươi", "amount": "350g (thickly sliced)", "isFarm": true },
+      { "name": "Grass-Fed Ba Vi Butter", "name_vi": "Bơ tươi Ba Vì", "amount": "2 tbsp", "isFarm": true },
+      { "name": "Purple Garlic cloves", "name_vi": "Tỏi tím", "amount": "4 cloves (crushed)", "isFarm": true },
+      { "name": "Fresh Rosemary & Thyme", "name_vi": "Lá hương thảo & cỏ xạ hương", "amount": "2 sprigs", "isFarm": true },
+      { "name": "Lemon juice & Coarse black pepper", "name_vi": "Nước cốt chanh & tiêu xay", "amount": "1 tsp", "isFarm": false }
+    ],
+    "instructions": [
+      "Wipe mushrooms with a damp cloth (never soak in water) and score criss-cross patterns on the cut faces.",
+      "Heat a dry cast-iron skillet over high heat until sizzling hot. Place mushroom slices flat down without crowding.",
+      "Sear undisturbed for 4 minutes until deeply caramelized and golden brown.",
+      "Flip, add farm butter, crushed garlic, and fresh rosemary sprigs. Baste the foaming herb butter over the mushrooms continuously for 2 minutes.",
+      "Season with sea salt, freshly ground pepper, and finish with a squeeze of fresh lemon juice."
+    ],
+    "instructions_vi": [
+      "Dùng khăn ẩm lau sạch nấm (không ngâm nước để nấm không bị ỉu), khía vẩy rồng nhẹ lên mặt nấm.",
+      "Làm nóng chảo gang trên lửa lớn, xếp nấm áp mặt xuống chảo không để đè lên nhau.",
+      "Áp chảo trong 4 phút cho đến khi mặt nấm cháy cạnh vàng nâu óng ả.",
+      "Lật mặt nấm, thả bơ tươi, tỏi đập dập và cành hương thảo vào. Múc bơ nóng rưới liên tục lên nấm trong 2 phút.",
+      "Rắc muối biển, tiêu xay thơm nồng và vắt chút nước cốt chanh để dậy vị."
+    ],
+    "chefTip": "Never crowd the pan! Mushrooms need high heat and breathing room to brown beautifully instead of steaming in their own moisture.",
+    "chefTip_vi": "Đừng xếp nấm quá dày trong chảo! Nấm cần không gian và nhiệt độ cao để xém cạnh thơm lừng thay vì bị ra nước và hấp chín."
+  },
+  {
+    "id": "rec-6",
+    "title": "Sun-Kissed Peach & Garden Mint Iced Botanical Tea",
+    "title_vi": "Trà Đào Mộc Châu Ủ Lạnh & Bạc Hà Vườn Nhà",
+    "time": "8 mins (+ chilling)",
+    "difficulty": "Easy",
+    "difficulty_vi": "Dễ",
+    "servings": "4 glasses",
+    "season": "Summer",
+    "season_vi": "Mùa Hè",
+    "calories": "85 kcal / glass",
+    "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+    "produceId": "p-1",
+    "produceName": "Highland Summer Fruits & Mint",
+    "produceName_vi": "Trái Cây Mùa Hè & Bạc Hà Tươi",
+    "description": "Cold-brewed organic green tea infused with sun-ripened highland peach slices, crushed spearmint leaves, and local raw wild honey.",
+    "description_vi": "Trà xanh Thái Nguyên ủ lạnh kết hợp cùng những lát đào giòn ngọt Mộc Châu, lá bạc hà tươi thơm mát và mật ong hoa rừng.",
+    "ingredients": [
+      { "name": "Cold-Brewed Organic Green Tea", "name_vi": "Trà xanh hữu cơ ủ lạnh", "amount": "750ml", "isFarm": true },
+      { "name": "Highland Fresh Peaches", "name_vi": "Đào giòn cao nguyên", "amount": "2 fruits (sliced)", "isFarm": true },
+      { "name": "Fresh Peppermint / Spearmint", "name_vi": "Lá bạc hà tươi", "amount": "1 large handful", "isFarm": true },
+      { "name": "Raw Highlands Honey", "name_vi": "Mật ong rừng", "amount": "3 tbsp", "isFarm": true },
+      { "name": "Ice cubes & Lime slices", "name_vi": "Đá viên & lát chanh", "amount": "As needed", "isFarm": false }
+    ],
+    "instructions": [
+      "In a glass pitcher, lightly muddle fresh mint leaves with raw honey and lime slices to release cooling essential oils.",
+      "Add thinly sliced ripe peaches and let macerate for 5 minutes.",
+      "Pour cold-brewed green tea over the fruit base and stir briskly.",
+      "Fill tall glasses with ice, pour the botanical tea, and garnish with fresh peach wedges and mint bouquets."
+    ],
+    "instructions_vi": [
+      "Trong bình thủy tinh, giã nhẹ lá bạc hà cùng mật ong và vài lát chanh để tinh dầu bạc hà tỏa hương thơm mát.",
+      "Cho đào thái lát vào ngâm cùng hỗn hợp trong 5 phút.",
+      "Rót trà xanh ủ lạnh vào bình và khuấy đều nhẹ nhàng.",
+      "Cho đá viên vào ly cao, rót trà thơm lừng và trang trí bằng lát đào tươi cùng ngọn bạc hà xanh mướt."
+    ],
+    "chefTip": "Cold brewing green tea at 4°C overnight extracts pure antioxidants without bringing out harsh tannins or astringency!",
+    "chefTip_vi": "Ủ lạnh trà trong ngăn mát tủ lạnh qua đêm giúp chiết xuất trọn vẹn chất chống oxy hóa mà không hề bị chát đắng!"
+  }
+]

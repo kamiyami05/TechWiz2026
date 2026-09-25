@@ -6,8 +6,11 @@ import {
   ChevronRight, Award, Sprout, HeartHandshake, CheckCircle2, UserCheck
 } from 'lucide-react';
 import markets from '../data/markets.json';
+import MarketReviews from '../components/MarketReviews';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function MarketDetailPage({ onToggleBookmark, isBookmarked }) {
+  const { t, language } = useLanguage();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -433,6 +436,9 @@ export default function MarketDetailPage({ onToggleBookmark, isBookmarked }) {
           </div>
 
         </div>
+
+        {/* Community Reviews & Ratings Section */}
+        <MarketReviews marketId={market.id} marketName={market.name} />
 
         {/* Other Recommended Farmers Markets */}
         <div className="pt-8 border-t border-slate-200 dark:border-slate-800">

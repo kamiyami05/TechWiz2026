@@ -5,6 +5,8 @@ import {
   Leaf, Info, ShieldCheck, Sprout, ArrowRight
 } from 'lucide-react';
 import ProduceGuide from '../components/ProduceGuide';
+import FarmRecipesSection from '../components/FarmRecipesSection';
+import { useLanguage } from '../context/LanguageContext';
 
 const HARVEST_HEATMAP = [
   { crop: 'Strawberries', type: 'Highland Berry', months: [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1] },
@@ -145,6 +147,9 @@ export default function ProducePage({ onToggleBookmark, isBookmarked }) {
           onToggleBookmark={onToggleBookmark}
           isBookmarked={isBookmarked}
         />
+
+        {/* Farm-to-Kitchen Recipes Section */}
+        <FarmRecipesSection />
 
       </div>
     </div>

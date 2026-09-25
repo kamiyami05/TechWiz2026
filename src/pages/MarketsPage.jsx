@@ -3,11 +3,14 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { 
   Store, MapPin, Clock, Star, Filter, ArrowUpDown, 
   ChevronRight, Bookmark, Sparkles, CheckCircle2, Leaf,
-  Navigation, Gauge, Search, ArrowRight
+  Navigation, Gauge, Search, ArrowRight, Scale
 } from 'lucide-react';
 import markets from '../data/markets.json';
+import MarketCompareModal from '../components/MarketCompareModal';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function MarketsPage({ onToggleBookmark, isBookmarked }) {
+  const { t, language } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [filterArea, setFilterArea] = useState(() => searchParams.get('area') || 'all');
@@ -16,6 +19,22 @@ export default function MarketsPage({ onToggleBookmark, isBookmarked }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('alphabetical'); // 'alphabetical' | 'rating' | 'open-now'
   const [showEcoStats, setShowEcoStats] = useState(true);
+
+  // Market comparison state
+  const [compareModalOpen, setCompareModalOpen] = useState(false);
+  const [compareList, setCompareList] = useState([]);
+
+  const handleToggleCompare = (id) => {
+    if (compareList.includes(id)) {
+      setCompareList(prev => prev.filter(item => item !== id));
+    } else {
+      if (compareList.length >= 2) {
+        setCompareList([compareList[1], id]);
+      } else {
+        setCompareList(prev => [...prev, id]);
+      }
+    }
+  };
 
   // Sync state if query params change externally
   useEffect(() => {
@@ -139,12 +158,26 @@ export default function MarketsPage({ onToggleBookmark, isBookmarked }) {
               </p>
             </div>
           </div>
-          <button
-            onClick={() => setShowEcoStats(!showEcoStats)}
-            className="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-emerald-50 text-emerald-700 dark:text-emerald-300 text-xs font-bold border border-emerald-200 dark:border-slate-700 shrink-0 cursor-pointer shadow-xs"
-          >
-            {showEcoStats ? 'Hide Eco Badges' : 'Show Eco Badges'}
-          </button>
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              onClick={() => setCompareModalOpen(true)}
+              className="px-3.5 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer"
+            >
+              <Scale className="w-3.5 h-3.5" />
+              <span>{t('sideBySideCompare')}</span>
+              {compareList.length > 0 && (
+                <span className="w-4 h-4 rounded-full bg-white text-teal-800 text-[10px] font-black flex items-center justify-center">
+                  {compareList.length}
+                </span>
+              )}
+            </button>
+            <button
+              onClick={() => setShowEcoStats(!showEcoStats)}
+              className="px-3.5 py-1.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-emerald-50 text-emerald-700 dark:text-emerald-300 text-xs font-bold border border-emerald-200 dark:border-slate-700 shrink-0 cursor-pointer shadow-xs"
+            >
+              {showEcoStats ? 'Hide Eco Badges' : 'Show Eco Badges'}
+            </button>
+          </div>
         </div>
 
         {/* Multi-Criteria Search & Filter Bar */}
@@ -336,30 +369,48 @@ export default function MarketsPage({ onToggleBookmark, isBookmarked }) {
                           </span>
                         </div>
 
-                        <button
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            if (onToggleBookmark) {
-                              onToggleBookmark({
-                                id: mkt.id,
-                                title: mkt.name,
-                                type: 'Market',
-                                category: mkt.area,
-                                info: mkt.operatingHours,
-                                image: mkt.image
-                              });
-                            }
-                          }}
-                          title={bookmarked ? "Saved in Notebook" : "Save to Notebook"}
-                          className={`p-2 rounded-xl backdrop-blur-md transition-all cursor-pointer ${
-                            bookmarked 
-                              ? 'bg-emerald-600 text-white shadow-md' 
-                              : 'bg-white/80 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 hover:bg-white'
-                          }`}
-                        >
-                          <Bookmark className="w-4 h-4" />
-                        </button>
+                        <div className="flex items-center gap-1.5">
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              handleToggleCompare(mkt.id);
+                            }}
+                            title={compareList.includes(mkt.id) ? "Selected for comparison" : "Compare this market"}
+                            className={`p-2 rounded-xl backdrop-blur-md transition-all cursor-pointer ${
+                              compareList.includes(mkt.id)
+                                ? 'bg-teal-600 text-white shadow-md'
+                                : 'bg-white/80 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 hover:bg-white'
+                            }`}
+                          >
+                            <Scale className="w-4 h-4" />
+                          </button>
+
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              if (onToggleBookmark) {
+                                onToggleBookmark({
+                                  id: mkt.id,
+                                  title: mkt.name,
+                                  type: 'Market',
+                                  category: mkt.area,
+                                  info: mkt.operatingHours,
+                                  image: mkt.image
+                                });
+                              }
+                            }}
+                            title={bookmarked ? "Saved in Notebook" : "Save to Notebook"}
+                            className={`p-2 rounded-xl backdrop-blur-md transition-all cursor-pointer ${
+                              bookmarked 
+                                ? 'bg-emerald-600 text-white shadow-md' 
+                                : 'bg-white/80 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 hover:bg-white'
+                            }`}
+                          >
+                            <Bookmark className="w-4 h-4" />
+                          </button>
+                        </div>
                       </div>
 
                       {/* Bottom Info on Photo */}
@@ -459,6 +510,37 @@ export default function MarketsPage({ onToggleBookmark, isBookmarked }) {
             })}
           </div>
         )}
+        {/* Floating Sticky Compare Action Bar */}
+        {compareList.length > 0 && (
+          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 text-white backdrop-blur-md border border-slate-700 px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-4 animate-scale-in">
+            <div className="flex items-center gap-2 text-xs font-bold">
+              <Scale className="w-4 h-4 text-teal-400" />
+              <span>{compareList.length} / 2 {t('comparing')}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setCompareModalOpen(true)}
+                className="px-3.5 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold shadow-sm cursor-pointer"
+              >
+                {t('compareSelected')}
+              </button>
+              <button
+                onClick={() => setCompareList([])}
+                className="text-slate-400 hover:text-white text-xs underline cursor-pointer ml-1"
+              >
+                {language === 'vi' ? 'Bỏ chọn' : 'Clear'}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Side-by-Side Market Comparison Modal */}
+        <MarketCompareModal
+          isOpen={compareModalOpen}
+          onClose={() => setCompareModalOpen(false)}
+          initialMarketAId={compareList[0]}
+          initialMarketBId={compareList[1]}
+        />
 
       </div>
     </div>
