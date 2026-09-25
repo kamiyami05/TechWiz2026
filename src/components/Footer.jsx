@@ -119,7 +119,7 @@ export default function Footer() {
               <li>
                 <Link 
                   to="/seasonal" 
-                  className="hover:text-emerald-600 transition-colors font-semibold text-emerald-700 dark:text-emerald-400"
+                  className="hover:text-emerald-600 transition-colors"
                 >
                   Seasonal Picks & Heatmap
                 </Link>
