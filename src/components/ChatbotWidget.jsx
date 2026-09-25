@@ -80,7 +80,7 @@ export default function ChatbotWidget() {
         <button
           onClick={() => setIsOpen(true)}
           aria-label="Open FarmBot AI Assistant"
-          className="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full shadow-xl shadow-emerald-700/40 hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer focus:outline-none focus:ring-4 focus:ring-emerald-400 group overflow-hidden"
+          className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full shadow-2xl shadow-emerald-700/40 hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer focus:outline-none focus:ring-4 focus:ring-emerald-400 group overflow-hidden"
         >
           <img 
             src="/chatbot-avatar.png" 
@@ -96,7 +96,7 @@ export default function ChatbotWidget() {
           {/* Header */}
           <div className="p-4 bg-gradient-to-r from-emerald-600 to-green-600 text-white flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-full overflow-hidden shrink-0 flex items-center justify-center filter drop-shadow-xs">
+              <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 flex items-center justify-center filter drop-shadow-xs">
                 <img 
                   src="/chatbot-avatar.png" 
                   alt="FarmBot AI" 
@@ -145,7 +145,7 @@ export default function ChatbotWidget() {
                 className={`flex gap-2.5 ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {m.sender === 'bot' && (
-                  <div className="w-7 h-7 rounded-full overflow-hidden shrink-0 flex items-center justify-center filter drop-shadow-xs">
+                  <div className="w-8 h-8 rounded-full overflow-hidden shrink-0 flex items-center justify-center filter drop-shadow-xs">
                     <img
                       src="/chatbot-avatar.png"
                       alt="FarmBot AI"
