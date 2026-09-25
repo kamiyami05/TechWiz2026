@@ -133,8 +133,8 @@ export default function ProduceGuide({ onToggleBookmark, isBookmarked }) {
                   </div>
 
                   <div className="flex items-center gap-3 mb-2.5">
-                    <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-xl shadow-xs group-hover:scale-105 transition-transform shrink-0">
-                      {item.icon}
+                    <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/50 dark:border-emerald-800/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                      <Leaf className="w-5 h-5" />
                     </div>
                     <div>
                       <h3 className="font-extrabold text-base text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors leading-snug">
@@ -151,8 +151,9 @@ export default function ProduceGuide({ onToggleBookmark, isBookmarked }) {
                   </p>
 
                   <div className="p-3 bg-white dark:bg-slate-900/60 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 text-xs mb-4">
-                    <span className="font-bold text-[11px] text-slate-500 uppercase tracking-wider block mb-1">
-                      🥗 Key Nutritional Facts:
+                    <span className="font-bold text-[11px] text-slate-500 uppercase tracking-wider flex items-center gap-1.5 mb-1">
+                      <Sparkles className="w-3 h-3 text-emerald-600" />
+                      Key Nutritional Facts:
                     </span>
                     <p className="text-slate-700 dark:text-slate-300 text-[11px] leading-relaxed">
                       {item.nutrition}
@@ -241,8 +242,8 @@ export default function ProduceGuide({ onToggleBookmark, isBookmarked }) {
               </div>
 
               <div className="flex items-center gap-3.5 mb-5 pb-4 border-b border-slate-100 dark:border-slate-800">
-                <div className="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-950 flex items-center justify-center text-3xl shadow-inner shrink-0">
-                  {inspectedProduce.icon}
+                <div className="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-950 border border-emerald-200/50 dark:border-emerald-800/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-xs shrink-0">
+                  <Leaf className="w-7 h-7" />
                 </div>
                 <div>
                   <h3 className="font-extrabold text-lg sm:text-xl text-slate-900 dark:text-white">

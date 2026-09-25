@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Bookmark, Trash2, Download, StickyNote, X, 
-  Share2, Check, ExternalLink, Copy
+  Share2, Check, ExternalLink, Copy, Leaf, Store, Sprout
 } from 'lucide-react';
 
 export default function BookmarkSystem({ 
@@ -97,14 +97,14 @@ export default function BookmarkSystem({
           </div>
 
           <div className="text-[12px] text-emerald-800 dark:text-emerald-200 mb-4 bg-emerald-50 dark:bg-emerald-950/40 p-3 rounded-2xl border border-emerald-200/60 dark:border-emerald-900/60 leading-relaxed flex items-center gap-2">
-            <span>🌿</span>
+            <Leaf className="w-4 h-4 text-emerald-600 shrink-0" />
             <span>Saved directly to your local device. Add shopping reminders for each market venue and seasonal crop!</span>
           </div>
 
           {/* Bookmarks List */}
           {bookmarks.length === 0 ? (
             <div className="py-20 text-center text-slate-400">
-              <div className="text-5xl mb-3">🧺</div>
+              <Bookmark className="w-12 h-12 text-emerald-600/60 dark:text-emerald-400/60 mx-auto mb-3" />
               <p className="font-semibold text-sm text-slate-600 dark:text-slate-300">Your shopping notebook is empty</p>
               <p className="text-xs text-slate-400 mt-1">Tap the Bookmark ribbon on any market or produce item to save it for your next trip!</p>
             </div>
@@ -116,8 +116,18 @@ export default function BookmarkSystem({
                   className="bg-stone-50 dark:bg-slate-800/80 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-2"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">
-                      {item.type === 'Market' ? '🏪 Farmers Market' : '🥕 Organic Produce'}
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
+                      {item.type === 'Market' ? (
+                        <>
+                          <Store className="w-3 h-3 text-emerald-600" />
+                          <span>Farmers Market</span>
+                        </>
+                      ) : (
+                        <>
+                          <Sprout className="w-3 h-3 text-emerald-600" />
+                          <span>Organic Produce</span>
+                        </>
+                      )}
                     </span>
                     <button
                       onClick={() => onRemoveBookmark(item.id)}

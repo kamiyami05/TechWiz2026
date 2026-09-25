@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
-  MessageSquare, X, Send, Bot, AlertCircle, RefreshCw, Sparkles
+  MessageSquare, X, Send, Bot, AlertCircle, RefreshCw, Sparkles, Sprout, ArrowRight
 } from 'lucide-react';
 import chatbotKB from '../data/chatbot-kb.json';
 
@@ -165,9 +165,10 @@ export default function ChatbotWidget() {
                       <a
                         href={`#${m.relatedSection}`}
                         onClick={() => setIsOpen(false)}
-                        className="text-emerald-700 dark:text-emerald-400 hover:underline font-bold"
+                        className="text-emerald-700 dark:text-emerald-400 hover:underline font-bold inline-flex items-center gap-1"
                       >
-                        👉 View on website
+                        <ArrowRight className="w-3 h-3" />
+                        <span>View on website</span>
                       </a>
                     </div>
                   )}
@@ -181,7 +182,7 @@ export default function ChatbotWidget() {
 
             {isTyping && (
               <div className="flex items-center gap-2 text-slate-400 text-xs">
-                <span>🌱</span>
+                <Sprout className="w-3.5 h-3.5 text-emerald-600 animate-bounce" />
                 <span className="animate-pulse">FarmBot AI is searching agricultural database...</span>
               </div>
             )}

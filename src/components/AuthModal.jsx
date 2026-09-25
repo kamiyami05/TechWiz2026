@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { 
   X, User, Lock, Mail, Phone, ArrowRight, Check, 
-  Eye, EyeOff, ShieldCheck, AlertCircle, Sparkles, LogIn, UserPlus
+  Eye, EyeOff, ShieldCheck, AlertCircle, Sparkles, LogIn, UserPlus,
+  ShoppingBag, Sprout
 } from 'lucide-react';
 
 const DEFAULT_USERS = [
@@ -467,7 +468,10 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
                       onClick={() => handleQuickLogin('consumer@freshfind.vn', 'password123')}
                       className="p-2 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 hover:border-emerald-500 text-left cursor-pointer transition-colors"
                     >
-                      <span className="font-bold text-[11px] text-slate-800 dark:text-slate-200 block">🛒 Shopper Account</span>
+                      <span className="font-bold text-[11px] text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                        <ShoppingBag className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <span>Shopper Account</span>
+                      </span>
                       <span className="text-[10px] text-slate-400 font-mono">consumer@...</span>
                     </button>
                     <button
@@ -475,7 +479,10 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
                       onClick={() => handleQuickLogin('farmer@freshfind.vn', 'password123')}
                       className="p-2 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 hover:border-emerald-500 text-left cursor-pointer transition-colors"
                     >
-                      <span className="font-bold text-[11px] text-slate-800 dark:text-slate-200 block">🚜 Eco Orchardist</span>
+                      <span className="font-bold text-[11px] text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                        <Sprout className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <span>Eco Orchardist</span>
+                      </span>
                       <span className="text-[10px] text-slate-400 font-mono">farmer@...</span>
                     </button>
                   </div>
@@ -577,8 +584,11 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
                           : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400'
                       }`}
                     >
-                      <span className="font-bold text-xs block">🛒 Conscious Consumer</span>
-                      <span className="text-[10px] block opacity-80">Discover markets & fresh produce</span>
+                      <span className="font-bold text-xs flex items-center gap-1.5">
+                        <ShoppingBag className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <span>Conscious Consumer</span>
+                      </span>
+                      <span className="text-[10px] block opacity-80 mt-0.5">Discover markets & fresh produce</span>
                     </button>
 
                     <button
@@ -590,8 +600,11 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
                           : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400'
                       }`}
                     >
-                      <span className="font-bold text-xs block">🚜 Farm Producer / Grower</span>
-                      <span className="text-[10px] block opacity-80">Manage stalls & harvest batches</span>
+                      <span className="font-bold text-xs flex items-center gap-1.5">
+                        <Sprout className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <span>Farm Producer / Grower</span>
+                      </span>
+                      <span className="text-[10px] block opacity-80 mt-0.5">Manage stalls & harvest batches</span>
                     </button>
                   </div>
                 </div>

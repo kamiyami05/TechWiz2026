@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   Mail, Phone, MapPin, Compass, Send, Check, 
-  Sparkles, HeartHandshake, ShieldCheck, AlertCircle, MessageSquare
+  Sparkles, HeartHandshake, ShieldCheck, AlertCircle, MessageSquare, Leaf
 } from 'lucide-react';
 
 export default function ContactAbout() {
@@ -146,7 +146,7 @@ export default function ContactAbout() {
             <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-7 shadow-sm">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-2xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center text-xl shadow-inner">
-                  🌿
+                  <Leaf className="w-5 h-5 text-emerald-600" />
                 </div>
                 <div>
                   <h3 className="font-extrabold text-lg text-slate-900 dark:text-white">
@@ -211,8 +211,9 @@ export default function ContactAbout() {
 
                 {gpsLocation && (
                   <div className="mt-3 p-3.5 rounded-2xl bg-emerald-50 dark:bg-slate-900 border border-emerald-200 dark:border-emerald-800 text-xs animate-fade-in space-y-1">
-                    <span className="font-bold text-emerald-800 dark:text-emerald-300 block">
-                      📍 Your Detected Proximity Coordinates:
+                    <span className="font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
+                      <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+                      Your Detected Proximity Coordinates:
                     </span>
                     <p className="font-mono text-slate-700 dark:text-slate-300">
                       Latitude: <strong>{gpsLocation.lat}</strong> | Longitude: <strong>{gpsLocation.lng}</strong>
@@ -226,7 +227,10 @@ export default function ContactAbout() {
             {/* Embedded Google Map */}
             <div id="map-section" className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-4 shadow-sm overflow-hidden scroll-mt-28">
               <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300 mb-2 px-1">
-                <span>📍 Hanoi Regional Agricultural Hubs Map</span>
+                <span className="flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+                  Hanoi Regional Agricultural Hubs Map
+                </span>
                 <span className="text-emerald-600 font-mono text-[11px]">Live Map View</span>
               </div>
               <div className="h-56 w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700">

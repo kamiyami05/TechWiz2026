@@ -106,7 +106,7 @@ export default function MarketDirectory({
         <div className="mb-10 max-w-4xl mx-auto p-4 sm:p-5 rounded-3xl bg-gradient-to-r from-emerald-600/10 via-teal-500/10 to-green-600/10 border border-emerald-200 dark:border-emerald-900/60 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
             <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-xl shrink-0 shadow-md shadow-emerald-600/20">
-              🌿
+              <Leaf className="w-6 h-6 text-white" />
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -226,7 +226,7 @@ export default function MarketDirectory({
         {/* Markets Grid */}
         {filteredMarkets.length === 0 ? (
           <div className="bg-white dark:bg-slate-800 rounded-3xl p-12 text-center border border-slate-200 dark:border-slate-700">
-            <div className="text-4xl mb-3">🧺</div>
+            <Store className="w-12 h-12 text-emerald-600/70 dark:text-emerald-400/70 mx-auto mb-3" />
             <h3 className="font-bold text-base text-slate-800 dark:text-white mb-1">
               No matching farmers markets found
             </h3>
@@ -321,8 +321,8 @@ export default function MarketDirectory({
 
                     {/* Header info */}
                     <div className="flex items-start gap-3 mb-2.5">
-                      <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 flex items-center justify-center text-xl shrink-0 group-hover:scale-105 transition-transform">
-                        {mkt.thumbnailIcon}
+                      <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/50 dark:border-emerald-800/50 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform text-emerald-600 dark:text-emerald-400">
+                        <Store className="w-5 h-5" />
                       </div>
                       <div>
                         <h3 
@@ -349,8 +349,9 @@ export default function MarketDirectory({
                           <Leaf className="w-3 h-3 text-emerald-600" />
                           <span>Food Distance: <strong>{mkt.distanceKm || 3.5} km</strong></span>
                         </span>
-                        <span className="text-[10px] bg-white dark:bg-slate-800 px-2 py-0.5 rounded-full font-bold shadow-xs">
-                          🌱 -{((mkt.distanceKm || 3) * 0.45).toFixed(1)} kg CO₂e
+                        <span className="text-[10px] bg-white dark:bg-slate-800 px-2.5 py-0.5 rounded-full font-bold shadow-xs flex items-center gap-1 text-emerald-700 dark:text-emerald-300">
+                          <Leaf className="w-2.5 h-2.5 text-emerald-600" />
+                          <span>-{((mkt.distanceKm || 3) * 0.45).toFixed(1)} kg CO₂e</span>
                         </span>
                       </div>
                     )}

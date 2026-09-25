@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { CheckCircle2 } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import MarketDirectory from './components/MarketDirectory';
@@ -46,7 +47,7 @@ export default function App() {
 
   const handleAuthSuccess = (user) => {
     setCurrentUser(user);
-    showToast(`Welcome back, ${user.name}! 🌿`);
+    showToast(`Welcome back, ${user.name}!`);
   };
 
   // Bookmarks state
@@ -86,7 +87,7 @@ export default function App() {
       showToast(`Removed "${item.title}" from saved notebook`);
     } else {
       setBookmarks(prev => [...prev, item]);
-      showToast(`Saved "${item.title}" to notebook 🌿`);
+      showToast(`Saved "${item.title}" to notebook`);
     }
   };
 
@@ -107,6 +108,7 @@ export default function App() {
       {/* Toast Notification */}
       {toastMessage && (
         <div className="fixed top-20 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-2.5 rounded-2xl shadow-xl animate-fade-in flex items-center gap-2 border border-emerald-400/30">
+          <CheckCircle2 className="w-4 h-4 text-emerald-100 shrink-0" />
           <span>{toastMessage}</span>
         </div>
       )}

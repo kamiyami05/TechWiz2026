@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Search, MapPin, Calendar, Carrot, ArrowRight, 
   Sparkles, CheckCircle, Clock, ShieldCheck, HeartHandshake,
-  Volume2, VolumeX, Radio
+  Volume2, VolumeX, Radio, Sprout
 } from 'lucide-react';
 import markets from '../data/markets.json';
 import produce from '../data/produce.json';
@@ -132,7 +132,7 @@ export default function Hero({ onApplyQuickFilter }) {
               ) : (
                 <>
                   <Volume2 className="w-4 h-4 text-emerald-600" />
-                  <span>🎧 Listen to Today's Market Podcast Briefing</span>
+                  <span>Listen to Today's Market Podcast Briefing</span>
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping ml-1" />
                 </>
               )}
@@ -146,12 +146,13 @@ export default function Hero({ onApplyQuickFilter }) {
           className="mt-10 max-w-4xl mx-auto bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-emerald-200 dark:border-slate-700 rounded-3xl p-5 sm:p-7 shadow-xl scroll-mt-28 relative"
         >
           {/* Decorative floating badge */}
-          <div className="hidden sm:block absolute -top-4 -right-3 px-3 py-1 bg-gradient-to-r from-emerald-600 to-green-500 text-white text-[10px] font-black rounded-full shadow-lg shadow-emerald-600/30 uppercase tracking-wider animate-float pointer-events-none">
-            🌱 100% Morning Harvested
+          <div className="hidden sm:inline-flex items-center gap-1 absolute -top-4 -right-3 px-3 py-1 bg-gradient-to-r from-emerald-600 to-green-500 text-white text-[10px] font-black rounded-full shadow-lg shadow-emerald-600/30 uppercase tracking-wider animate-float pointer-events-none">
+            <Sprout className="w-3 h-3 text-white" />
+            <span>100% Morning Harvested</span>
           </div>
 
           <div className="flex items-center gap-2 mb-4 text-slate-900 dark:text-white font-bold text-sm sm:text-base">
-            <span className="text-xl">🔍</span>
+            <Search className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
             <span>Find a Farmers Market Near You:</span>
           </div>
 

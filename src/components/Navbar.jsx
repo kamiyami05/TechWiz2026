@@ -57,12 +57,12 @@ export default function Navbar({
 
   // Sitemap-aligned English navigation links
   const navLinks = [
-    { id: 'find-market', name: 'Find a Market', icon: '🔍', href: '#find-market' },
-    { id: 'directory', name: 'Directory', icon: '🏪', href: '#directory' },
-    { id: 'seasonal', name: 'Seasonal Picks', icon: '🌾', href: '#seasonal' },
-    { id: 'produce', name: 'Produce Guide', icon: '🥕', href: '#produce' },
-    { id: 'about', name: 'About Us', icon: '🌿', href: '#about' },
-    { id: 'contact', name: 'Contact', icon: '✉️', href: '#contact' },
+    { id: 'find-market', name: 'Find a Market', icon: Compass, href: '#find-market' },
+    { id: 'directory', name: 'Directory', icon: Store, href: '#directory' },
+    { id: 'seasonal', name: 'Seasonal Picks', icon: Calendar, href: '#seasonal' },
+    { id: 'produce', name: 'Produce Guide', icon: Carrot, href: '#produce' },
+    { id: 'about', name: 'About Us', icon: Users, href: '#about' },
+    { id: 'contact', name: 'Contact', icon: MessageSquare, href: '#contact' },
   ];
 
   const [currentActive, setCurrentActive] = useState('find-market');
@@ -281,6 +281,7 @@ export default function Navbar({
           <div className="grid grid-cols-1 gap-1">
             {navLinks.map((link) => {
               const isActive = currentActive === link.id;
+              const Icon = link.icon;
               return (
                 <a
                   key={link.id}
@@ -292,7 +293,7 @@ export default function Navbar({
                       : 'text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-slate-800 hover:text-emerald-600'
                   }`}
                 >
-                  <span className="text-base">{link.icon}</span>
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-emerald-600 dark:text-emerald-400'}`} />
                   <span>{link.name}</span>
                 </a>
               );

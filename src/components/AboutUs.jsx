@@ -40,17 +40,17 @@ export default function AboutUs() {
     {
       name: 'Huong',
       role: 'Project Manager',
-      circleColor: '#5e999d',
-      roleColor: 'text-[#448b8f] dark:text-[#6cb4b8]',
-      badgeColor: 'bg-teal-50 dark:bg-teal-950/70 border-teal-200 dark:border-teal-800 text-teal-800 dark:text-teal-300',
+      circleColor: '#059669',
+      roleColor: 'text-emerald-600 dark:text-emerald-400',
+      badgeColor: 'bg-emerald-50 dark:bg-emerald-950/70 border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300',
       tagline: 'Product Roadmap & Partner Coordination',
       bio: 'Directs roadmap execution, connects with regional organic farms, and ensures FreshFind adheres to rigorous food transparency standards.'
     },
     {
       name: 'Xuan',
       role: 'Lead Developer',
-      circleColor: '#28885a',
-      roleColor: 'text-[#28885a] dark:text-[#42bf82]',
+      circleColor: '#059669',
+      roleColor: 'text-emerald-600 dark:text-emerald-400',
       badgeColor: 'bg-emerald-50 dark:bg-emerald-950/70 border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300',
       tagline: 'Platform Architecture & Geospatial Systems',
       bio: 'Architects the responsive React SPA, interactive Leaflet mapping, live open-market status logic, and client-side shopping notebook.'
@@ -58,9 +58,9 @@ export default function AboutUs() {
     {
       name: 'Chuong',
       role: 'QA Tester',
-      circleColor: '#4d87b7',
-      roleColor: 'text-[#4082b6] dark:text-[#6ba7db]',
-      badgeColor: 'bg-sky-50 dark:bg-sky-950/70 border-sky-200 dark:border-sky-800 text-sky-800 dark:text-sky-300',
+      circleColor: '#059669',
+      roleColor: 'text-emerald-600 dark:text-emerald-400',
+      badgeColor: 'bg-emerald-50 dark:bg-emerald-950/70 border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300',
       tagline: 'Data Quality & Usability Testing',
       bio: 'Verifies market locations, seasonal calendar precision, and conducts rigorous cross-device test coverage for a seamless user experience.'
     }

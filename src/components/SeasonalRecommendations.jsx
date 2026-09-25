@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Calendar, Sparkles, Sun, CloudRain, Snowflake, 
   Wind, Bookmark, Check, ArrowRight, HeartHandshake,
-  ShieldCheck, Leaf, ShoppingBag, Info, Grid, Layers
+  ShieldCheck, Leaf, ShoppingBag, Info, Grid, Layers, Sprout
 } from 'lucide-react';
 import { scrollToSection } from '../utils/navigation';
 
@@ -22,7 +22,6 @@ const SEASONS_DATA = {
         id: 'season-p1',
         title: 'Young Green Rice Flakes & Sweet Bananas',
         category: 'Autumn Heritage Special',
-        icon: '🌾',
         image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Peak Harvest 100%',
         nutrition: 'Abundant in natural prebiotic starch, vitamin B6, and potassium to nurture healthy digestion.',
@@ -34,7 +33,6 @@ const SEASONS_DATA = {
         id: 'season-p2',
         title: 'Phuc Trach & Pink-Flesh Green Pomelos',
         category: 'Specialty Citrus',
-        icon: '🍈',
         image: 'https://images.unsplash.com/photo-1557800636-894a64c1696f?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Prime Citrus Sweetness',
         nutrition: 'Extremely high in Vitamin C and natural naringin, supporting balanced cholesterol and liver wellness.',
@@ -46,7 +44,6 @@ const SEASONS_DATA = {
         id: 'season-p3',
         title: 'Crisp Lang Son Persimmons',
         category: 'Highland Orchard Crop',
-        icon: '🍅',
         image: 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Daily Influx',
         nutrition: 'Rich in dietary fiber, provitamin A carotenoids, and polyphenols to revitalize skin health.',
@@ -58,7 +55,6 @@ const SEASONS_DATA = {
         id: 'season-p4',
         title: 'Early Crop Asian Mustard Greens & Bok Choy',
         category: 'Safe Organic Greens',
-        icon: '🥬',
         image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Hand-Picked at Dawn',
         nutrition: 'High concentrations of glucosinolate antioxidants, natural plant calcium, and dietary folate.',
@@ -83,7 +79,6 @@ const SEASONS_DATA = {
         id: 'season-p5',
         title: 'Moc Chau Hana White-Snow Strawberries',
         category: 'Temperate Berries',
-        icon: '🍓',
         image: 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Early Crop Mellow',
         nutrition: 'Supercharged Vitamin C content and anthocyanins to protect winter cellular immunity.',
@@ -95,7 +90,6 @@ const SEASONS_DATA = {
         id: 'season-p6',
         title: 'Broccoli Crowns & Romanesco Cauliflower',
         category: 'Cruciferous Powerhouse',
-        icon: '🥦',
         image: 'https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Tight Crisp Florets',
         nutrition: 'Features Sulforaphane - a potent bioactive compound known for anti-inflammatory and cellular protection properties.',
@@ -120,7 +114,6 @@ const SEASONS_DATA = {
         id: 'season-p7',
         title: 'Heirloom Snow Peas & Tender Pea Shoots',
         category: 'Spring Harvest',
-        icon: '🫛',
         image: 'https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Sweet & Tender',
         nutrition: 'Rich in plant-based proteins, vitamin K1 for bone health, and essential minerals.',
@@ -145,7 +138,6 @@ const SEASONS_DATA = {
         id: 'season-p8',
         title: 'Dak Lak Butter Avocados & Golden Melons',
         category: 'Highland Summer Pick',
-        icon: '🥑',
         image: 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=800&q=80',
         harvestStatus: 'Rich & Creamy',
         nutrition: 'Packed with oleic acid, lutein for vision support, and natural vitamin E.',
@@ -254,7 +246,7 @@ export default function SeasonalRecommendations({ onToggleBookmark, isBookmarked
             {/* Current Season Description Card */}
             <div className={`p-5 rounded-3xl border ${currentSeasonData.themeBg} mb-10 text-center max-w-3xl mx-auto shadow-xs`}>
               <div className="flex items-center justify-center gap-2 mb-1">
-                <span className="text-xl">🍂</span>
+                <Calendar className={`w-5 h-5 ${currentSeasonData.accentText}`} />
                 <h3 className={`font-bold text-sm sm:text-base ${currentSeasonData.accentText}`}>
                   {currentSeasonData.period}
                 </h3>
@@ -312,8 +304,8 @@ export default function SeasonalRecommendations({ onToggleBookmark, isBookmarked
 
                       {/* Header with Icon */}
                       <div className="flex items-start gap-3.5 mb-3.5">
-                        <div className="w-11 h-11 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-2xl shadow-inner group-hover:scale-105 transition-transform shrink-0">
-                          {item.icon}
+                        <div className="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/50 dark:border-emerald-800/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-xs group-hover:scale-105 transition-transform shrink-0">
+                          <Sprout className="w-5 h-5" />
                         </div>
                         <div className="flex-1">
                           <h3 className="font-extrabold text-base sm:text-lg text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors leading-snug">
@@ -357,8 +349,9 @@ export default function SeasonalRecommendations({ onToggleBookmark, isBookmarked
 
                     {/* Footer action */}
                     <div className="pt-4 border-t border-slate-200 dark:border-slate-700/80 flex items-center justify-between text-xs">
-                      <span className="text-[11px] text-slate-500 dark:text-slate-400 italic">
-                        💡 {item.storage}
+                      <span className="text-[11px] text-slate-500 dark:text-slate-400 italic flex items-center gap-1.5">
+                        <Sparkles className="w-3 h-3 text-emerald-600 shrink-0" />
+                        <span>{item.storage}</span>
                       </span>
 
                       <button
@@ -392,7 +385,7 @@ export default function SeasonalRecommendations({ onToggleBookmark, isBookmarked
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
               <div>
                 <h3 className="font-extrabold text-lg text-slate-900 dark:text-white flex items-center gap-2">
-                  <span>📅</span>
+                  <Calendar className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
                   <span>Annual Regional Crop Harvest Heatmap Matrix</span>
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
