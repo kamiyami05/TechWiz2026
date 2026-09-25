@@ -156,6 +156,8 @@ export default function App() {
               <MarketDetailPage 
                 onToggleBookmark={handleToggleBookmark} 
                 isBookmarked={isBookmarked} 
+                currentUser={currentUser}
+                onOpenAuth={() => setIsAuthOpen(true)}
               />
             } 
           />

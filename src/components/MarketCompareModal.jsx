@@ -5,7 +5,6 @@ import {
   Leaf, Navigation, ChevronRight, Scale, ShieldCheck,
   Car, Heart, Accessibility, CreditCard, Sparkles, Building2
 } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
 import markets from '../data/markets.json';
 
 export default function MarketCompareModal({ 
@@ -14,8 +13,6 @@ export default function MarketCompareModal({
   initialMarketAId, 
   initialMarketBId 
 }) {
-  const { t, language } = useLanguage();
-
   const [marketAId, setMarketAId] = useState(initialMarketAId || markets[0]?.id);
   const [marketBId, setMarketBId] = useState(() => {
     if (initialMarketBId) return initialMarketBId;
@@ -60,12 +57,12 @@ export default function MarketCompareModal({
   const amenitiesB = getAmenities(marketB);
 
   const amenitiesList = [
-    { key: 'organicCertified', label: t('organicCertified'), icon: Leaf },
-    { key: 'freeParking', label: t('freeParking'), icon: Car },
-    { key: 'petFriendly', label: t('petFriendly'), icon: Heart },
-    { key: 'wheelchairAccess', label: t('wheelchairAccess'), icon: Accessibility },
-    { key: 'cardAccepted', label: t('cardAccepted'), icon: CreditCard },
-    { key: 'restrooms', label: t('restrooms'), icon: Building2 },
+    { key: 'organicCertified', label: '100% Certified Organic', icon: Leaf },
+    { key: 'freeParking', label: 'Free Parking', icon: Car },
+    { key: 'petFriendly', label: 'Pet-Friendly Grounds', icon: Heart },
+    { key: 'wheelchairAccess', label: 'Wheelchair Accessible', icon: Accessibility },
+    { key: 'cardAccepted', label: 'Cashless / Card Payments', icon: CreditCard },
+    { key: 'restrooms', label: 'Clean Public Restrooms', icon: Building2 },
   ];
 
   return (
@@ -83,12 +80,10 @@ export default function MarketCompareModal({
             </div>
             <div>
               <h2 className="font-extrabold text-lg sm:text-xl font-display flex items-center gap-2">
-                <span>{t('sideBySideCompare')}</span>
+                <span>Side-by-Side Market Comparison</span>
               </h2>
               <p className="text-xs text-emerald-100">
-                {language === 'vi' 
-                  ? 'So sánh lịch hoạt động, tiện ích, khoảng cách và nông sản đặc trưng' 
-                  : 'Compare schedule, amenities, food distance and typical fresh produce'}
+                Compare weekly schedule, key amenities, food travel distance, and featured farm produce.
               </p>
             </div>
           </div>
@@ -109,7 +104,7 @@ export default function MarketCompareModal({
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-                {t('marketA')}
+                Market Location A:
               </label>
               <select
                 value={marketAId}
@@ -126,7 +121,7 @@ export default function MarketCompareModal({
 
             <div>
               <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-                {t('marketB')}
+                Market Location B:
               </label>
               <select
                 value={marketBId}
@@ -156,7 +151,7 @@ export default function MarketCompareModal({
                 <span className={`absolute top-2 left-2 text-[10px] font-black uppercase px-2 py-0.5 rounded-full ${
                   isAOpen ? 'bg-emerald-600 text-white' : 'bg-black/60 text-slate-200'
                 }`}>
-                  {isAOpen ? t('openNow') : t('closed')}
+                  {isAOpen ? 'OPEN NOW' : 'CLOSED'}
                 </span>
                 <span className="absolute bottom-2 right-2 bg-black/60 text-amber-300 text-xs font-bold px-2 py-0.5 rounded-lg flex items-center gap-1 backdrop-blur-md">
                   <Star className="w-3 h-3 fill-amber-400" />
@@ -185,7 +180,7 @@ export default function MarketCompareModal({
                 <span className={`absolute top-2 left-2 text-[10px] font-black uppercase px-2 py-0.5 rounded-full ${
                   isBOpen ? 'bg-emerald-600 text-white' : 'bg-black/60 text-slate-200'
                 }`}>
-                  {isBOpen ? t('openNow') : t('closed')}
+                  {isBOpen ? 'OPEN NOW' : 'CLOSED'}
                 </span>
                 <span className="absolute bottom-2 right-2 bg-black/60 text-amber-300 text-xs font-bold px-2 py-0.5 rounded-lg flex items-center gap-1 backdrop-blur-md">
                   <Star className="w-3 h-3 fill-amber-400" />
@@ -211,13 +206,13 @@ export default function MarketCompareModal({
             {/* Row 1: Operating Days */}
             <div className="grid grid-cols-2 divide-x divide-slate-200 dark:divide-slate-700 border-b border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50">
               <div className="p-3">
-                <div className="font-bold text-slate-500 text-[10px] uppercase mb-1">{t('filterByDay')}</div>
+                <div className="font-bold text-slate-500 text-[10px] uppercase mb-1">Operating Days</div>
                 <div className="font-semibold text-slate-800 dark:text-slate-200">
                   {marketA.operatingDays.join(', ')}
                 </div>
               </div>
               <div className="p-3">
-                <div className="font-bold text-slate-500 text-[10px] uppercase mb-1">{t('filterByDay')}</div>
+                <div className="font-bold text-slate-500 text-[10px] uppercase mb-1">Operating Days</div>
                 <div className="font-semibold text-slate-800 dark:text-slate-200">
                   {marketB.operatingDays.join(', ')}
                 </div>
@@ -227,13 +222,13 @@ export default function MarketCompareModal({
             {/* Row 2: Hours */}
             <div className="grid grid-cols-2 divide-x divide-slate-200 dark:divide-slate-700 border-b border-slate-200 dark:border-slate-700">
               <div className="p-3">
-                <div className="font-bold text-slate-500 text-[10px] uppercase mb-1">{t('operatingHours')}</div>
+                <div className="font-bold text-slate-500 text-[10px] uppercase mb-1">Operating Hours</div>
                 <div className="font-mono font-bold text-emerald-700 dark:text-emerald-400">
                   {marketA.operatingHours}
                 </div>
               </div>
               <div className="p-3">
-                <div className="font-bold text-slate-500 text-[10px] uppercase mb-1">{t('operatingHours')}</div>
+                <div className="font-bold text-slate-500 text-[10px] uppercase mb-1">Operating Hours</div>
                 <div className="font-mono font-bold text-emerald-700 dark:text-emerald-400">
                   {marketB.operatingHours}
                 </div>
@@ -243,14 +238,14 @@ export default function MarketCompareModal({
             {/* Row 3: Food Distance & Carbon Offset */}
             <div className="grid grid-cols-2 divide-x divide-slate-200 dark:divide-slate-700 border-b border-slate-200 dark:border-slate-700 bg-emerald-50/30 dark:bg-emerald-950/20">
               <div className="p-3">
-                <div className="font-bold text-emerald-800 dark:text-emerald-300 text-[10px] uppercase mb-1">{t('distance')} & {t('foodMilesSaved')}</div>
+                <div className="font-bold text-emerald-800 dark:text-emerald-300 text-[10px] uppercase mb-1">Distance & Carbon Offset</div>
                 <div className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
                   <Leaf className="w-3.5 h-3.5 text-emerald-600" />
                   <span>{marketA.distanceKm || 3.5} km • -{((marketA.distanceKm || 3) * 0.45).toFixed(1)} kg CO₂e</span>
                 </div>
               </div>
               <div className="p-3">
-                <div className="font-bold text-emerald-800 dark:text-emerald-300 text-[10px] uppercase mb-1">{t('distance')} & {t('foodMilesSaved')}</div>
+                <div className="font-bold text-emerald-800 dark:text-emerald-300 text-[10px] uppercase mb-1">Distance & Carbon Offset</div>
                 <div className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
                   <Leaf className="w-3.5 h-3.5 text-emerald-600" />
                   <span>{marketB.distanceKm || 4.2} km • -{((marketB.distanceKm || 4) * 0.45).toFixed(1)} kg CO₂e</span>
@@ -261,7 +256,7 @@ export default function MarketCompareModal({
             {/* Row 4: Amenities Checklist */}
             <div className="p-3 bg-stone-50 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-700">
               <div className="font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px] mb-2">
-                {t('amenities')}
+                Market Amenities & Services
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {/* Amenities A */}
@@ -305,7 +300,7 @@ export default function MarketCompareModal({
             {/* Row 5: Typical Produce */}
             <div className="grid grid-cols-2 divide-x divide-slate-200 dark:divide-slate-700 border-b border-slate-200 dark:border-slate-700">
               <div className="p-3">
-                <div className="font-bold text-slate-500 text-[10px] uppercase mb-1.5">{t('typicalProduce')}</div>
+                <div className="font-bold text-slate-500 text-[10px] uppercase mb-1.5">Typical Organic Produce</div>
                 <div className="flex flex-wrap gap-1">
                   {marketA.typicalProduce.map((p, i) => (
                     <span key={i} className="px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-[10px] font-medium border border-emerald-200 dark:border-emerald-800">
@@ -315,7 +310,7 @@ export default function MarketCompareModal({
                 </div>
               </div>
               <div className="p-3">
-                <div className="font-bold text-slate-500 text-[10px] uppercase mb-1.5">{t('typicalProduce')}</div>
+                <div className="font-bold text-slate-500 text-[10px] uppercase mb-1.5">Typical Organic Produce</div>
                 <div className="flex flex-wrap gap-1">
                   {marketB.typicalProduce.map((p, i) => (
                     <span key={i} className="px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-[10px] font-medium border border-emerald-200 dark:border-emerald-800">
@@ -334,7 +329,7 @@ export default function MarketCompareModal({
                   onClick={onClose}
                   className="w-full py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-xs"
                 >
-                  <span>{t('viewDetails')}</span>
+                  <span>View Details & Map</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
@@ -344,7 +339,7 @@ export default function MarketCompareModal({
                   onClick={onClose}
                   className="w-full py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-xs"
                 >
-                  <span>{t('viewDetails')}</span>
+                  <span>View Details & Map</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
@@ -360,7 +355,7 @@ export default function MarketCompareModal({
             onClick={onClose}
             className="px-5 py-2 rounded-xl bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 text-slate-800 dark:text-slate-200 text-xs font-bold transition-colors cursor-pointer"
           >
-            {language === 'vi' ? 'Đóng Bảng So Sánh' : 'Close Comparison'}
+            Close Comparison
           </button>
         </div>
 

@@ -4,9 +4,8 @@ import {
   Store, Carrot, Clock, Users, Bookmark, Sun, 
   Moon, User, Menu, X, MapPin, Sparkles, Compass,
   ChevronDown, LogOut, ShieldCheck, Search, Calendar,
-  Heart, MessageSquare, Globe
+  Heart, MessageSquare
 } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
 
 export default function Navbar({ 
   darkMode, 
@@ -17,7 +16,6 @@ export default function Navbar({
   currentUser,
   onLogout 
 }) {
-  const { language, toggleLanguage, t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [visitorCount, setVisitorCount] = useState(2150);
@@ -62,14 +60,14 @@ export default function Navbar({
     setVisitorCount(count);
   }, []);
 
-  // Multi-Page SPA Navigation links with dynamic translations
+  // Multi-Page SPA Navigation links
   const navLinks = [
-    { path: '/', name: t('home'), icon: Compass, end: true },
-    { path: '/markets', name: t('markets'), icon: Store, end: false },
-    { path: '/seasonal', name: t('seasonal'), icon: Calendar, end: false },
-    { path: '/produce', name: t('produce'), icon: Carrot, end: false },
-    { path: '/about', name: t('about'), icon: Users, end: false },
-    { path: '/contact', name: t('contact'), icon: MessageSquare, end: false },
+    { path: '/', name: 'Home', icon: Compass, end: true },
+    { path: '/markets', name: 'Markets Directory', icon: Store, end: false },
+    { path: '/seasonal', name: 'Seasonal Picks', icon: Calendar, end: false },
+    { path: '/produce', name: 'Produce Guide', icon: Carrot, end: false },
+    { path: '/about', name: 'About Us', icon: Users, end: false },
+    { path: '/contact', name: 'Contact', icon: MessageSquare, end: false },
   ];
 
   return (
@@ -81,10 +79,10 @@ export default function Navbar({
           <div className="flex items-center gap-2">
             <span className="text-emerald-700 dark:text-emerald-400 font-bold flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              {t('topBarSlogan')}
+              Farm-to-Table Organic Living • Sustainable Community Markets
             </span>
             <span className="text-slate-300 dark:text-slate-700">•</span>
-            <span className="text-slate-500 dark:text-slate-400">{t('hotline')}</span>
+            <span className="text-slate-500 dark:text-slate-400">Hotline: +84 (0) 24 7300 8855</span>
           </div>
 
           <div className="flex items-center gap-4">
@@ -95,7 +93,7 @@ export default function Navbar({
             <span className="text-slate-300 dark:text-slate-700">|</span>
             <span className="flex items-center gap-1 font-mono">
               <Users className="w-3 h-3 text-emerald-600 dark:text-emerald-400 shrink-0" />
-              <span>{t('liveVisits')}: <strong className="text-emerald-800 dark:text-emerald-300 font-bold">{visitorCount.toLocaleString()}</strong></span>
+              <span>Live Visits: <strong className="text-emerald-800 dark:text-emerald-300 font-bold">{visitorCount.toLocaleString()}</strong></span>
             </span>
           </div>
         </div>
@@ -120,7 +118,7 @@ export default function Navbar({
               </span>
               <span className="hidden 2xl:inline-flex items-center gap-1 text-[10px] font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/80 px-2 py-0.5 rounded-full">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                {t('organicBadge')}
+                100% Organic
               </span>
             </div>
           </Link>
@@ -146,20 +144,10 @@ export default function Navbar({
           {/* Action Tools */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             
-            {/* Language Switcher Button [EN | VI] */}
-            <button
-              onClick={toggleLanguage}
-              title={language === 'en' ? "Chuyển sang Tiếng Việt" : "Switch to English"}
-              className="px-2.5 py-1.5 rounded-xl border border-emerald-300/80 dark:border-emerald-700/80 bg-emerald-50/80 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-slate-800 text-[11px] font-extrabold text-emerald-800 dark:text-emerald-300 transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
-            >
-              <span className="text-xs">{language === 'en' ? '🇬🇧' : '🇻🇳'}</span>
-              <span className="font-mono tracking-wider font-bold">{language === 'en' ? 'EN' : 'VI'}</span>
-            </button>
-
             {/* Bookmarks Drawer Trigger */}
             <button
               onClick={onOpenBookmarks}
-              title={t('savedNotebook')}
+              title="Saved Markets & Produce Notebook"
               className="relative p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer"
             >
               <Bookmark className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
@@ -233,7 +221,7 @@ export default function Navbar({
                 className="hidden sm:inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-1.5 rounded-xl text-xs font-bold shadow-sm shadow-emerald-600/20 transition-all cursor-pointer whitespace-nowrap"
               >
                 <User className="w-3.5 h-3.5" />
-                <span>{t('signIn')}</span>
+                <span>Sign In</span>
               </button>
             )}
 

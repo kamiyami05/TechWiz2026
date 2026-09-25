@@ -4,13 +4,11 @@ import {
   ChefHat, Clock, Flame, Sparkles, Check, ChevronRight,
   X, Store, ArrowRight, Utensils, Award, BookOpen, Heart
 } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
 import recipes from '../data/recipes.json';
 import produceData from '../data/produce.json';
 import marketsData from '../data/markets.json';
 
 export default function FarmRecipesSection({ targetProduceId }) {
-  const { t, language } = useLanguage();
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [filterSeason, setFilterSeason] = useState('all');
 
@@ -35,15 +33,13 @@ export default function FarmRecipesSection({ targetProduceId }) {
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
             <ChefHat className="w-3.5 h-3.5" />
-            <span>{t('farmToKitchen')}</span>
+            <span>Farm-to-Kitchen Recipes</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display">
-            {t('cookWithProduce')}
+            Cook With Fresh Farm Produce
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl">
-            {language === 'vi' 
-              ? 'Khám phá công thức nấu ăn ngon, thanh lành và dễ làm từ nông sản tươi thu hoạch tại các chợ nông dân.' 
-              : 'Wholesome, chef-curated culinary recipes crafted to highlight the crisp flavor of freshly harvested market produce.'}
+            Wholesome, chef-curated culinary recipes crafted to highlight the crisp flavor of freshly harvested market produce.
           </p>
         </div>
 
@@ -59,7 +55,7 @@ export default function FarmRecipesSection({ targetProduceId }) {
                   : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 border border-slate-200 dark:border-slate-700'
               }`}
             >
-              {s === 'all' ? t('all') : s}
+              {s === 'all' ? 'All Seasons' : s}
             </button>
           ))}
         </div>
@@ -77,17 +73,17 @@ export default function FarmRecipesSection({ targetProduceId }) {
               <div className="relative h-48 overflow-hidden bg-slate-100">
                 <img 
                   src={recipe.image} 
-                  alt={language === 'vi' ? recipe.title_vi : recipe.title}
+                  alt={recipe.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent pointer-events-none" />
                 
                 <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider">
-                  {language === 'vi' ? recipe.season_vi : recipe.season}
+                  {recipe.season}
                 </span>
 
                 <span className="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-bold shadow-xs">
-                  {language === 'vi' ? recipe.difficulty_vi : recipe.difficulty}
+                  {recipe.difficulty}
                 </span>
 
                 <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs font-semibold">
@@ -104,20 +100,20 @@ export default function FarmRecipesSection({ targetProduceId }) {
               {/* Card Body */}
               <div className="p-5 space-y-3">
                 <h3 className="font-extrabold text-base text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors line-clamp-1">
-                  {language === 'vi' ? recipe.title_vi : recipe.title}
+                  {recipe.title}
                 </h3>
                 
                 <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed">
-                  {language === 'vi' ? recipe.description_vi : recipe.description}
+                  {recipe.description}
                 </p>
 
                 {/* Key produce tag */}
                 <div className="pt-2 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs">
                   <span className="text-[11px] text-slate-500 dark:text-slate-400">
-                    {language === 'vi' ? 'Nông sản chủ đạo:' : 'Hero Produce:'}
+                    Hero Produce:
                   </span>
                   <span className="font-bold text-emerald-700 dark:text-emerald-400 text-xs">
-                    {language === 'vi' ? recipe.produceName_vi : recipe.produceName}
+                    {recipe.produceName}
                   </span>
                 </div>
               </div>
@@ -130,7 +126,7 @@ export default function FarmRecipesSection({ targetProduceId }) {
                 className="w-full py-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-600 text-emerald-700 dark:text-emerald-300 hover:text-white font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer border border-emerald-200/60 dark:border-emerald-800/60 hover:border-emerald-600"
               >
                 <Utensils className="w-3.5 h-3.5" />
-                <span>{language === 'vi' ? 'Xem Công Thức & Cách Nấu' : 'View Recipe & Steps'}</span>
+                <span>View Recipe & Steps</span>
               </button>
             </div>
 
@@ -150,7 +146,7 @@ export default function FarmRecipesSection({ targetProduceId }) {
             <div className="relative h-64 sm:h-72 w-full shrink-0 bg-slate-900">
               <img 
                 src={selectedRecipe.image} 
-                alt={language === 'vi' ? selectedRecipe.title_vi : selectedRecipe.title}
+                alt={selectedRecipe.title}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent pointer-events-none" />
@@ -166,7 +162,7 @@ export default function FarmRecipesSection({ targetProduceId }) {
               <div className="absolute bottom-4 left-4 right-4 text-white">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-black uppercase">
-                    {language === 'vi' ? selectedRecipe.season_vi : selectedRecipe.season}
+                    {selectedRecipe.season}
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] font-bold">
                     {selectedRecipe.servings}
@@ -176,7 +172,7 @@ export default function FarmRecipesSection({ targetProduceId }) {
                   </span>
                 </div>
                 <h2 className="text-xl sm:text-2xl font-extrabold font-display leading-tight">
-                  {language === 'vi' ? selectedRecipe.title_vi : selectedRecipe.title}
+                  {selectedRecipe.title}
                 </h2>
               </div>
             </div>
@@ -186,7 +182,7 @@ export default function FarmRecipesSection({ targetProduceId }) {
               
               {/* Description */}
               <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-                {language === 'vi' ? selectedRecipe.description_vi : selectedRecipe.description}
+                {selectedRecipe.description}
               </p>
 
               {/* Chef Tip Box */}
@@ -194,10 +190,10 @@ export default function FarmRecipesSection({ targetProduceId }) {
                 <Sparkles className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-extrabold text-amber-900 dark:text-amber-200 text-xs uppercase tracking-wider mb-0.5">
-                    {t('chefTip')}
+                    Farmer's Kitchen Tip
                   </h4>
                   <p className="text-xs text-amber-800 dark:text-amber-300">
-                    {language === 'vi' ? selectedRecipe.chefTip_vi : selectedRecipe.chefTip}
+                    {selectedRecipe.chefTip}
                   </p>
                 </div>
               </div>
@@ -206,7 +202,7 @@ export default function FarmRecipesSection({ targetProduceId }) {
               <div>
                 <h3 className="text-sm font-extrabold text-slate-900 dark:text-white uppercase tracking-wider mb-3 flex items-center gap-2">
                   <Utensils className="w-4 h-4 text-emerald-600" />
-                  <span>{t('ingredients')}</span>
+                  <span>Farm Fresh Ingredients</span>
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {selectedRecipe.ingredients.map((ing, idx) => (
@@ -217,7 +213,7 @@ export default function FarmRecipesSection({ targetProduceId }) {
                       <div className="flex items-center gap-2">
                         <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                         <span className="font-medium text-slate-800 dark:text-slate-200">
-                          {language === 'vi' ? ing.name_vi : ing.name}
+                          {ing.name}
                         </span>
                       </div>
                       <span className="font-mono text-slate-500 font-semibold text-[11px]">
@@ -232,10 +228,10 @@ export default function FarmRecipesSection({ targetProduceId }) {
               <div>
                 <h3 className="text-sm font-extrabold text-slate-900 dark:text-white uppercase tracking-wider mb-3 flex items-center gap-2">
                   <BookOpen className="w-4 h-4 text-emerald-600" />
-                  <span>{t('instructions')}</span>
+                  <span>Cooking Instructions</span>
                 </h3>
                 <div className="space-y-3">
-                  {(language === 'vi' ? selectedRecipe.instructions_vi : selectedRecipe.instructions).map((step, idx) => (
+                  {selectedRecipe.instructions.map((step, idx) => (
                     <div key={idx} className="flex items-start gap-3 p-3 rounded-2xl bg-stone-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
                       <span className="w-6 h-6 rounded-full bg-emerald-600 text-white font-extrabold text-xs flex items-center justify-center shrink-0 shadow-xs">
                         {idx + 1}
@@ -252,12 +248,10 @@ export default function FarmRecipesSection({ targetProduceId }) {
               <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
                 <div className="flex items-center gap-2 mb-2 font-bold text-emerald-900 dark:text-emerald-200 text-xs">
                   <Store className="w-4 h-4 text-emerald-600" />
-                  <span>{t('findIngredientsAt')}</span>
+                  <span>Find Ingredients at Nearby Markets</span>
                 </div>
                 <p className="text-xs text-slate-600 dark:text-slate-400 mb-3">
-                  {language === 'vi'
-                    ? `Nguyên liệu "${selectedRecipe.produceName_vi}" được bày bán tại các chợ sau:`
-                    : `The fresh "${selectedRecipe.produceName}" is sourced directly at these verified farmers markets:`}
+                  The fresh "{selectedRecipe.produceName}" is sourced directly at these verified farmers markets:
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {getMarketsForRecipe(selectedRecipe).map((m) => (
@@ -283,7 +277,7 @@ export default function FarmRecipesSection({ targetProduceId }) {
                 onClick={() => setSelectedRecipe(null)}
                 className="px-5 py-2 rounded-xl bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 text-slate-800 dark:text-slate-200 text-xs font-bold transition-colors cursor-pointer"
               >
-                {language === 'vi' ? 'Đóng Công Thức' : 'Close Recipe'}
+                Close Recipe
               </button>
             </div>
 

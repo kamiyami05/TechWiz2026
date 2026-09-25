@@ -6,7 +6,6 @@ import {
 } from 'lucide-react';
 import ProduceGuide from '../components/ProduceGuide';
 import FarmRecipesSection from '../components/FarmRecipesSection';
-import { useLanguage } from '../context/LanguageContext';
 
 const HARVEST_HEATMAP = [
   { crop: 'Strawberries', type: 'Highland Berry', months: [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1] },

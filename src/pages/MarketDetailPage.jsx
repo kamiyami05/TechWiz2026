@@ -7,10 +7,13 @@ import {
 } from 'lucide-react';
 import markets from '../data/markets.json';
 import MarketReviews from '../components/MarketReviews';
-import { useLanguage } from '../context/LanguageContext';
 
-export default function MarketDetailPage({ onToggleBookmark, isBookmarked }) {
-  const { t, language } = useLanguage();
+export default function MarketDetailPage({ 
+  onToggleBookmark, 
+  isBookmarked,
+  currentUser,
+  onOpenAuth
+}) {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -438,7 +441,12 @@ export default function MarketDetailPage({ onToggleBookmark, isBookmarked }) {
         </div>
 
         {/* Community Reviews & Ratings Section */}
-        <MarketReviews marketId={market.id} marketName={market.name} />
+        <MarketReviews 
+          marketId={market.id} 
+          marketName={market.name} 
+          currentUser={currentUser}
+          onOpenAuth={onOpenAuth}
+        />
 
         {/* Other Recommended Farmers Markets */}
         <div className="pt-8 border-t border-slate-200 dark:border-slate-800">

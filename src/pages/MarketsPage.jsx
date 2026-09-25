@@ -7,10 +7,8 @@ import {
 } from 'lucide-react';
 import markets from '../data/markets.json';
 import MarketCompareModal from '../components/MarketCompareModal';
-import { useLanguage } from '../context/LanguageContext';
 
 export default function MarketsPage({ onToggleBookmark, isBookmarked }) {
-  const { t, language } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [filterArea, setFilterArea] = useState(() => searchParams.get('area') || 'all');
@@ -164,7 +162,7 @@ export default function MarketsPage({ onToggleBookmark, isBookmarked }) {
               className="px-3.5 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 cursor-pointer"
             >
               <Scale className="w-3.5 h-3.5" />
-              <span>{t('sideBySideCompare')}</span>
+              <span>Compare Markets</span>
               {compareList.length > 0 && (
                 <span className="w-4 h-4 rounded-full bg-white text-teal-800 text-[10px] font-black flex items-center justify-center">
                   {compareList.length}
@@ -515,20 +513,20 @@ export default function MarketsPage({ onToggleBookmark, isBookmarked }) {
           <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 text-white backdrop-blur-md border border-slate-700 px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-4 animate-scale-in">
             <div className="flex items-center gap-2 text-xs font-bold">
               <Scale className="w-4 h-4 text-teal-400" />
-              <span>{compareList.length} / 2 {t('comparing')}</span>
+              <span>{compareList.length} / 2 Selected for Comparison</span>
             </div>
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setCompareModalOpen(true)}
                 className="px-3.5 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold shadow-sm cursor-pointer"
               >
-                {t('compareSelected')}
+                Compare Now
               </button>
               <button
                 onClick={() => setCompareList([])}
                 className="text-slate-400 hover:text-white text-xs underline cursor-pointer ml-1"
               >
-                {language === 'vi' ? 'Bỏ chọn' : 'Clear'}
+                Clear
               </button>
             </div>
           </div>

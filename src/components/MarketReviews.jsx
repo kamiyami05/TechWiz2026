@@ -1,66 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Star, MessageSquare, ThumbsUp, CheckCircle2, User, 
-  Send, ShieldCheck, Sparkles, Filter, AlertCircle 
+  Send, ShieldCheck, Sparkles, Lock, LogIn, AlertCircle 
 } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
 
-export default function MarketReviews({ marketId, marketName }) {
-  const { t, language } = useLanguage();
-
+export default function MarketReviews({ 
+  marketId, 
+  marketName, 
+  currentUser, 
+  onOpenAuth 
+}) {
   const storageKey = `freshfind_reviews_${marketId}`;
   const helpfulVotesKey = `freshfind_helpful_votes`;
 
-  // Default seed reviews if none exist in localStorage
-  const getSeedReviews = () => {
-    if (language === 'vi') {
-      return [
-        {
-          id: `rev-seed-1-${marketId}`,
-          author: "Nguyễn Hải Đăng",
-          rating: 5,
-          date: "3 ngày trước",
-          tags: ["Nông sản cực tươi", "Nông dân thân thiện"],
-          comment: "Rau cải xoăn và dâu tây ở đây tươi rói, cuống còn dính đất ẩm mới hái sáng sớm. Giá cả niêm yết rõ ràng, người bán giải thích nguồn gốc rất nhiệt tình!",
-          helpfulCount: 14,
-          verifiedShopper: true
-        },
-        {
-          id: `rev-seed-2-${marketId}`,
-          author: "Thu Trang (Tây Hồ)",
-          rating: 5,
-          date: "1 tuần trước",
-          tags: ["Bãi đỗ xe rộng", "100% Hữu cơ"],
-          comment: "Chợ mở vào cuối tuần không khí trong lành, có chỗ gửi xe miễn phí và cho dắt cún cưng đi dạo. Mình mua được bơ sáp 034 rất dẻo và sữa chua Ba Vì rất thơm.",
-          helpfulCount: 9,
-          verifiedShopper: true
-        }
-      ];
-    } else {
-      return [
-        {
-          id: `rev-seed-1-${marketId}`,
-          author: "David Harrison",
-          rating: 5,
-          date: "3 days ago",
-          tags: ["Super Fresh Produce", "Friendly Farmers"],
-          comment: "Outstanding morning farmers market! The kale and cherry tomatoes were freshly picked at sunrise from Moc Chau. Fair transparent pricing and very accommodating local growers.",
-          helpfulCount: 14,
-          verifiedShopper: true
-        },
-        {
-          id: `rev-seed-2-${marketId}`,
-          author: "Mai Linh Nguyen",
-          rating: 5,
-          date: "1 week ago",
-          tags: ["Easy Parking", "100% Organic"],
-          comment: "Wonderful community atmosphere on weekends. Free shaded parking, clean amenities, and dog-friendly. The 034 butter avocados and raw pasture milk are the best in Hanoi.",
-          helpfulCount: 9,
-          verifiedShopper: true
-        }
-      ];
+  // Default initial verified reviews in English
+  const getSeedReviews = () => [
+    {
+      id: `rev-seed-1-${marketId}`,
+      author: "David Harrison",
+      rating: 5,
+      date: "3 days ago",
+      comment: "Outstanding morning farmers market! The kale and cherry tomatoes were freshly harvested at dawn. Fair transparent pricing and very accommodating local growers.",
+      helpfulCount: 14,
+      verifiedShopper: true
+    },
+    {
+      id: `rev-seed-2-${marketId}`,
+      author: "Mai Linh Nguyen",
+      rating: 5,
+      date: "1 week ago",
+      comment: "Wonderful community atmosphere on weekends. Free shaded parking, clean amenities, and dog-friendly. The 034 butter avocados and raw pasture milk are exceptional.",
+      helpfulCount: 9,
+      verifiedShopper: true
     }
-  };
+  ];
 
   const [reviews, setReviews] = useState(() => {
     try {
@@ -81,12 +54,10 @@ export default function MarketReviews({ marketId, marketName }) {
     }
   });
 
-  // Form states
+  // Simplified form states: only star rating (score) and review comment
   const [rating, setRating] = useState(5);
   const [hoverRating, setHoverRating] = useState(0);
-  const [authorName, setAuthorName] = useState('');
   const [comment, setComment] = useState('');
-  const [selectedTags, setSelectedTags] = useState([]);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -104,58 +75,30 @@ export default function MarketReviews({ marketId, marketName }) {
     } catch (e) {}
   }, [userVotes]);
 
-  const availableTags = language === 'vi' ? [
-    "Nông sản cực tươi",
-    "Giá cả hợp lý",
-    "Bãi đỗ xe thuận tiện",
-    "Nông dân thân thiện",
-    "100% Hữu cơ",
-    "Thân thiện thú cưng",
-    "Thanh toán QR nhanh"
-  ] : [
-    "Super Fresh Produce",
-    "Fair Prices",
-    "Easy Parking",
-    "Friendly Farmers",
-    "100% Organic",
-    "Pet Friendly",
-    "Cashless QR Accepted"
-  ];
-
-  const handleToggleTag = (tag) => {
-    if (selectedTags.includes(tag)) {
-      setSelectedTags(prev => prev.filter(t => t !== tag));
-    } else {
-      setSelectedTags(prev => [...prev, tag]);
-    }
-  };
-
   const handleSubmitReview = (e) => {
     e.preventDefault();
-    if (!authorName.trim()) {
-      setErrorMessage(language === 'vi' ? 'Vui lòng nhập họ tên của bạn' : 'Please provide your name');
+    if (!currentUser) {
+      if (onOpenAuth) onOpenAuth();
       return;
     }
-    if (!comment.trim() || comment.trim().length < 10) {
-      setErrorMessage(language === 'vi' ? 'Nhận xét phải có ít nhất 10 ký tự' : 'Review comment must be at least 10 characters');
+
+    if (!comment.trim()) {
+      setErrorMessage('Please write a brief review comment.');
       return;
     }
 
     const newRev = {
       id: `rev-${Date.now()}`,
-      author: authorName.trim(),
-      rating,
-      date: language === 'vi' ? 'Vừa xong' : 'Just now',
-      tags: selectedTags,
+      author: currentUser.name || "Community Shopper",
+      rating: Number(rating),
+      date: "Just now",
       comment: comment.trim(),
       helpfulCount: 0,
       verifiedShopper: true
     };
 
     setReviews(prev => [newRev, ...prev]);
-    setAuthorName('');
     setComment('');
-    setSelectedTags([]);
     setRating(5);
     setErrorMessage('');
     setFormSubmitted(true);
@@ -178,9 +121,7 @@ export default function MarketReviews({ marketId, marketName }) {
     ? (reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length).toFixed(1)
     : '5.0';
 
-  const starLabels = language === 'vi' 
-    ? ['', 'Tạm ổn', 'Bình thường', 'Khá tốt', 'Rất hài lòng', 'Xuất sắc tuyệt vời!']
-    : ['', 'Needs Improvement', 'Fair', 'Good', 'Very Good', 'Exceptional Experience!'];
+  const starLabels = ['', '1/5 - Poor', '2/5 - Fair', '3/5 - Good', '4/5 - Very Good', '5/5 - Exceptional!'];
 
   return (
     <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm space-y-8 my-8">
@@ -190,15 +131,13 @@ export default function MarketReviews({ marketId, marketName }) {
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
             <MessageSquare className="w-3.5 h-3.5" />
-            <span>{t('communityReviews')}</span>
+            <span>Community Reviews</span>
           </div>
           <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white font-display">
-            {language === 'vi' ? 'Đánh Giá Từ Khách Đi Chợ Thực Tế' : 'Verified Community Shopper Reviews'}
+            Verified Shopper Ratings & Reviews
           </h3>
           <p className="text-xs text-slate-500 mt-1">
-            {language === 'vi' 
-              ? `Xem cảm nhận chân thực về chất lượng nông sản, dịch vụ và trải nghiệm tại ${marketName}.`
-              : `Real transparent feedback on crop quality, organic authenticity and vendor service at ${marketName}.`}
+            Real transparent feedback on crop freshness, organic quality, and vendor hospitality at {marketName}.
           </p>
         </div>
 
@@ -217,134 +156,160 @@ export default function MarketReviews({ marketId, marketName }) {
               ))}
             </div>
             <span className="text-xs text-slate-500 block font-medium">
-              {reviews.length} {language === 'vi' ? 'đánh giá được xác minh' : 'verified reviews'}
+              {reviews.length} verified reviews
             </span>
           </div>
         </div>
       </div>
 
-      {/* Review Submission Form */}
-      <form onSubmit={handleSubmitReview} className="p-5 sm:p-6 rounded-2xl bg-stone-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-700 space-y-4">
-        <div className="flex items-center justify-between">
-          <h4 className="font-extrabold text-sm text-slate-900 dark:text-white flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-emerald-600" />
-            <span>{t('writeReview')}</span>
-          </h4>
-          <span className="text-[11px] text-slate-500">
-            {language === 'vi' ? 'Lưu ngay vào bộ nhớ trình duyệt' : 'Instant client-side verified post'}
-          </span>
-        </div>
-
-        {/* Interactive Star Picker */}
-        <div>
-          <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-            {language === 'vi' ? 'Chấm điểm trải nghiệm của bạn:' : 'Rate Your Market Experience:'}
-          </label>
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1">
-              {[1, 2, 3, 4, 5].map(star => (
-                <button
-                  type="button"
-                  key={star}
-                  onClick={() => setRating(star)}
-                  onMouseEnter={() => setHoverRating(star)}
-                  onMouseLeave={() => setHoverRating(0)}
-                  className="p-1 text-amber-400 hover:scale-125 transition-transform cursor-pointer"
-                >
-                  <Star 
-                    className={`w-6 h-6 ${
-                      star <= (hoverRating || rating) 
-                        ? 'fill-amber-400 text-amber-400' 
-                        : 'text-slate-300 dark:text-slate-600'
-                    }`} 
-                  />
-                </button>
-              ))}
+      {/* Streamlined Review Submission Section */}
+      {!currentUser ? (
+        /* Login Required Prompt */
+        <div className="p-6 rounded-2xl bg-stone-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0">
+              <Lock className="w-6 h-6" />
             </div>
-            <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400">
-              {starLabels[hoverRating || rating]}
+            <div>
+              <h4 className="font-extrabold text-sm text-slate-900 dark:text-white">
+                Sign In to Leave a Review & Star Rating
+              </h4>
+              <p className="text-xs text-slate-500 mt-0.5">
+                To guarantee genuine farm-to-table feedback, only signed-in community members can rate this market.
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={onOpenAuth}
+            className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-md shadow-emerald-600/20 shrink-0 cursor-pointer"
+          >
+            <LogIn className="w-4 h-4" />
+            <span>Sign In to Review</span>
+          </button>
+        </div>
+      ) : (
+        /* Minimalist Form: Star Rating & Review Text Only */
+        <form onSubmit={handleSubmitReview} className="p-5 sm:p-6 rounded-2xl bg-stone-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-700 space-y-4">
+          
+          {/* Active User Indicator */}
+          <div className="flex items-center justify-between pb-3 border-b border-slate-200/70 dark:border-slate-800">
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs font-black shrink-0">
+                {currentUser.name ? currentUser.name.charAt(0).toUpperCase() : 'U'}
+              </div>
+              <div>
+                <span className="text-xs text-slate-500">Posting as:</span>{' '}
+                <strong className="text-xs font-extrabold text-slate-900 dark:text-white">{currentUser.name}</strong>
+              </div>
+              <span className="ml-1 inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950 px-2 py-0.5 rounded-full">
+                <ShieldCheck className="w-3 h-3 text-emerald-600" />
+                <span>Verified Member</span>
+              </span>
+            </div>
+            <span className="text-[11px] text-slate-400 font-mono">
+              Market ID: {marketId}
             </span>
           </div>
-        </div>
 
-        {/* Author Name */}
-        <div>
-          <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-            {language === 'vi' ? 'Tên của bạn:' : 'Your Name / Nickname:'}
-          </label>
-          <input
-            type="text"
-            value={authorName}
-            onChange={(e) => setAuthorName(e.target.value)}
-            placeholder={language === 'vi' ? 'Ví dụ: Hoàng Minh (Cầu Giấy)' : 'e.g. Sarah Jenkins (Downtown Shopper)'}
-            className="w-full text-xs p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-          />
-        </div>
+          {/* Interactive Star & Number Rating Selector */}
+          <div>
+            <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+              Select Your Rating (1 - 5 Stars):
+            </label>
+            <div className="flex flex-wrap items-center gap-4">
+              {/* Clickable Star Row */}
+              <div className="flex items-center gap-1">
+                {[1, 2, 3, 4, 5].map(star => (
+                  <button
+                    type="button"
+                    key={star}
+                    onClick={() => setRating(star)}
+                    onMouseEnter={() => setHoverRating(star)}
+                    onMouseLeave={() => setHoverRating(0)}
+                    className="p-1 text-amber-400 hover:scale-125 transition-transform cursor-pointer"
+                  >
+                    <Star 
+                      className={`w-7 h-7 ${
+                        star <= (hoverRating || rating) 
+                          ? 'fill-amber-400 text-amber-400' 
+                          : 'text-slate-300 dark:text-slate-600'
+                      }`} 
+                    />
+                  </button>
+                ))}
+              </div>
 
-        {/* Tags Selection */}
-        <div>
-          <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
-            {language === 'vi' ? 'Điểm nổi bật bạn thích:' : 'Quick Experience Highlights:'}
-          </label>
-          <div className="flex flex-wrap gap-1.5">
-            {availableTags.map((tag, idx) => (
-              <button
-                type="button"
-                key={idx}
-                onClick={() => handleToggleTag(tag)}
-                className={`text-[11px] px-3 py-1 rounded-xl font-bold transition-all cursor-pointer ${
-                  selectedTags.includes(tag)
-                    ? 'bg-emerald-600 text-white shadow-xs'
-                    : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-emerald-400'
-                }`}
-              >
-                {selectedTags.includes(tag) && <CheckCircle2 className="w-3 h-3 inline mr-1" />}
-                <span>{tag}</span>
-              </button>
-            ))}
+              {/* Number Buttons (1, 2, 3, 4, 5) for quick numeric selection */}
+              <div className="flex items-center gap-1">
+                {[1, 2, 3, 4, 5].map(num => (
+                  <button
+                    type="button"
+                    key={`num-${num}`}
+                    onClick={() => setRating(num)}
+                    className={`w-7 h-7 rounded-lg text-xs font-black transition-all cursor-pointer ${
+                      rating === num
+                        ? 'bg-emerald-600 text-white shadow-xs scale-105'
+                        : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 hover:bg-slate-100'
+                    }`}
+                  >
+                    {num}★
+                  </button>
+                ))}
+              </div>
+
+              {/* Textual Rating Label */}
+              <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400">
+                {starLabels[hoverRating || rating]}
+              </span>
+            </div>
           </div>
-        </div>
 
-        {/* Comment Textarea */}
-        <div>
-          <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
-            {language === 'vi' ? 'Nội dung cảm nhận chi tiết:' : 'Detailed Review Comments:'}
-          </label>
-          <textarea
-            rows="3"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            placeholder={language === 'vi' 
-              ? 'Chia sẻ về độ tươi của nông sản, thái độ nhà vườn, bãi đỗ xe hoặc món ngon bạn đã mua...' 
-              : 'Share your feedback on produce freshness, grower hospitality, pricing, or parking convenience...'}
-            className="w-full text-xs p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 leading-relaxed"
-          />
-        </div>
-
-        {/* Error message */}
-        {errorMessage && (
-          <div className="p-2.5 rounded-xl bg-rose-50 text-rose-600 text-xs font-semibold flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 shrink-0" />
-            <span>{errorMessage}</span>
+          {/* Review Textarea */}
+          <div>
+            <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+              Your Review & Comments:
+            </label>
+            <textarea
+              rows="3"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder="Write your feedback regarding produce freshness, prices, or market experience..."
+              className="w-full text-xs p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 leading-relaxed"
+            />
           </div>
-        )}
 
-        {/* Success toast inside form */}
-        {formSubmitted && (
-          <div className="p-3 rounded-xl bg-emerald-50 text-emerald-800 text-xs font-bold flex items-center gap-2 animate-fade-in border border-emerald-200">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-            <span>{language === 'vi' ? 'Cảm ơn bạn! Đánh giá đã được đăng thành công.' : 'Thank you! Your verified review has been published.'}</span>
+          {/* Error Message */}
+          {errorMessage && (
+            <div className="p-2.5 rounded-xl bg-rose-50 text-rose-600 text-xs font-semibold flex items-center gap-2">
+              <AlertCircle className="w-4 h-4 shrink-0" />
+              <span>{errorMessage}</span>
+            </div>
+          )}
+
+          {/* Success Toast */}
+          {formSubmitted && (
+            <div className="p-3 rounded-xl bg-emerald-50 text-emerald-800 text-xs font-bold flex items-center gap-2 animate-fade-in border border-emerald-200">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>Thank you! Your verified review has been published.</span>
+            </div>
+          )}
+
+          {/* Submit Button */}
+          <div className="flex items-center justify-between pt-1">
+            <span className="text-[11px] text-slate-400">
+              Saved locally to your browser storage.
+            </span>
+            <button
+              type="submit"
+              className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-md shadow-emerald-600/20 cursor-pointer"
+            >
+              <Send className="w-3.5 h-3.5" />
+              <span>Submit Rating & Review</span>
+            </button>
           </div>
-        )}
-
-        <button
-          type="submit"
-          className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-2 transition-all shadow-md shadow-emerald-600/20 cursor-pointer"
-        >
-          <Send className="w-3.5 h-3.5" />
-          <span>{t('submitReview')}</span>
-        </button>
-      </form>
+        </form>
+      )}
 
       {/* Reviews List */}
       <div className="space-y-4">
@@ -359,7 +324,7 @@ export default function MarketReviews({ marketId, marketName }) {
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 font-extrabold flex items-center justify-center text-xs shrink-0">
-                    {rev.author.charAt(0).toUpperCase()}
+                    {rev.author ? rev.author.charAt(0).toUpperCase() : 'U'}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
@@ -369,7 +334,7 @@ export default function MarketReviews({ marketId, marketName }) {
                       {rev.verifiedShopper && (
                         <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
                           <ShieldCheck className="w-3 h-3 text-emerald-600" />
-                          <span>{language === 'vi' ? 'Khách mua thật' : 'Verified Shopper'}</span>
+                          <span>Verified Shopper</span>
                         </span>
                       )}
                     </div>
@@ -379,8 +344,11 @@ export default function MarketReviews({ marketId, marketName }) {
                   </div>
                 </div>
 
-                {/* Stars */}
-                <div className="flex items-center gap-0.5 text-amber-400">
+                {/* Stars & Score */}
+                <div className="flex items-center gap-1 text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2.5 py-1 rounded-xl border border-amber-200/60 dark:border-amber-900/60">
+                  <span className="text-xs font-black text-amber-600 dark:text-amber-400 mr-1">
+                    {rev.rating}.0
+                  </span>
                   {[1, 2, 3, 4, 5].map(s => (
                     <Star 
                       key={s} 
@@ -390,26 +358,15 @@ export default function MarketReviews({ marketId, marketName }) {
                 </div>
               </div>
 
-              {/* Tags */}
-              {rev.tags && rev.tags.length > 0 && (
-                <div className="flex flex-wrap gap-1.5">
-                  {rev.tags.map((t, idx) => (
-                    <span key={idx} className="text-[10px] font-semibold px-2.5 py-0.5 rounded-md bg-stone-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
-                      #{t}
-                    </span>
-                  ))}
-                </div>
-              )}
-
               {/* Review Comment */}
               <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                 {rev.comment}
               </p>
 
-              {/* Helpful Button */}
+              {/* Helpful Upvote Button */}
               <div className="pt-2 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs">
                 <span className="text-[11px] text-slate-400">
-                  {language === 'vi' ? 'Nhận xét này có hữu ích không?' : 'Was this review helpful to you?'}
+                  Was this review helpful to you?
                 </span>
                 <button
                   type="button"
@@ -422,7 +379,7 @@ export default function MarketReviews({ marketId, marketName }) {
                   }`}
                 >
                   <ThumbsUp className={`w-3.5 h-3.5 ${hasVoted ? 'text-emerald-600 fill-emerald-600' : ''}`} />
-                  <span>{t('helpful')} ({rev.helpfulCount || 0})</span>
+                  <span>Helpful ({rev.helpfulCount || 0})</span>
                 </button>
               </div>
 
