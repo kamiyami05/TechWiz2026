@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Bookmark, Trash2, Download, StickyNote, X, 
   Share2, Check, ExternalLink, Copy, Leaf, Store, Sprout
@@ -149,9 +150,23 @@ export default function BookmarkSystem({
                       </div>
                     )}
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-bold text-sm text-slate-900 dark:text-white leading-snug">
-                        {item.title}
-                      </h4>
+                      {item.type === 'Market' ? (
+                        <Link 
+                          to={`/markets/${item.id}`} 
+                          onClick={onClose}
+                          className="font-bold text-sm text-slate-900 dark:text-white leading-snug hover:text-emerald-600 transition-colors block"
+                        >
+                          {item.title}
+                        </Link>
+                      ) : (
+                        <Link 
+                          to={item.type === 'Seasonal Produce' ? '/seasonal' : '/produce'} 
+                          onClick={onClose}
+                          className="font-bold text-sm text-slate-900 dark:text-white leading-snug hover:text-emerald-600 transition-colors block"
+                        >
+                          {item.title}
+                        </Link>
+                      )}
                       {item.info && (
                         <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5 line-clamp-1">
                           {item.info}

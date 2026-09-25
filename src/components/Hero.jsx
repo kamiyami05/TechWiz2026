@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Search, MapPin, Calendar, Carrot, ArrowRight, 
   Sparkles, CheckCircle, Clock, ShieldCheck, HeartHandshake,
@@ -6,9 +7,9 @@ import {
 } from 'lucide-react';
 import markets from '../data/markets.json';
 import produce from '../data/produce.json';
-import { scrollToSection } from '../utils/navigation';
 
 export default function Hero({ onApplyQuickFilter }) {
+  const navigate = useNavigate();
   const [selectedArea, setSelectedArea] = useState('all');
   const [selectedDay, setSelectedDay] = useState('all');
   const [selectedProduceType, setSelectedProduceType] = useState('all');
@@ -43,12 +44,19 @@ export default function Hero({ onApplyQuickFilter }) {
 
   const handleQuickSearch = (e) => {
     e.preventDefault();
-    onApplyQuickFilter({
-      area: selectedArea,
-      day: selectedDay,
-      produceType: selectedProduceType
-    });
-    scrollToSection('directory', 20);
+    if (onApplyQuickFilter) {
+      onApplyQuickFilter({
+        area: selectedArea,
+        day: selectedDay,
+        produceType: selectedProduceType
+      });
+    } else {
+      const params = new URLSearchParams();
+      if (selectedArea !== 'all') params.set('area', selectedArea);
+      if (selectedDay !== 'all') params.set('day', selectedDay);
+      if (selectedProduceType !== 'all') params.set('produce', selectedProduceType);
+      navigate(`/markets?${params.toString()}`);
+    }
   };
 
   // Breakthrough Feature: Web Speech API Audio Market Briefing
@@ -226,8 +234,7 @@ export default function Hero({ onApplyQuickFilter }) {
           {/* Open Markets Highlight */}
           <div 
             onClick={() => {
-              onApplyQuickFilter({ area: 'Ha Dong District, Hanoi', day: 'all', produceType: 'all' });
-              scrollToSection('directory', 20);
+              navigate('/markets/mkt-4');
             }}
             className="bg-white/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-500 rounded-3xl p-4 sm:p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all group"
           >
@@ -260,7 +267,7 @@ export default function Hero({ onApplyQuickFilter }) {
           {/* Seasonal Pick Highlight */}
           <div 
             onClick={() => {
-              scrollToSection('seasonal', 20);
+              navigate('/seasonal');
             }}
             className="bg-white/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 hover:border-rose-400 dark:hover:border-rose-500 rounded-3xl p-4 sm:p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all group"
           >

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowUp, Heart, Shield, Globe, Carrot, Mail, CheckCircle2, AlertCircle } from 'lucide-react';
-import { scrollToSection } from '../utils/navigation';
 
 export default function Footer() {
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -40,21 +40,29 @@ export default function Footer() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="bg-stone-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400">
       
       {/* Breadcrumb Navigation */}
       <div className="bg-emerald-50/60 dark:bg-emerald-950/20 border-b border-emerald-100 dark:border-emerald-900/30 py-2.5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
-          <a 
-            href="#" 
-            onClick={(e) => { e.preventDefault(); scrollToSection('top'); }}
-            className="hover:text-emerald-600 transition-colors cursor-pointer"
+          <Link 
+            to="/"
+            className="hover:text-emerald-600 transition-colors"
           >
             FreshFind Home
-          </a>
+          </Link>
           <span>/</span>
-          <span className="text-emerald-700 dark:text-emerald-400">Farmers' Market Directory & Farm-to-Table Guide</span>
+          <Link 
+            to="/markets"
+            className="text-emerald-700 dark:text-emerald-400 hover:underline"
+          >
+            Farmers' Market Directory & Farm-to-Table Guide
+          </Link>
         </div>
       </div>
 
@@ -63,7 +71,7 @@ export default function Footer() {
           
           {/* Brand Info */}
           <div className="md:col-span-1 space-y-3">
-            <div className="flex items-center gap-2.5">
+            <Link to="/" className="flex items-center gap-2.5 inline-flex">
               <div className="w-8 h-8 shrink-0 flex items-center justify-center">
                 <img 
                   src="/logo.png" 
@@ -77,7 +85,7 @@ export default function Footer() {
               <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">
                 Certified Local Harvest
               </span>
-            </div>
+            </Link>
             <p className="text-xs leading-relaxed">
               Empowering communities to discover local farmers' markets, connect directly with sustainable growers, and minimize food miles with fresh, organic produce.
             </p>
@@ -86,65 +94,59 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links with Smooth Offset Navigation */}
+          {/* Quick Links with SPA Link Navigation */}
           <div>
             <h4 className="font-bold text-slate-900 dark:text-white mb-3 uppercase tracking-wider text-xs">
               Quick Navigation
             </h4>
             <ul className="space-y-2">
               <li>
-                <a 
-                  href="#find-market" 
-                  onClick={(e) => { e.preventDefault(); scrollToSection('find-market'); }}
-                  className="hover:text-emerald-600 transition-colors cursor-pointer"
+                <Link 
+                  to="/markets" 
+                  className="hover:text-emerald-600 transition-colors"
                 >
                   Find a Market Nearby
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="#directory" 
-                  onClick={(e) => { e.preventDefault(); scrollToSection('directory'); }}
-                  className="hover:text-emerald-600 transition-colors cursor-pointer"
+                <Link 
+                  to="/markets" 
+                  className="hover:text-emerald-600 transition-colors"
                 >
                   Farmers' Market Directory
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="#seasonal" 
-                  onClick={(e) => { e.preventDefault(); scrollToSection('seasonal'); }}
-                  className="hover:text-emerald-600 transition-colors font-semibold text-emerald-700 dark:text-emerald-400 cursor-pointer"
+                <Link 
+                  to="/seasonal" 
+                  className="hover:text-emerald-600 transition-colors font-semibold text-emerald-700 dark:text-emerald-400"
                 >
                   Seasonal Picks & Heatmap
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="#produce" 
-                  onClick={(e) => { e.preventDefault(); scrollToSection('produce'); }}
-                  className="hover:text-emerald-600 transition-colors cursor-pointer"
+                <Link 
+                  to="/produce" 
+                  className="hover:text-emerald-600 transition-colors"
                 >
                   Produce & Farm Passports
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="#about" 
-                  onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
-                  className="hover:text-emerald-600 transition-colors cursor-pointer"
+                <Link 
+                  to="/about" 
+                  className="hover:text-emerald-600 transition-colors"
                 >
                   About Our Mission
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="#contact" 
-                  onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
-                  className="hover:text-emerald-600 transition-colors cursor-pointer"
+                <Link 
+                  to="/contact" 
+                  className="hover:text-emerald-600 transition-colors"
                 >
                   Contact & Community Feedback
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -210,7 +212,7 @@ export default function Footer() {
             </ul>
             <div className="pt-2">
               <button
-                onClick={() => scrollToSection('top')}
+                onClick={scrollToTop}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-700 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700 transition-all cursor-pointer shadow-sm"
               >
                 <ArrowUp className="w-3.5 h-3.5" />
@@ -227,27 +229,24 @@ export default function Footer() {
             © 2026 FreshFind Vietnam. Empowering sustainable regional agriculture and healthy communities.
           </span>
           <div className="flex items-center gap-4">
-            <a 
-              href="#about" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
-              className="hover:text-emerald-600 transition-colors cursor-pointer"
+            <Link 
+              to="/about" 
+              className="hover:text-emerald-600 transition-colors"
             >
               Terms of Service
-            </a>
-            <a 
-              href="#about" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
-              className="hover:text-emerald-600 transition-colors cursor-pointer"
+            </Link>
+            <Link 
+              to="/about" 
+              className="hover:text-emerald-600 transition-colors"
             >
               Privacy Policy
-            </a>
-            <a 
-              href="#contact" 
-              onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
-              className="hover:text-emerald-600 transition-colors cursor-pointer"
+            </Link>
+            <Link 
+              to="/contact" 
+              className="hover:text-emerald-600 transition-colors"
             >
               Support Center
-            </a>
+            </Link>
           </div>
         </div>
 

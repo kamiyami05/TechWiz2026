@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { CheckCircle2 } from 'lucide-react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import MarketDirectory from './components/MarketDirectory';
-import MarketDetailModal from './components/MarketDetailModal';
-import SeasonalRecommendations from './components/SeasonalRecommendations';
-import ProduceGuide from './components/ProduceGuide';
-import AboutUs from './components/AboutUs';
+import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import BookmarkSystem from './components/BookmarkSystem';
 import ChatbotWidget from './components/ChatbotWidget';
-import ContactAbout from './components/ContactAbout';
 import AuthModal from './components/AuthModal';
-import Footer from './components/Footer';
+
+// Multi-Page SPA Route Components
+import HomePage from './pages/HomePage';
+import MarketsPage from './pages/MarketsPage';
+import MarketDetailPage from './pages/MarketDetailPage';
+import ProducePage from './pages/ProducePage';
+import SeasonalPage from './pages/SeasonalPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('freshfind_dark') === 'true' || false;
   });
 
-  const [quickFilter, setQuickFilter] = useState({
-    area: 'all',
-    day: 'all',
-    produceType: 'all'
-  });
-
-  const [selectedMarketModal, setSelectedMarketModal] = useState(null);
   const [isBookmarksOpen, setIsBookmarksOpen] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
@@ -50,7 +47,7 @@ export default function App() {
     showToast(`Welcome back, ${user.name}!`);
   };
 
-  // Bookmarks state
+  // Bookmarks state (persistent shopping notebook)
   const [bookmarks, setBookmarks] = useState(() => {
     try {
       const saved = localStorage.getItem('freshfind_bookmarks');
@@ -105,7 +102,10 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors">
       
-      {/* Toast Notification */}
+      {/* Scroll restoration helper */}
+      <ScrollToTop />
+
+      {/* Floating Toast Notification */}
       {toastMessage && (
         <div className="fixed top-20 right-6 z-50 bg-emerald-600 text-white text-xs font-bold px-4 py-2.5 rounded-2xl shadow-xl animate-fade-in flex items-center gap-2 border border-emerald-400/30">
           <CheckCircle2 className="w-4 h-4 text-emerald-100 shrink-0" />
@@ -113,7 +113,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Navigation */}
+      {/* Shared Header Navigation */}
       <Navbar
         darkMode={darkMode}
         setDarkMode={setDarkMode}
@@ -124,47 +124,86 @@ export default function App() {
         onLogout={handleLogout}
       />
 
+      {/* Main Multi-Page SPA Routes */}
       <main className="flex-1">
-        {/* Hero Section & Quick Find Prompt (Sitemap: Find a Market) */}
-        <Hero onApplyQuickFilter={setQuickFilter} />
+        <Routes>
+          {/* Home: Hero + Platform Overview + Top Hot Markets + Quick Search */}
+          <Route 
+            path="/" 
+            element={
+              <HomePage 
+                onToggleBookmark={handleToggleBookmark} 
+                isBookmarked={isBookmarked} 
+              />
+            } 
+          />
 
-        {/* Market Directory with Live Open Right Now indicators */}
-        <MarketDirectory
-          quickFilter={quickFilter}
-          onSelectMarket={setSelectedMarketModal}
-          onToggleBookmark={handleToggleBookmark}
-          isBookmarked={isBookmarked}
-        />
+          {/* Markets Directory: Full list with multi-criteria filters */}
+          <Route 
+            path="/markets" 
+            element={
+              <MarketsPage 
+                onToggleBookmark={handleToggleBookmark} 
+                isBookmarked={isBookmarked} 
+              />
+            } 
+          />
 
-        {/* Seasonal Recommendations (Sitemap Core: Seasonal Recommendations) */}
-        <SeasonalRecommendations
-          onToggleBookmark={handleToggleBookmark}
-          isBookmarked={isBookmarked}
-        />
+          {/* Market Detail: Dedicated full page with weekly table, map & stalls */}
+          <Route 
+            path="/markets/:id" 
+            element={
+              <MarketDetailPage 
+                onToggleBookmark={handleToggleBookmark} 
+                isBookmarked={isBookmarked} 
+              />
+            } 
+          />
 
-        {/* Produce Guide (Sitemap Core: Produce Guide) */}
-        <ProduceGuide
-          onToggleBookmark={handleToggleBookmark}
-          isBookmarked={isBookmarked}
-        />
+          {/* Produce Guide: Produce catalog & 12-month harvest heatmap matrix */}
+          <Route 
+            path="/produce" 
+            element={
+              <ProducePage 
+                onToggleBookmark={handleToggleBookmark} 
+                isBookmarked={isBookmarked} 
+              />
+            } 
+          />
 
-        {/* About Us (Sitemap Core: About Us) */}
-        <AboutUs />
+          {/* Seasonal Recommendations: 4-season exploration & specialty picks */}
+          <Route 
+            path="/seasonal" 
+            element={
+              <SeasonalPage 
+                onToggleBookmark={handleToggleBookmark} 
+                isBookmarked={isBookmarked} 
+              />
+            } 
+          />
 
-        {/* Contact Us, Geolocation & Map (Sitemap Core: Contact Us) */}
-        <ContactAbout />
+          {/* About Us: Brand story, impact stats & 3-member team */}
+          <Route 
+            path="/about" 
+            element={<AboutPage />} 
+          />
+
+          {/* Contact & Support: GPS proximity detector, map & inquiry form */}
+          <Route 
+            path="/contact" 
+            element={<ContactPage />} 
+          />
+
+          {/* Fallback redirect */}
+          <Route 
+            path="*" 
+            element={<Navigate to="/" replace />} 
+          />
+        </Routes>
       </main>
 
-      {/* Footer */}
+      {/* Shared Footer */}
       <Footer />
-
-      {/* Market Detail Modal */}
-      <MarketDetailModal
-        market={selectedMarketModal}
-        onClose={() => setSelectedMarketModal(null)}
-        onToggleBookmark={handleToggleBookmark}
-        isBookmarked={isBookmarked}
-      />
 
       {/* Bookmarking System Drawer */}
       <BookmarkSystem

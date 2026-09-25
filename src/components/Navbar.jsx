@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { 
   Store, Carrot, Clock, Users, Bookmark, Sun, 
   Moon, User, Menu, X, MapPin, Sparkles, Compass,
   ChevronDown, LogOut, ShieldCheck, Search, Calendar,
   Heart, MessageSquare
 } from 'lucide-react';
-import { scrollToSection } from '../utils/navigation';
 
 export default function Navbar({ 
   darkMode, 
@@ -14,13 +14,18 @@ export default function Navbar({
   bookmarkCount, 
   onOpenAuth,
   currentUser,
-  onLogout,
-  activeSection 
+  onLogout 
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [visitorCount, setVisitorCount] = useState(2150);
   const [currentTime, setCurrentTime] = useState('');
+  const location = useLocation();
+
+  // Close mobile drawer on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
 
   // Clock in English format
   useEffect(() => {
@@ -55,48 +60,15 @@ export default function Navbar({
     setVisitorCount(count);
   }, []);
 
-  // Sitemap-aligned English navigation links
+  // Multi-Page SPA Navigation links
   const navLinks = [
-    { id: 'find-market', name: 'Find a Market', icon: Compass, href: '#find-market' },
-    { id: 'directory', name: 'Directory', icon: Store, href: '#directory' },
-    { id: 'seasonal', name: 'Seasonal Picks', icon: Calendar, href: '#seasonal' },
-    { id: 'produce', name: 'Produce Guide', icon: Carrot, href: '#produce' },
-    { id: 'about', name: 'About Us', icon: Users, href: '#about' },
-    { id: 'contact', name: 'Contact', icon: MessageSquare, href: '#contact' },
+    { path: '/', name: 'Home', icon: Compass, end: true },
+    { path: '/markets', name: 'Markets Directory', icon: Store, end: false },
+    { path: '/seasonal', name: 'Seasonal Picks', icon: Calendar, end: false },
+    { path: '/produce', name: 'Produce Guide', icon: Carrot, end: false },
+    { path: '/about', name: 'About Us', icon: Users, end: false },
+    { path: '/contact', name: 'Contact', icon: MessageSquare, end: false },
   ];
-
-  const [currentActive, setCurrentActive] = useState('find-market');
-
-  // Active section scroll spy
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const sectionIds = ['find-market', 'directory', 'seasonal', 'produce', 'about', 'contact'];
-
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const id = sectionIds[i];
-        const el = document.getElementById(id);
-        if (el) {
-          const top = el.offsetTop - 120;
-          if (scrollY >= top) {
-            setCurrentActive(id);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleNavClick = (e, href) => {
-    e.preventDefault();
-    const id = href.replace('#', '');
-    scrollToSection(id, 16);
-    setCurrentActive(id);
-    setMobileMenuOpen(false);
-  };
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-emerald-200/70 dark:border-slate-800 text-slate-800 dark:text-slate-100 transition-colors shadow-xs">
@@ -132,7 +104,7 @@ export default function Navbar({
         <div className="flex items-center justify-between h-16 sm:h-18 gap-3 sm:gap-6">
           
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group focus:outline-none shrink-0">
+          <Link to="/" className="flex items-center gap-2.5 group focus:outline-none shrink-0">
             <div className="w-10 h-10 group-hover:scale-105 transition-transform shrink-0 flex items-center justify-center">
               <img 
                 src="/logo.png" 
@@ -149,27 +121,24 @@ export default function Navbar({
                 100% Organic
               </span>
             </div>
-          </a>
+          </Link>
 
-          {/* Desktop Nav Links */}
+          {/* Desktop Nav Links via React Router NavLink */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Main Navigation">
-            {navLinks.map((link) => {
-              const isActive = currentActive === link.id;
-              return (
-                <a
-                  key={link.id}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className={`px-3 py-1.5 text-xs font-bold rounded-xl whitespace-nowrap transition-colors cursor-pointer ${
-                    isActive
-                      ? 'bg-emerald-600 text-white shadow-sm'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/80 dark:hover:bg-slate-800'
-                  }`}
-                >
-                  {link.name}
-                </a>
-              );
-            })}
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                end={link.end}
+                className={({ isActive }) => `px-3 py-1.5 text-xs font-bold rounded-xl whitespace-nowrap transition-colors cursor-pointer ${
+                  isActive
+                    ? 'bg-emerald-600 text-white shadow-sm font-extrabold'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50/80 dark:hover:bg-slate-800'
+                }`}
+              >
+                {link.name}
+              </NavLink>
+            ))}
           </nav>
 
           {/* Action Tools */}
@@ -280,22 +249,26 @@ export default function Navbar({
 
           <div className="grid grid-cols-1 gap-1">
             {navLinks.map((link) => {
-              const isActive = currentActive === link.id;
               const Icon = link.icon;
               return (
-                <a
-                  key={link.id}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className={`px-3 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2.5 transition-colors ${
+                <NavLink
+                  key={link.path}
+                  to={link.path}
+                  end={link.end}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={({ isActive }) => `px-3 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2.5 transition-colors ${
                     isActive
                       ? 'bg-emerald-600 text-white font-extrabold'
                       : 'text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-slate-800 hover:text-emerald-600'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-emerald-600 dark:text-emerald-400'}`} />
-                  <span>{link.name}</span>
-                </a>
+                  {({ isActive }) => (
+                    <>
+                      <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-emerald-600 dark:text-emerald-400'}`} />
+                      <span>{link.name}</span>
+                    </>
+                  )}
+                </NavLink>
               );
             })}
           </div>

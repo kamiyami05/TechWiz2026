@@ -5,9 +5,11 @@ import {
   X, Truck, Sprout, Award, CheckCircle2, Leaf
 } from 'lucide-react';
 import produceData from '../data/produce.json';
-import { scrollToSection } from '../utils/navigation';
+import markets from '../data/markets.json';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function ProduceGuide({ onToggleBookmark, isBookmarked }) {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [inspectedProduce, setInspectedProduce] = useState(null);
 
@@ -30,9 +32,9 @@ export default function ProduceGuide({ onToggleBookmark, isBookmarked }) {
         
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-          <a href="#" className="hover:text-emerald-600 transition-colors font-semibold">
+          <Link to="/" className="hover:text-emerald-600 transition-colors font-semibold">
             Home
-          </a>
+          </Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
           <span className="font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-100/70 dark:bg-emerald-950/70 px-2 py-0.5 rounded-md">
             Produce Guide
@@ -171,10 +173,15 @@ export default function ProduceGuide({ onToggleBookmark, isBookmarked }) {
                         <span
                           key={idx}
                           onClick={() => {
-                            scrollToSection('directory', 20);
+                            const found = markets.find(m => m.name.toLowerCase().includes(mName.toLowerCase()) || mName.toLowerCase().includes(m.name.toLowerCase()));
+                            if (found) {
+                              navigate(`/markets/${found.id}`);
+                            } else {
+                              navigate('/markets');
+                            }
                           }}
                           className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-stone-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 hover:bg-emerald-600 hover:text-white dark:hover:bg-emerald-600 cursor-pointer transition-colors"
-                          title="Click to view market schedule"
+                          title="Click to view market schedule & map"
                         >
                           {mName}
                         </span>

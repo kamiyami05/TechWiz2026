@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Calendar, Sparkles, Sun, CloudRain, Snowflake, 
   Wind, Bookmark, Check, ArrowRight, HeartHandshake,
   ShieldCheck, Leaf, ShoppingBag, Info, Grid, Layers, Sprout
 } from 'lucide-react';
-import { scrollToSection } from '../utils/navigation';
 
 const SEASONS_DATA = {
   autumn: {
@@ -164,6 +164,7 @@ const HARVEST_HEATMAP = [
 const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 export default function SeasonalRecommendations({ onToggleBookmark, isBookmarked }) {
+  const navigate = useNavigate();
   const [selectedSeason, setSelectedSeason] = useState('autumn');
   const [viewMode, setViewMode] = useState('cards'); // 'cards' | 'heatmap'
 
@@ -316,7 +317,7 @@ export default function SeasonalRecommendations({ onToggleBookmark, isBookmarked
                             <span>Available at:&nbsp;</span>
                             <span 
                               onClick={() => {
-                                scrollToSection('directory', 20);
+                                navigate('/markets');
                               }}
                               className="font-semibold text-emerald-700 dark:text-emerald-400 hover:underline cursor-pointer"
                               title="Click to view in Directory"
