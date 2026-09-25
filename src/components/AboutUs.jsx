@@ -36,22 +36,43 @@ export default function AboutUs() {
     { number: '100%', label: 'In-Season Commitment', sub: 'Harvested fresh on market morning' },
   ];
 
-  const teamMembers = [
+  const ourTeam = [
     {
-      name: 'FreshFind Core Platform Architects',
-      role: 'Technology & Eco-System Design',
-      quote: 'Leveraging modern client-side web innovation to bridge the information divide between sustainable regional farms and neighborhood dining tables.',
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80',
-      badge: 'Engineering Hub'
+      name: 'Huong',
+      role: 'Project Manager',
+      circleColor: '#5e999d',
+      roleColor: 'text-[#448b8f] dark:text-[#6cb4b8]',
+      badgeColor: 'bg-teal-50 dark:bg-teal-950/70 border-teal-200 dark:border-teal-800 text-teal-800 dark:text-teal-300',
+      tagline: 'Product Roadmap & Partner Coordination',
+      bio: 'Directs roadmap execution, connects with regional organic farms, and ensures FreshFind adheres to rigorous food transparency standards.'
     },
     {
-      name: 'Alliance of Clean Agriculture Cooperatives',
-      role: 'Certified VietGAP Supply Network',
-      quote: 'Dedicated to natural regenerative farming practices that honor topsoil health and groundwater reserves for future generations.',
-      image: 'https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=400&q=80',
-      badge: '150+ Family Farms'
+      name: 'Xuan',
+      role: 'Lead Developer',
+      circleColor: '#28885a',
+      roleColor: 'text-[#28885a] dark:text-[#42bf82]',
+      badgeColor: 'bg-emerald-50 dark:bg-emerald-950/70 border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300',
+      tagline: 'Platform Architecture & Geospatial Systems',
+      bio: 'Architects the responsive React SPA, interactive Leaflet mapping, live open-market status logic, and client-side shopping notebook.'
+    },
+    {
+      name: 'Chuong',
+      role: 'QA Tester',
+      circleColor: '#4d87b7',
+      roleColor: 'text-[#4082b6] dark:text-[#6ba7db]',
+      badgeColor: 'bg-sky-50 dark:bg-sky-950/70 border-sky-200 dark:border-sky-800 text-sky-800 dark:text-sky-300',
+      tagline: 'Data Quality & Usability Testing',
+      bio: 'Verifies market locations, seasonal calendar precision, and conducts rigorous cross-device test coverage for a seamless user experience.'
     }
   ];
+
+  const agriculturalPartner = {
+    name: 'Alliance of Clean Agriculture Cooperatives',
+    role: 'Certified VietGAP Supply Network',
+    quote: 'Dedicated to natural regenerative farming practices that honor topsoil health and groundwater reserves for future generations.',
+    image: 'https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=400&q=80',
+    badge: '150+ Family Farms'
+  };
 
   return (
     <section 
@@ -133,39 +154,74 @@ export default function AboutUs() {
           </div>
         </div>
 
-        {/* Team & Partners Quotes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {teamMembers.map((m, idx) => (
-            <div 
-              key={idx}
-              className="bg-stone-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-7 shadow-sm flex items-start gap-4 group hover:border-emerald-500/60 transition-all"
-            >
-              <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-md shrink-0 border border-emerald-300 dark:border-emerald-800 bg-emerald-100">
-                <img 
-                  src={m.image} 
-                  alt={m.name} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=400&q=80"; }}
-                />
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center justify-between gap-2">
-                  <h4 className="font-extrabold text-base text-slate-900 dark:text-white">
-                    {m.name}
+        {/* Team Section with Custom Project Adaptation */}
+        <div className="mb-16">
+          <p className="text-center text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-6 leading-relaxed">
+            Our mission is to simplify farmers' market discovery, making it easy for every resident to manage the health, sustainability, and seasonal nutrition of their families through a comprehensive and user-friendly tech platform.
+          </p>
+
+          <div className="bg-slate-100/90 dark:bg-slate-800/60 border border-slate-200/90 dark:border-slate-700/80 rounded-3xl p-8 sm:p-12 shadow-sm text-center">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-8 sm:mb-12 font-display">
+              Our Team
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 max-w-4xl mx-auto">
+              {ourTeam.map((member) => (
+                <div key={member.name} className="flex flex-col items-center group">
+                  <div
+                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-full flex items-center justify-center text-white text-xl sm:text-2xl font-black shadow-lg transition-transform duration-300 group-hover:scale-105 select-none"
+                    style={{ backgroundColor: member.circleColor }}
+                  >
+                    {member.name}
+                  </div>
+
+                  <h4 className="mt-4 font-extrabold text-lg sm:text-xl text-slate-900 dark:text-white">
+                    {member.name}
                   </h4>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">
-                    {m.badge}
+
+                  <p className={`text-xs sm:text-sm font-bold ${member.roleColor} mt-0.5`}>
+                    {member.role}
+                  </p>
+
+                  <span className={`inline-block mt-2.5 px-3 py-1 rounded-full text-[11px] font-semibold border ${member.badgeColor}`}>
+                    {member.tagline}
                   </span>
+
+                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-2.5 leading-relaxed max-w-xs text-center">
+                    {member.bio}
+                  </p>
                 </div>
-                <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 block mb-2">
-                  {m.role}
-                </span>
-                <p className="text-xs text-slate-600 dark:text-slate-300 italic leading-relaxed">
-                  "{m.quote}"
-                </p>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+        </div>
+
+        {/* Agricultural Partner Alliance */}
+        <div className="bg-stone-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-7 shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-5 mb-16 group hover:border-emerald-500/60 transition-all">
+          <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-md shrink-0 border border-emerald-300 dark:border-emerald-800 bg-emerald-100">
+            <img 
+              src={agriculturalPartner.image} 
+              alt={agriculturalPartner.name} 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=400&q=80"; }}
+            />
+          </div>
+          <div className="flex-1 text-center sm:text-left">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <h4 className="font-extrabold text-base text-slate-900 dark:text-white">
+                {agriculturalPartner.name}
+              </h4>
+              <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 self-center sm:self-auto">
+                {agriculturalPartner.badge}
+              </span>
+            </div>
+            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 block mb-2">
+              {agriculturalPartner.role}
+            </span>
+            <p className="text-xs text-slate-600 dark:text-slate-300 italic leading-relaxed">
+              "{agriculturalPartner.quote}"
+            </p>
+          </div>
         </div>
 
         {/* Visual Story: From Soil to Stall */}
