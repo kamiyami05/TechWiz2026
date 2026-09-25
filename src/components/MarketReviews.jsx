@@ -164,14 +164,26 @@ export default function MarketReviews({
   };
 
   const handleHelpfulVote = (reviewId) => {
-    if (userVotes.includes(reviewId)) return;
-    setUserVotes(prev => [...prev, reviewId]);
-    setReviews(prev => prev.map(r => {
-      if (r.id === reviewId) {
-        return { ...r, helpfulCount: (r.helpfulCount || 0) + 1 };
-      }
-      return r;
-    }));
+    const hasVoted = userVotes.includes(reviewId);
+    if (hasVoted) {
+      // Toggle off / remove helpful like
+      setUserVotes(prev => prev.filter(id => id !== reviewId));
+      setReviews(prev => prev.map(r => {
+        if (r.id === reviewId) {
+          return { ...r, helpfulCount: Math.max(0, (r.helpfulCount || 0) - 1) };
+        }
+        return r;
+      }));
+    } else {
+      // Add helpful like
+      setUserVotes(prev => [...prev, reviewId]);
+      setReviews(prev => prev.map(r => {
+        if (r.id === reviewId) {
+          return { ...r, helpfulCount: (r.helpfulCount || 0) + 1 };
+        }
+        return r;
+      }));
+    }
   };
 
   // Filtered reviews by star rating
@@ -479,10 +491,10 @@ export default function MarketReviews({
                   <button
                     type="button"
                     onClick={() => handleHelpfulVote(rev.id)}
-                    disabled={hasVoted}
+                    title={hasVoted ? "Click to remove helpful vote" : "Mark as helpful"}
                     className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                       hasVoted
-                        ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                        ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 hover:bg-emerald-200 dark:hover:bg-emerald-900 border border-emerald-300 dark:border-emerald-800'
                         : 'bg-stone-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 hover:text-emerald-700 border border-slate-200 dark:border-slate-600'
                     }`}
                   >
