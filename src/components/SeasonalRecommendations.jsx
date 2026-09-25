@@ -197,6 +197,7 @@ export default function SeasonalRecommendations({ onToggleBookmark, isBookmarked
             <Grid className="w-3.5 h-3.5" />
             <span>12-Month Harvest Heatmap</span>
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse ml-0.5" />
+          </button>
         </div>
       </div>
 
