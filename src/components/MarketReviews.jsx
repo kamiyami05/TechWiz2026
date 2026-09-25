@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Star, MessageSquare, ThumbsUp, CheckCircle2, User, 
-  Send, ShieldCheck, Sparkles, Lock, LogIn, AlertCircle 
+  Send, ShieldCheck, Sparkles, Lock, LogIn, AlertCircle,
+  Filter, ChevronLeft, ChevronRight
 } from 'lucide-react';
+
+const REVIEWS_PER_PAGE = 3;
 
 export default function MarketReviews({ 
   marketId, 
@@ -13,13 +16,13 @@ export default function MarketReviews({
   const storageKey = `freshfind_reviews_${marketId}`;
   const helpfulVotesKey = `freshfind_helpful_votes`;
 
-  // Default initial verified reviews in English
+  // Default initial verified reviews in English with exact dates (Day Month Year)
   const getSeedReviews = () => [
     {
       id: `rev-seed-1-${marketId}`,
       author: "David Harrison",
       rating: 5,
-      date: "3 days ago",
+      date: "Sep 22, 2026",
       comment: "Outstanding morning farmers market! The kale and cherry tomatoes were freshly harvested at dawn. Fair transparent pricing and very accommodating local growers.",
       helpfulCount: 14,
       verifiedShopper: true
@@ -28,9 +31,45 @@ export default function MarketReviews({
       id: `rev-seed-2-${marketId}`,
       author: "Mai Linh Nguyen",
       rating: 5,
-      date: "1 week ago",
+      date: "Sep 18, 2026",
       comment: "Wonderful community atmosphere on weekends. Free shaded parking, clean amenities, and dog-friendly. The 034 butter avocados and raw pasture milk are exceptional.",
       helpfulCount: 9,
+      verifiedShopper: true
+    },
+    {
+      id: `rev-seed-3-${marketId}`,
+      author: "Jonathan Vance",
+      rating: 4,
+      date: "Sep 14, 2026",
+      comment: "Great selection of heirloom fruits and fresh herbs. The parking can get busy after 9:00 AM, so I recommend coming early for the freshest morning harvest.",
+      helpfulCount: 7,
+      verifiedShopper: true
+    },
+    {
+      id: `rev-seed-4-${marketId}`,
+      author: "Thu Hang Tran",
+      rating: 5,
+      date: "Sep 08, 2026",
+      comment: "All organic produce is clearly labeled with farm batches and certifications. I love buying hydroponic kale and sweet strawberries directly from the farmers.",
+      helpfulCount: 11,
+      verifiedShopper: true
+    },
+    {
+      id: `rev-seed-5-${marketId}`,
+      author: "Alexandre Laurent",
+      rating: 4,
+      date: "Aug 29, 2026",
+      comment: "Clean market with wonderful artisan sourdough and goat cheese. Very friendly vendors who are happy to let you sample seasonal fruits before buying.",
+      helpfulCount: 5,
+      verifiedShopper: true
+    },
+    {
+      id: `rev-seed-6-${marketId}`,
+      author: "Minh Chau Le",
+      rating: 5,
+      date: "Aug 15, 2026",
+      comment: "My family visits every weekend. The organic produce stays crisp and fresh all week in the fridge, much better than standard supermarket produce!",
+      helpfulCount: 8,
       verifiedShopper: true
     }
   ];
@@ -38,7 +77,13 @@ export default function MarketReviews({
   const [reviews, setReviews] = useState(() => {
     try {
       const saved = localStorage.getItem(storageKey);
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // Normalize: if previous seed only had 2 reviews or fuzzy dates, refresh with new seeds
+        if (parsed.length >= 4 && parsed.every(r => !r.date.includes('ago') && !r.date.includes('trước'))) {
+          return parsed;
+        }
+      }
       return getSeedReviews();
     } catch (e) {
       return getSeedReviews();
@@ -54,12 +99,16 @@ export default function MarketReviews({
     }
   });
 
-  // Simplified form states: only star rating (score) and review comment
+  // Simplified form states: star rating (score) and review comment
   const [rating, setRating] = useState(5);
   const [hoverRating, setHoverRating] = useState(0);
   const [comment, setComment] = useState('');
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Star filtering & pagination states
+  const [filterStar, setFilterStar] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
 
   // Persist reviews to localStorage
   useEffect(() => {
@@ -87,11 +136,19 @@ export default function MarketReviews({
       return;
     }
 
+    // Exact formatted date: Month DD, YYYY (e.g. Sep 25, 2026)
+    const now = new Date();
+    const formattedDate = now.toLocaleDateString('en-US', {
+      month: 'short',
+      day: '2-digit',
+      year: 'numeric'
+    });
+
     const newRev = {
       id: `rev-${Date.now()}`,
       author: currentUser.name || "Community Shopper",
       rating: Number(rating),
-      date: "Just now",
+      date: formattedDate,
       comment: comment.trim(),
       helpfulCount: 0,
       verifiedShopper: true
@@ -102,6 +159,7 @@ export default function MarketReviews({
     setRating(5);
     setErrorMessage('');
     setFormSubmitted(true);
+    setCurrentPage(1); // Jump to page 1 to see the new review
     setTimeout(() => setFormSubmitted(false), 4000);
   };
 
@@ -116,7 +174,19 @@ export default function MarketReviews({
     }));
   };
 
-  // Average Rating
+  // Filtered reviews by star rating
+  const filteredReviews = filterStar === 'all'
+    ? reviews
+    : reviews.filter(r => r.rating === Number(filterStar));
+
+  // Pagination calculation
+  const totalPages = Math.ceil(filteredReviews.length / REVIEWS_PER_PAGE) || 1;
+  const currentReviews = filteredReviews.slice(
+    (currentPage - 1) * REVIEWS_PER_PAGE,
+    currentPage * REVIEWS_PER_PAGE
+  );
+
+  // Overall average rating
   const averageRating = reviews.length > 0 
     ? (reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length).toFixed(1)
     : '5.0';
@@ -162,7 +232,7 @@ export default function MarketReviews({
         </div>
       </div>
 
-      {/* Streamlined Review Submission Section */}
+      {/* Review Submission Section */}
       {!currentUser ? (
         /* Login Required Prompt */
         <div className="p-6 rounded-2xl bg-stone-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -189,7 +259,7 @@ export default function MarketReviews({
           </button>
         </div>
       ) : (
-        /* Minimalist Form: Star Rating & Review Text Only */
+        /* Minimalist Form: Star Rating & Side-by-Side Textarea + Submit Button */
         <form onSubmit={handleSubmitReview} className="p-5 sm:p-6 rounded-2xl bg-stone-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-700 space-y-4">
           
           {/* Active User Indicator */}
@@ -246,22 +316,22 @@ export default function MarketReviews({
             </div>
           </div>
 
-          {/* Review Textarea and Submit Button side by side */}
+          {/* Review Textarea and Submit Button side by side with top alignment */}
           <div>
             <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
               Your Review & Comments:
             </label>
-            <div className="flex flex-col sm:flex-row items-stretch gap-3">
+            <div className="flex flex-col sm:flex-row items-start gap-3">
               <textarea
-                rows="2"
+                rows="3"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Write your feedback regarding produce freshness, prices, or market experience..."
-                className="flex-1 text-xs p-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 leading-relaxed resize-none"
+                className="w-full sm:flex-1 text-xs p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 leading-relaxed resize-none shadow-2xs"
               />
               <button
                 type="submit"
-                className="px-7 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-emerald-600/20 shrink-0 cursor-pointer self-stretch sm:self-auto"
+                className="w-full sm:w-auto px-7 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-emerald-600/20 shrink-0 cursor-pointer"
               >
                 <Send className="w-4 h-4" />
                 <span>Submit</span>
@@ -287,82 +357,187 @@ export default function MarketReviews({
         </form>
       )}
 
-      {/* Reviews List */}
-      <div className="space-y-4">
-        {reviews.map((rev) => {
-          const hasVoted = userVotes.includes(rev.id);
-          return (
-            <div 
-              key={rev.id}
-              className="p-5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 hover:border-slate-300 transition-all space-y-3"
-            >
-              {/* Reviewer Header */}
-              <div className="flex items-center justify-between gap-2">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 font-extrabold flex items-center justify-center text-xs shrink-0">
-                    {rev.author ? rev.author.charAt(0).toUpperCase() : 'U'}
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="font-extrabold text-sm text-slate-900 dark:text-white">
-                        {rev.author}
-                      </span>
-                      {rev.verifiedShopper && (
-                        <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
-                          <ShieldCheck className="w-3 h-3 text-emerald-600" />
-                          <span>Verified Shopper</span>
-                        </span>
-                      )}
-                    </div>
-                    <span className="text-[11px] text-slate-400 font-medium">
-                      {rev.date}
-                    </span>
-                  </div>
-                </div>
+      {/* Reviews Filter & Pagination Stats Bar */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2 pb-2 border-b border-slate-100 dark:border-slate-700/80">
+        
+        {/* Star Rating Filter Pills */}
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
+          <span className="text-xs font-bold text-slate-500 uppercase mr-1 flex items-center gap-1">
+            <Filter className="w-3.5 h-3.5 text-emerald-600" />
+            <span>Filter:</span>
+          </span>
+          {['all', 5, 4, 3, 2, 1].map((s) => {
+            const count = s === 'all' 
+              ? reviews.length 
+              : reviews.filter(r => r.rating === s).length;
+            const isSelected = filterStar === s;
+            return (
+              <button
+                key={s}
+                type="button"
+                onClick={() => {
+                  setFilterStar(s);
+                  setCurrentPage(1);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1 shrink-0 ${
+                  isSelected
+                    ? 'bg-emerald-600 text-white shadow-xs'
+                    : 'bg-stone-50 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-600'
+                }`}
+              >
+                {s === 'all' ? (
+                  <span>All ({count})</span>
+                ) : (
+                  <>
+                    <span>{s}</span>
+                    <Star className={`w-3 h-3 ${isSelected ? 'fill-white text-white' : 'fill-amber-400 text-amber-400'}`} />
+                    <span className="text-[11px] opacity-80">({count})</span>
+                  </>
+                )}
+              </button>
+            );
+          })}
+        </div>
 
-                {/* Stars & Score */}
-                <div className="flex items-center gap-1 text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2.5 py-1 rounded-xl border border-amber-200/60 dark:border-amber-900/60">
-                  <span className="text-xs font-black text-amber-600 dark:text-amber-400 mr-1">
-                    {rev.rating}.0
-                  </span>
-                  {[1, 2, 3, 4, 5].map(s => (
-                    <Star 
-                      key={s} 
-                      className={`w-3.5 h-3.5 ${s <= rev.rating ? 'fill-amber-400 text-amber-400' : 'text-slate-300'}`} 
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Review Comment */}
-              <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-                {rev.comment}
-              </p>
-
-              {/* Helpful Upvote Button */}
-              <div className="pt-2 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs">
-                <span className="text-[11px] text-slate-400">
-                  Was this review helpful to you?
-                </span>
-                <button
-                  type="button"
-                  onClick={() => handleHelpfulVote(rev.id)}
-                  disabled={hasVoted}
-                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                    hasVoted
-                      ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
-                      : 'bg-stone-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 hover:text-emerald-700 border border-slate-200 dark:border-slate-600'
-                  }`}
-                >
-                  <ThumbsUp className={`w-3.5 h-3.5 ${hasVoted ? 'text-emerald-600 fill-emerald-600' : ''}`} />
-                  <span>Helpful ({rev.helpfulCount || 0})</span>
-                </button>
-              </div>
-
-            </div>
-          );
-        })}
+        {/* Results summary counter */}
+        <div className="text-xs text-slate-500 font-medium">
+          Showing <strong>{filteredReviews.length === 0 ? 0 : (currentPage - 1) * REVIEWS_PER_PAGE + 1} - {Math.min(currentPage * REVIEWS_PER_PAGE, filteredReviews.length)}</strong> of <strong>{filteredReviews.length}</strong> reviews
+        </div>
       </div>
+
+      {/* Reviews List (3 per page) */}
+      {filteredReviews.length === 0 ? (
+        <div className="p-8 text-center bg-stone-50 dark:bg-slate-900/40 rounded-2xl border border-dashed border-slate-200 dark:border-slate-700">
+          <p className="text-xs text-slate-500 font-medium">
+            No {filterStar}★ reviews found for this market yet.
+          </p>
+          <button
+            type="button"
+            onClick={() => setFilterStar('all')}
+            className="mt-2 text-xs font-bold text-emerald-600 hover:underline cursor-pointer"
+          >
+            Show All Reviews
+          </button>
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {currentReviews.map((rev) => {
+            const hasVoted = userVotes.includes(rev.id);
+            return (
+              <div 
+                key={rev.id}
+                className="p-5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 hover:border-slate-300 transition-all space-y-3"
+              >
+                {/* Reviewer Header */}
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 font-extrabold flex items-center justify-center text-xs shrink-0">
+                      {rev.author ? rev.author.charAt(0).toUpperCase() : 'U'}
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-extrabold text-sm text-slate-900 dark:text-white">
+                          {rev.author}
+                        </span>
+                        {rev.verifiedShopper && (
+                          <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
+                            <ShieldCheck className="w-3 h-3 text-emerald-600" />
+                            <span>Verified Shopper</span>
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-[11px] text-slate-400 font-mono font-medium">
+                        {rev.date}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Stars & Score */}
+                  <div className="flex items-center gap-1 text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2.5 py-1 rounded-xl border border-amber-200/60 dark:border-amber-900/60">
+                    <span className="text-xs font-black text-amber-600 dark:text-amber-400 mr-1">
+                      {rev.rating}.0
+                    </span>
+                    {[1, 2, 3, 4, 5].map(s => (
+                      <Star 
+                        key={s} 
+                        className={`w-3.5 h-3.5 ${s <= rev.rating ? 'fill-amber-400 text-amber-400' : 'text-slate-300'}`} 
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Review Comment */}
+                <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                  {rev.comment}
+                </p>
+
+                {/* Helpful Upvote Button */}
+                <div className="pt-2 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs">
+                  <span className="text-[11px] text-slate-400">
+                    Was this review helpful to you?
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => handleHelpfulVote(rev.id)}
+                    disabled={hasVoted}
+                    className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                      hasVoted
+                        ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                        : 'bg-stone-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-emerald-50 hover:text-emerald-700 border border-slate-200 dark:border-slate-600'
+                    }`}
+                  >
+                    <ThumbsUp className={`w-3.5 h-3.5 ${hasVoted ? 'text-emerald-600 fill-emerald-600' : ''}`} />
+                    <span>Helpful ({rev.helpfulCount || 0})</span>
+                  </button>
+                </div>
+
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Pagination Controls (3 reviews per page) */}
+      {totalPages > 1 && (
+        <div className="pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between gap-3 text-xs">
+          <button
+            type="button"
+            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+            disabled={currentPage === 1}
+            className="px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1.5 transition-colors cursor-pointer"
+          >
+            <ChevronLeft className="w-4 h-4" />
+            <span>Previous</span>
+          </button>
+
+          <div className="flex items-center gap-1.5">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                type="button"
+                onClick={() => setCurrentPage(page)}
+                className={`w-8 h-8 rounded-xl font-bold text-xs transition-all cursor-pointer ${
+                  currentPage === page
+                    ? 'bg-emerald-600 text-white shadow-xs scale-105'
+                    : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100'
+                }`}
+              >
+                {page}
+              </button>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+            disabled={currentPage === totalPages}
+            className="px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1.5 transition-colors cursor-pointer"
+          >
+            <span>Next</span>
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+      )}
 
     </div>
   );
