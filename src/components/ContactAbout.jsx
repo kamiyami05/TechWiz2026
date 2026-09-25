@@ -4,7 +4,7 @@ import {
   Sparkles, HeartHandshake, ShieldCheck, AlertCircle, MessageSquare, Leaf
 } from 'lucide-react';
 
-export default function ContactAbout() {
+export default function ContactAbout({ hideHeader = false }) {
   const [gpsLocation, setGpsLocation] = useState(null);
   const [isLocating, setIsLocating] = useState(false);
   const [feedbackSent, setFeedbackSent] = useState(false);
@@ -118,26 +118,8 @@ export default function ContactAbout() {
     setFormErrors({});
   };
 
-  return (
-    <section id="contact" className="py-16 md:py-24 bg-stone-50 dark:bg-slate-900 border-t border-emerald-100 dark:border-emerald-950 scroll-mt-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
-            <Mail className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-            <span>Community Outreach & Geographic Lookup</span>
-          </div>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Connect with FreshFind Coordinators
-          </h2>
-          <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Submit questions, propose a new neighborhood farmers market, or verify your current geographic proximity to nearby markets.
-          </p>
-        </div>
-
-        {/* 2-Columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+  const contentGrid = (
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left: Contact Info & Geolocation Map */}
           <div className="lg:col-span-6 space-y-6">
@@ -409,6 +391,31 @@ export default function ContactAbout() {
           </div>
 
         </div>
+  );
+
+  if (hideHeader) {
+    return contentGrid;
+  }
+
+  return (
+    <section id="contact" className="py-16 md:py-24 bg-stone-50 dark:bg-slate-900 border-t border-emerald-100 dark:border-emerald-950 scroll-mt-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
+            <Mail className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+            <span>Community Outreach & Geographic Lookup</span>
+          </div>
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Connect with FreshFind Coordinators
+          </h2>
+          <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Submit questions, propose a new neighborhood farmers market, or verify your current geographic proximity to nearby markets.
+          </p>
+        </div>
+
+        {contentGrid}
 
       </div>
     </section>

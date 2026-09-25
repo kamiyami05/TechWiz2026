@@ -38,6 +38,7 @@ export default function SeasonalPage({ onToggleBookmark, isBookmarked }) {
 
         {/* Seasonal Recommendations Core Component */}
         <SeasonalRecommendations
+          hideHeader={true}
           onToggleBookmark={onToggleBookmark}
           isBookmarked={isBookmarked}
         />

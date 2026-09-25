@@ -141,6 +141,7 @@ export default function ProducePage({ onToggleBookmark, isBookmarked }) {
 
         {/* Core Produce Guide Section */}
         <ProduceGuide
+          hideHeader={true}
           onToggleBookmark={onToggleBookmark}
           isBookmarked={isBookmarked}
         />

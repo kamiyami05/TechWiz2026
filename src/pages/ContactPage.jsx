@@ -37,7 +37,7 @@ export default function ContactPage() {
         </div>
 
         {/* Core ContactAbout Component */}
-        <ContactAbout />
+        <ContactAbout hideHeader={true} />
 
       </div>
     </div>

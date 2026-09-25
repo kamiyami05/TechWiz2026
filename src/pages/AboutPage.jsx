@@ -37,7 +37,7 @@ export default function AboutPage() {
         </div>
 
         {/* Core AboutUs Component */}
-        <AboutUs />
+        <AboutUs hideHeader={true} />
 
         {/* Navigation CTAs */}
         <div className="mt-12 p-8 rounded-3xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-center max-w-4xl mx-auto shadow-xl">

@@ -8,7 +8,7 @@ import produceData from '../data/produce.json';
 import markets from '../data/markets.json';
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function ProduceGuide({ onToggleBookmark, isBookmarked }) {
+export default function ProduceGuide({ onToggleBookmark, isBookmarked, hideHeader = false }) {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [inspectedProduce, setInspectedProduce] = useState(null);
@@ -26,37 +26,10 @@ export default function ProduceGuide({ onToggleBookmark, isBookmarked }) {
     return produceData.filter(p => p.category === selectedCategory);
   }, [selectedCategory]);
 
-  return (
-    <section id="produce" className="py-16 md:py-24 bg-white dark:bg-slate-900 border-t border-emerald-100 dark:border-emerald-950 scroll-mt-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-          <Link to="/" className="hover:text-emerald-600 transition-colors font-semibold">
-            Home
-          </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-          <span className="font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-100/70 dark:bg-emerald-950/70 px-2 py-0.5 rounded-md">
-            Produce Guide
-          </span>
-        </nav>
-
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
-            <Carrot className="w-3.5 h-3.5" />
-            Produce Guide • Regional Agricultural Directory
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display">
-            Nutritional Excellence & Seasonal Provenance
-          </h2>
-          <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-            Explore nutritional facts, harvest cycles, and trace your food directly back to certified local family orchards.
-          </p>
-        </div>
-
-        {/* Category Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
+  const content = (
+    <div className="w-full">
+      {/* Category Filter Pills */}
+      <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
           {categories.map((c) => (
             <button
               key={c.id}
@@ -318,6 +291,43 @@ export default function ProduceGuide({ onToggleBookmark, isBookmarked }) {
             </div>
           </div>
         )}
+    </div>
+  );
+
+  if (hideHeader) {
+    return content;
+  }
+
+  return (
+    <section id="produce" className="py-16 md:py-24 bg-white dark:bg-slate-900 border-t border-emerald-100 dark:border-emerald-950 scroll-mt-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+          <Link to="/" className="hover:text-emerald-600 transition-colors font-semibold">
+            Home
+          </Link>
+          <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+          <span className="font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-100/70 dark:bg-emerald-950/70 px-2 py-0.5 rounded-md">
+            Produce Guide
+          </span>
+        </nav>
+
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
+            <Carrot className="w-3.5 h-3.5" />
+            Produce Guide • Regional Agricultural Directory
+          </div>
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display">
+            Nutritional Excellence & Seasonal Provenance
+          </h2>
+          <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+            Explore nutritional facts, harvest cycles, and trace your food directly back to certified local family orchards.
+          </p>
+        </div>
+
+        {content}
 
       </div>
     </section>

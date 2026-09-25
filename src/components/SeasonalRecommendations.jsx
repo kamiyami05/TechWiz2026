@@ -163,61 +163,46 @@ const HARVEST_HEATMAP = [
 
 const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-export default function SeasonalRecommendations({ onToggleBookmark, isBookmarked }) {
+export default function SeasonalRecommendations({ onToggleBookmark, isBookmarked, hideHeader = false }) {
   const navigate = useNavigate();
   const [selectedSeason, setSelectedSeason] = useState('autumn');
   const [viewMode, setViewMode] = useState('cards'); // 'cards' | 'heatmap'
 
   const currentSeasonData = SEASONS_DATA[selectedSeason];
 
-  return (
-    <section id="seasonal" className="py-16 md:py-24 bg-white dark:bg-slate-900 border-t border-emerald-100 dark:border-emerald-950 scroll-mt-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
-            <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-            Seasonal Recommendations • Farm-to-Table Peak Calendar
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display">
-            Eat with the Seasons: What's Fresh Right Now
-          </h2>
-          <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-            Produce harvested in its natural season holds the highest nutrient density, superior flavor, and lower agricultural footprint.
-          </p>
-
-          {/* View Mode Switcher */}
-          <div className="mt-5 inline-flex p-1 rounded-2xl bg-stone-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-            <button
-              onClick={() => setViewMode('cards')}
-              className={`px-4 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
-                viewMode === 'cards'
-                  ? 'bg-white dark:bg-slate-900 text-emerald-700 dark:text-emerald-300 shadow-sm'
-                  : 'text-slate-500 hover:text-slate-800 dark:hover:text-white'
-              }`}
-            >
-              <Layers className="w-3.5 h-3.5" />
-              <span>Seasonal Highlights</span>
-            </button>
-            <button
-              onClick={() => setViewMode('heatmap')}
-              className={`px-4 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
-                viewMode === 'heatmap'
-                  ? 'bg-white dark:bg-slate-900 text-emerald-700 dark:text-emerald-300 shadow-sm'
-                  : 'text-slate-500 hover:text-slate-800 dark:hover:text-white'
-              }`}
-            >
-              <Grid className="w-3.5 h-3.5" />
-              <span>12-Month Harvest Heatmap</span>
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse ml-0.5" />
-            </button>
-          </div>
+  const content = (
+    <div className="w-full">
+      {/* View Mode Switcher */}
+      <div className="flex justify-center mb-8">
+        <div className="inline-flex p-1 rounded-2xl bg-stone-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xs">
+          <button
+            onClick={() => setViewMode('cards')}
+            className={`px-4 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+              viewMode === 'cards'
+                ? 'bg-white dark:bg-slate-900 text-emerald-700 dark:text-emerald-300 shadow-sm'
+                : 'text-slate-500 hover:text-slate-800 dark:hover:text-white'
+            }`}
+          >
+            <Layers className="w-3.5 h-3.5" />
+            <span>Seasonal Highlights</span>
+          </button>
+          <button
+            onClick={() => setViewMode('heatmap')}
+            className={`px-4 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+              viewMode === 'heatmap'
+                ? 'bg-white dark:bg-slate-900 text-emerald-700 dark:text-emerald-300 shadow-sm'
+                : 'text-slate-500 hover:text-slate-800 dark:hover:text-white'
+            }`}
+          >
+            <Grid className="w-3.5 h-3.5" />
+            <span>12-Month Harvest Heatmap</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse ml-0.5" />
         </div>
+      </div>
 
-        {viewMode === 'cards' ? (
-          <>
-            {/* Season Selector Tabs */}
+      {viewMode === 'cards' ? (
+        <>
+          {/* Season Selector Tabs */}
             <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
               {Object.values(SEASONS_DATA).map((s) => {
                 const Icon = s.icon;
@@ -452,6 +437,32 @@ export default function SeasonalRecommendations({ onToggleBookmark, isBookmarked
             </div>
           </div>
         )}
+    </div>
+  );
+
+  if (hideHeader) {
+    return content;
+  }
+
+  return (
+    <section id="seasonal" className="py-16 md:py-24 bg-white dark:bg-slate-900 border-t border-emerald-100 dark:border-emerald-950 scroll-mt-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
+            <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+            Seasonal Recommendations • Farm-to-Table Peak Calendar
+          </div>
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display">
+            Eat with the Seasons: What's Fresh Right Now
+          </h2>
+          <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+            Produce harvested in its natural season holds the highest nutrient density, superior flavor, and lower agricultural footprint.
+          </p>
+        </div>
+
+        {content}
 
       </div>
     </section>

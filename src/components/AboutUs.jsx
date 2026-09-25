@@ -5,7 +5,7 @@ import {
   MapPin, Sparkles, TrendingUp
 } from 'lucide-react';
 
-export default function AboutUs() {
+export default function AboutUs({ hideHeader = false }) {
   const pillars = [
     {
       icon: ShieldCheck,
@@ -74,31 +74,10 @@ export default function AboutUs() {
     badge: '150+ Family Farms'
   };
 
-  return (
-    <section 
-      id="about" 
-      className="py-16 md:py-24 bg-white dark:bg-slate-900 border-t border-emerald-100 dark:border-emerald-950 scroll-mt-28"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
-            <Users className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-            <span>About Us • Championing Sustainable Agriculture</span>
-          </div>
-
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Our Mission & Guiding Principles
-          </h2>
-
-          <p className="mt-3 text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            FreshFind was created as an intuitive digital companion to solve information fragmentation between local farmers markets and eco-conscious urban residents.
-          </p>
-        </div>
-
-        {/* 4 Core Pillars Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+  const content = (
+    <>
+      {/* 4 Core Pillars Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {pillars.map((p, idx) => {
             const Icon = p.icon;
             return (
@@ -273,6 +252,37 @@ export default function AboutUs() {
             </div>
           </div>
         </div>
+    </>
+  );
+
+  if (hideHeader) {
+    return content;
+  }
+
+  return (
+    <section 
+      id="about" 
+      className="py-16 md:py-24 bg-white dark:bg-slate-900 border-t border-emerald-100 dark:border-emerald-950 scroll-mt-28"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
+            <Users className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+            <span>About Us • Championing Sustainable Agriculture</span>
+          </div>
+
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Our Mission & Guiding Principles
+          </h2>
+
+          <p className="mt-3 text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+            FreshFind was created as an intuitive digital companion to solve information fragmentation between local farmers markets and eco-conscious urban residents.
+          </p>
+        </div>
+
+        {content}
 
       </div>
     </section>
