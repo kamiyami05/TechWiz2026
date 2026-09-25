@@ -253,11 +253,11 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
 
         {/* Modal Brand Header */}
         <div className="text-center mb-6">
-          <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-lg shadow-emerald-500/25 mx-auto mb-3 border border-emerald-300 dark:border-emerald-700 bg-white animate-float p-0.5">
+          <div className="w-14 h-14 mx-auto mb-3 animate-float flex items-center justify-center">
             <img 
               src="/logo.png" 
               alt="FreshFind Logo" 
-              className="w-full h-full object-cover rounded-xl"
+              className="w-full h-full object-contain filter drop-shadow-md"
             />
           </div>
           <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">

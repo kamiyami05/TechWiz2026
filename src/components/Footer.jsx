@@ -64,11 +64,11 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="md:col-span-1 space-y-3">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl overflow-hidden shadow-xs shrink-0 border border-emerald-300 dark:border-emerald-700 bg-white">
+              <div className="w-8 h-8 shrink-0 flex items-center justify-center">
                 <img 
                   src="/logo.png" 
                   alt="FreshFind Logo" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain filter drop-shadow-xs"
                 />
               </div>
               <span className="font-extrabold text-base text-slate-900 dark:text-white">

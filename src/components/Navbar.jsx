@@ -133,11 +133,11 @@ export default function Navbar({
           
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5 group focus:outline-none shrink-0">
-            <div className="w-10 h-10 rounded-2xl overflow-hidden shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform shrink-0 border border-emerald-300/80 dark:border-emerald-600/50 bg-white">
+            <div className="w-10 h-10 group-hover:scale-105 transition-transform shrink-0 flex items-center justify-center">
               <img 
                 src="/logo.png" 
                 alt="FreshFind Logo" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain filter drop-shadow-xs"
               />
             </div>
             <div className="flex items-center gap-1.5">
