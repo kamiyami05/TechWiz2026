@@ -194,7 +194,7 @@ export default function MarketReviews({
   const starLabels = ['', '1/5 - Poor', '2/5 - Fair', '3/5 - Good', '4/5 - Very Good', '5/5 - Exceptional!'];
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-700 shadow-sm space-y-8 my-8">
+    <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:px-8 sm:pt-8 sm:pb-4 pb-4 border border-slate-200 dark:border-slate-700 shadow-sm space-y-8 my-8">
       
       {/* Header Summary */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-slate-100 dark:border-slate-700">
@@ -499,7 +499,7 @@ export default function MarketReviews({
 
       {/* Pagination Controls (3 reviews per page) */}
       {totalPages > 1 && (
-        <div className="pt-3 flex items-center justify-center gap-1.5 text-xs">
+        <div className="!mt-4 pt-0 pb-1 flex items-center justify-center gap-1.5 text-xs">
           <button
             type="button"
             onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
