@@ -80,9 +80,13 @@ export default function ChatbotWidget() {
         <button
           onClick={() => setIsOpen(true)}
           aria-label="Open FarmBot AI Assistant"
-          className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-600 to-green-500 text-white shadow-xl shadow-emerald-600/30 hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer focus:outline-none focus:ring-4 focus:ring-emerald-300 group"
+          className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-2xl bg-white dark:bg-slate-800 p-1 shadow-2xl shadow-emerald-600/30 hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer border-2 border-emerald-500 dark:border-emerald-400 focus:outline-none focus:ring-4 focus:ring-emerald-300 group"
         >
-          <span className="text-2xl transform group-hover:scale-110 transition-transform">🌱</span>
+          <img 
+            src="/chatbot-avatar.jpg" 
+            alt="FarmBot AI" 
+            className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform"
+          />
         </button>
       )}
 
@@ -92,8 +96,12 @@ export default function ChatbotWidget() {
           {/* Header */}
           <div className="p-4 bg-gradient-to-r from-emerald-600 to-green-600 text-white flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center text-xl">
-                🌱
+              <div className="w-10 h-10 rounded-xl overflow-hidden border border-white/40 shadow-sm shrink-0 bg-white p-0.5">
+                <img 
+                  src="/chatbot-avatar.jpg" 
+                  alt="FarmBot AI" 
+                  className="w-full h-full object-cover rounded-lg"
+                />
               </div>
               <div>
                 <h4 className="font-extrabold text-sm font-display">
@@ -137,8 +145,12 @@ export default function ChatbotWidget() {
                 className={`flex gap-2.5 ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {m.sender === 'bot' && (
-                  <div className="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-slate-800 flex items-center justify-center shrink-0 text-base">
-                    🌱
+                  <div className="w-7 h-7 rounded-lg overflow-hidden border border-emerald-300 dark:border-slate-700 flex items-center justify-center shrink-0 shadow-xs bg-white p-0.5">
+                    <img
+                      src="/chatbot-avatar.jpg"
+                      alt="FarmBot AI"
+                      className="w-full h-full object-cover rounded-md"
+                    />
                   </div>
                 )}
                 <div

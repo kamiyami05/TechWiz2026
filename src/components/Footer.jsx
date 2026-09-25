@@ -63,8 +63,14 @@ export default function Footer() {
           
           {/* Brand Info */}
           <div className="md:col-span-1 space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">🌿</span>
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl overflow-hidden shadow-xs shrink-0 border border-emerald-300 dark:border-emerald-700 bg-white">
+                <img 
+                  src="/logo.png" 
+                  alt="FreshFind Logo" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <span className="font-extrabold text-base text-slate-900 dark:text-white">
                 Fresh<span className="text-emerald-600">Find</span>
               </span>

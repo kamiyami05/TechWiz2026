@@ -133,8 +133,12 @@ export default function Navbar({
           
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5 group focus:outline-none shrink-0">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-tr from-emerald-600 to-green-500 flex items-center justify-center text-white text-lg sm:text-xl shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform shrink-0">
-              🌿
+            <div className="w-10 h-10 rounded-2xl overflow-hidden shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform shrink-0 border border-emerald-300/80 dark:border-emerald-600/50 bg-white">
+              <img 
+                src="/logo.png" 
+                alt="FreshFind Logo" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="flex items-center gap-1.5">
               <span className="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">
