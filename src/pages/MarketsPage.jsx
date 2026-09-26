@@ -518,24 +518,26 @@ export default function MarketsPage({ onToggleBookmark, isBookmarked }) {
         )}
         {/* Floating Sticky Compare Action Bar */}
         {compareList.length > 0 && (
-          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 text-white backdrop-blur-md border border-slate-700 px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-4 animate-scale-in">
-            <div className="flex items-center gap-2 text-xs font-bold">
-              <Scale className="w-4 h-4 text-teal-400" />
-              <span>{compareList.length} / 2 Selected for Comparison</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setCompareModalOpen(true)}
-                className="px-3.5 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold shadow-sm cursor-pointer"
-              >
-                Compare Now
-              </button>
-              <button
-                onClick={() => setCompareList([])}
-                className="text-slate-400 hover:text-white text-xs underline cursor-pointer ml-1"
-              >
-                Clear
-              </button>
+          <div className="fixed bottom-6 inset-x-0 z-40 flex justify-center pointer-events-none px-4">
+            <div className="pointer-events-auto bg-slate-900/95 text-white backdrop-blur-md border border-slate-700 px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-4 animate-scale-in">
+              <div className="flex items-center gap-2 text-xs font-bold">
+                <Scale className="w-4 h-4 text-teal-400" />
+                <span>{compareList.length} / 2 Selected for Comparison</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setCompareModalOpen(true)}
+                  className="px-3.5 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold shadow-sm cursor-pointer"
+                >
+                  Compare Now
+                </button>
+                <button
+                  onClick={() => setCompareList([])}
+                  className="text-slate-400 hover:text-white text-xs underline cursor-pointer ml-1"
+                >
+                  Clear
+                </button>
+              </div>
             </div>
           </div>
         )}
