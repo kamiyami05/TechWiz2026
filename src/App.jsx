@@ -217,7 +217,7 @@ export default function App() {
       />
 
       {/* Floating AI FarmBot Chatbot */}
-      <ChatbotWidget />
+      <ChatbotWidget onOpenBookmarks={() => setIsBookmarksOpen(true)} />
 
       {/* Auth Modal */}
       <AuthModal 

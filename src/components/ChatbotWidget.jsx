@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   MessageSquare, X, Send, Bot, AlertCircle, RefreshCw, Sparkles, Sprout, ArrowRight
 } from 'lucide-react';
 import chatbotKB from '../data/chatbot-kb.json';
 
-export default function ChatbotWidget() {
+export default function ChatbotWidget({ onOpenBookmarks }) {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
@@ -162,14 +164,27 @@ export default function ChatbotWidget() {
                   <p>{m.text}</p>
                   {m.relatedSection && (
                     <div className="mt-2 pt-2 border-t border-emerald-200 dark:border-slate-700 text-[11px]">
-                      <a
-                        href={`#${m.relatedSection}`}
-                        onClick={() => setIsOpen(false)}
-                        className="text-emerald-700 dark:text-emerald-400 hover:underline font-bold inline-flex items-center gap-1"
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsOpen(false);
+                          if (m.relatedSection === 'directory') {
+                            navigate('/markets');
+                          } else if (m.relatedSection === 'seasonal') {
+                            navigate('/seasonal');
+                          } else if (m.relatedSection === 'produce') {
+                            navigate('/produce');
+                          } else if (m.relatedSection === 'bookmarks' && onOpenBookmarks) {
+                            onOpenBookmarks();
+                          } else {
+                            navigate('/markets');
+                          }
+                        }}
+                        className="text-emerald-700 dark:text-emerald-400 hover:underline font-bold inline-flex items-center gap-1 cursor-pointer"
                       >
                         <ArrowRight className="w-3 h-3" />
                         <span>View on website</span>
-                      </a>
+                      </button>
                     </div>
                   )}
                   <span className={`block text-[9px] mt-1 text-right ${m.sender === 'user' ? 'text-emerald-200' : 'text-slate-400'

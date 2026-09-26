@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  Search, MapPin, Calendar, Carrot, ArrowRight, 
+import {
+  Search, MapPin, Calendar, Carrot, ArrowRight,
   Sparkles, CheckCircle, Clock, ShieldCheck, HeartHandshake,
   Volume2, VolumeX, Radio, Sprout, AlertCircle
 } from 'lucide-react';
@@ -17,29 +17,29 @@ export default function Hero({ onApplyQuickFilter }) {
   const [audioNotice, setAudioNotice] = useState('');
 
   const areas = [
-    'all', 
-    'Cau Giay District, Hanoi', 
-    'Tay Ho District, Hanoi', 
-    'Dong Da District, Hanoi', 
+    'all',
+    'Cau Giay District, Hanoi',
+    'Tay Ho District, Hanoi',
+    'Dong Da District, Hanoi',
     'Ha Dong District, Hanoi'
   ];
-  
+
   const days = [
-    'all', 
-    'Monday', 
-    'Tuesday', 
-    'Wednesday', 
-    'Thursday', 
-    'Friday', 
-    'Saturday', 
+    'all',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
     'Sunday'
   ];
-  
+
   const produceTypes = [
-    'all', 
-    'Fruits', 
-    'Vegetables', 
-    'Herbs', 
+    'all',
+    'Fruits',
+    'Vegetables',
+    'Herbs',
     'Dairy & Eggs'
   ];
 
@@ -71,13 +71,13 @@ export default function Hero({ onApplyQuickFilter }) {
     if (isPlayingAudio) {
       try {
         window.speechSynthesis.cancel();
-      } catch (e) {}
+      } catch (e) { }
       setIsPlayingAudio(false);
     } else {
       try {
         window.speechSynthesis.cancel();
         const briefingText = "Welcome to FreshFind, your local farmers market companion. Today, Ha Dong Safe Agricultural Trade Fair and Cau Giay Green Market are open with morning-harvested produce. Peak seasonal highlights include sweet Moc Chau strawberries, highland avocados, and organic Ba Vi dairy. Plan your visit to reduce food miles and champion sustainable local farming!";
-        
+
         const utterance = new SpeechSynthesisUtterance(briefingText);
         utterance.lang = 'en-US';
         utterance.rate = 1.0;
@@ -101,23 +101,26 @@ export default function Hero({ onApplyQuickFilter }) {
   };
 
   return (
-    <section className="relative overflow-hidden pt-8 pb-16 md:pt-14 md:pb-24 bg-gradient-to-b from-emerald-500/10 via-emerald-500/5 to-transparent dark:from-emerald-950/40 dark:via-slate-900/60 dark:to-slate-900">
-      
-      {/* Ambient Farm Atmosphere Background */}
-      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        <img 
-          src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=2000&q=80" 
-          alt=""
-          className="w-full h-full object-cover opacity-15 dark:opacity-10 filter blur-[1px] scale-105"
+    <section className="relative isolate overflow-hidden pt-8 pb-16 md:pt-14 md:pb-24">
+
+      {/* Ambient Farm & Farmers Market Photo Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <img
+          src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=2000&q=85"
+          alt="Fresh organic farmers market background"
+          className="w-full h-full object-cover opacity-100 dark:opacity-35 scale-105"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=2000&q=85";
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-emerald-50/70 via-transparent to-stone-50 dark:from-slate-900/80 dark:to-slate-900" />
       </div>
 
       {/* Background Glow */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-emerald-400/20 dark:bg-emerald-500/10 blur-[110px] rounded-full -z-10 pointer-events-none" />
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-emerald-400/20 dark:bg-emerald-500/10 blur-[110px] rounded-full z-0 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Banner Title */}
         <div className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs font-bold mb-6 shadow-xs">
@@ -125,14 +128,14 @@ export default function Hero({ onApplyQuickFilter }) {
             <span>VietGAP & Organic Certified • Daily Farm-Fresh Harvests</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.15] drop-shadow-md">
             Discover Local Farmers Markets & <br />
-            <span className="bg-gradient-to-r from-emerald-600 via-green-500 to-teal-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-emerald-400 via-green-300 to-teal-300 bg-clip-text text-transparent">
               Peak Seasonal Produce
             </span>
           </h1>
 
-          <p className="mt-4 text-sm sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-4 text-sm sm:text-lg text-white/95 leading-relaxed max-w-2xl mx-auto drop-shadow-sm font-medium">
             Your all-in-one companion for live market operating hours, interactive vendor schedules, and sustainable organic produce grown by regional family farmers.
           </p>
 
@@ -140,11 +143,10 @@ export default function Hero({ onApplyQuickFilter }) {
           <div className="mt-6 flex justify-center">
             <button
               onClick={handleToggleAudio}
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all shadow-md cursor-pointer ${
-                isPlayingAudio 
-                  ? 'bg-rose-600 text-white animate-pulse' 
-                  : 'bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-slate-700 hover:border-emerald-500'
-              }`}
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all shadow-md cursor-pointer ${isPlayingAudio
+                ? 'bg-rose-600 text-white animate-pulse'
+                : 'bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-slate-700 hover:border-emerald-500'
+                }`}
             >
               {isPlayingAudio ? (
                 <>
@@ -170,8 +172,8 @@ export default function Hero({ onApplyQuickFilter }) {
         </div>
 
         {/* Quick Find Component */}
-        <div 
-          id="find-market" 
+        <div
+          id="find-market"
           className="mt-10 max-w-4xl mx-auto bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-emerald-200 dark:border-slate-700 rounded-3xl p-5 sm:p-7 shadow-xl scroll-mt-28 relative"
         >
           {/* Decorative floating badge */}
@@ -185,7 +187,7 @@ export default function Hero({ onApplyQuickFilter }) {
             <span>Find a Farmers Market Near You:</span>
           </div>
 
-          <form onSubmit={handleQuickSearch} className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mb-4">
+          <form onSubmit={handleQuickSearch} className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
             {/* Area */}
             {/* Area */}
             <div>
@@ -258,18 +260,18 @@ export default function Hero({ onApplyQuickFilter }) {
 
         {/* Highlights Bar */}
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
-          
+
           {/* Open Markets Highlight */}
-          <div 
+          <div
             onClick={() => {
               navigate('/markets/mkt-4');
             }}
             className="bg-white/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-500 rounded-3xl p-4 sm:p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all group"
           >
             <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-sm shrink-0 border border-emerald-200 dark:border-emerald-800/80 bg-emerald-50 dark:bg-emerald-950">
-              <img 
-                src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=300&q=80" 
-                alt="Ha Dong Trade Fair" 
+              <img
+                src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=300&q=80"
+                alt="Ha Dong Trade Fair"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=300&q=80"; }}
               />
@@ -293,16 +295,16 @@ export default function Hero({ onApplyQuickFilter }) {
           </div>
 
           {/* Seasonal Pick Highlight */}
-          <div 
+          <div
             onClick={() => {
               navigate('/seasonal');
             }}
             className="bg-white/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 hover:border-rose-400 dark:hover:border-rose-500 rounded-3xl p-4 sm:p-5 shadow-sm hover:shadow-md flex items-center gap-4 cursor-pointer transition-all group"
           >
             <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-sm shrink-0 border border-rose-200 dark:border-rose-900/80 bg-rose-50 dark:bg-rose-950">
-              <img 
-                src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=300&q=80" 
-                alt="Moc Chau Strawberries" 
+              <img
+                src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=300&q=80"
+                alt="Moc Chau Strawberries"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=300&q=80"; }}
               />
@@ -330,9 +332,9 @@ export default function Hero({ onApplyQuickFilter }) {
         {/* Visual Trust Strips */}
         <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
           <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm bg-slate-100 dark:bg-slate-800">
-            <img 
-              src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=500&q=80" 
-              alt="Fresh Produce Stalls" 
+            <img
+              src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=500&q=80"
+              alt="Fresh Produce Stalls"
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=500&q=80"; }}
             />
@@ -343,9 +345,9 @@ export default function Hero({ onApplyQuickFilter }) {
           </div>
 
           <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm bg-slate-100 dark:bg-slate-800">
-            <img 
-              src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=500&q=80" 
-              alt="Certified Organic Farms" 
+            <img
+              src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=500&q=80"
+              alt="Certified Organic Farms"
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=500&q=80"; }}
             />
@@ -356,9 +358,9 @@ export default function Hero({ onApplyQuickFilter }) {
           </div>
 
           <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm bg-slate-100 dark:bg-slate-800">
-            <img 
-              src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=500&q=80" 
-              alt="Zero Pesticides" 
+            <img
+              src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=500&q=80"
+              alt="Zero Pesticides"
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=500&q=80"; }}
             />
@@ -369,9 +371,9 @@ export default function Hero({ onApplyQuickFilter }) {
           </div>
 
           <div className="relative rounded-2xl overflow-hidden h-24 group shadow-sm bg-slate-100 dark:bg-slate-800">
-            <img 
-              src="https://images.unsplash.com/photo-1506484381205-f7945653044d?auto=format&fit=crop&w=500&q=80" 
-              alt="Community Growers" 
+            <img
+              src="https://images.unsplash.com/photo-1506484381205-f7945653044d?auto=format&fit=crop&w=500&q=80"
+              alt="Community Growers"
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=500&q=80"; }}
             />
