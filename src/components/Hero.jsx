@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { 
   Search, MapPin, Calendar, Carrot, ArrowRight, 
   Sparkles, CheckCircle, Clock, ShieldCheck, HeartHandshake,
-  Volume2, VolumeX, Radio, Sprout
+  Volume2, VolumeX, Radio, Sprout, AlertCircle
 } from 'lucide-react';
 import markets from '../data/markets.json';
 import produce from '../data/produce.json';
@@ -14,6 +14,7 @@ export default function Hero({ onApplyQuickFilter }) {
   const [selectedDay, setSelectedDay] = useState('all');
   const [selectedProduceType, setSelectedProduceType] = useState('all');
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const [audioNotice, setAudioNotice] = useState('');
 
   const areas = [
     'all', 
@@ -62,27 +63,40 @@ export default function Hero({ onApplyQuickFilter }) {
   // Breakthrough Feature: Web Speech API Audio Market Briefing
   const handleToggleAudio = () => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
-      alert('Text-to-speech audio briefing is not supported on this browser.');
+      setAudioNotice('Text-to-speech audio is not supported on this browser/device.');
+      setTimeout(() => setAudioNotice(''), 4500);
       return;
     }
 
     if (isPlayingAudio) {
-      window.speechSynthesis.cancel();
+      try {
+        window.speechSynthesis.cancel();
+      } catch (e) {}
       setIsPlayingAudio(false);
     } else {
-      window.speechSynthesis.cancel();
-      const briefingText = "Welcome to FreshFind, your local farmers market companion. Today, Ha Dong Safe Agricultural Trade Fair and Cau Giay Green Market are open with morning-harvested produce. Peak seasonal highlights include sweet Moc Chau strawberries, highland avocados, and organic Ba Vi dairy. Plan your visit to reduce food miles and champion sustainable local farming!";
-      
-      const utterance = new SpeechSynthesisUtterance(briefingText);
-      utterance.lang = 'en-US';
-      utterance.rate = 1.0;
-      utterance.pitch = 1.0;
+      try {
+        window.speechSynthesis.cancel();
+        const briefingText = "Welcome to FreshFind, your local farmers market companion. Today, Ha Dong Safe Agricultural Trade Fair and Cau Giay Green Market are open with morning-harvested produce. Peak seasonal highlights include sweet Moc Chau strawberries, highland avocados, and organic Ba Vi dairy. Plan your visit to reduce food miles and champion sustainable local farming!";
+        
+        const utterance = new SpeechSynthesisUtterance(briefingText);
+        utterance.lang = 'en-US';
+        utterance.rate = 1.0;
+        utterance.pitch = 1.0;
 
-      utterance.onend = () => setIsPlayingAudio(false);
-      utterance.onerror = () => setIsPlayingAudio(false);
+        utterance.onend = () => setIsPlayingAudio(false);
+        utterance.onerror = () => {
+          setIsPlayingAudio(false);
+          setAudioNotice('Unable to play audio speech on this device.');
+          setTimeout(() => setAudioNotice(''), 4500);
+        };
 
-      window.speechSynthesis.speak(utterance);
-      setIsPlayingAudio(true);
+        window.speechSynthesis.speak(utterance);
+        setIsPlayingAudio(true);
+      } catch (err) {
+        setIsPlayingAudio(false);
+        setAudioNotice('Audio playback could not be initiated on this browser.');
+        setTimeout(() => setAudioNotice(''), 4500);
+      }
     }
   };
 
@@ -145,6 +159,13 @@ export default function Hero({ onApplyQuickFilter }) {
                 </>
               )}
             </button>
+
+            {audioNotice && (
+              <div className="mt-2.5 inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 text-xs font-semibold border border-amber-200 dark:border-amber-800/80 animate-fade-in shadow-sm">
+                <AlertCircle className="w-4 h-4 text-amber-600 shrink-0" />
+                <span>{audioNotice}</span>
+              </div>
+            )}
           </div>
         </div>
 

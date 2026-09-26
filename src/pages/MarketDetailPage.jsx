@@ -101,7 +101,7 @@ export default function MarketDetailPage({
   };
 
   return (
-    <div className="py-8 md:py-14 bg-stone-50 dark:bg-slate-900 animate-fade-in">
+    <div className="py-8 pb-24 md:py-14 md:pb-24 bg-stone-50 dark:bg-slate-900 animate-fade-in">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Navigation & Breadcrumb Header */}
@@ -130,21 +130,21 @@ export default function MarketDetailPage({
         </div>
 
         {/* Grand Hero Photo Banner */}
-        <div className="relative h-64 sm:h-96 w-full rounded-3xl overflow-hidden mb-8 bg-slate-100 dark:bg-slate-800 shadow-xl">
+        <div className="relative min-h-[460px] sm:min-h-[380px] md:h-96 w-full rounded-3xl overflow-hidden mb-8 flex flex-col justify-between p-4 sm:p-6 md:p-8 bg-slate-100 dark:bg-slate-800 shadow-xl">
           <img 
             src={market.image} 
             alt={market.name} 
-            className="w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover"
             onError={(e) => {
               e.target.onerror = null;
               e.target.src = "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=1200&q=80";
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/25 pointer-events-none" />
 
           {/* Top Floating Controls on Banner */}
-          <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
+          <div className="relative z-10 flex flex-wrap items-center justify-between gap-2.5 w-full">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
               <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/95 dark:bg-slate-900/95 text-emerald-800 dark:text-emerald-300 backdrop-blur-md shadow-md">
                 {market.area}
               </span>
@@ -191,10 +191,10 @@ export default function MarketDetailPage({
             </div>
           </div>
 
-          {/* Bottom Info Floating on Banner */}
-          <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-white pointer-events-none">
+          {/* Bottom Info on Banner */}
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-white pt-6 w-full">
             <div>
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex flex-wrap items-center gap-2 mb-2">
                 <div className="flex items-center gap-1 bg-amber-500/90 backdrop-blur-md px-3 py-1 rounded-xl text-xs font-bold text-white shadow-sm">
                   <Star className="w-4 h-4 fill-white text-white" />
                   <span>{market.rating} / 5.0 Rating</span>
@@ -205,7 +205,7 @@ export default function MarketDetailPage({
                 </div>
               </div>
 
-              <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white drop-shadow-md">
+              <h1 className="text-xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white drop-shadow-md">
                 {market.name}
               </h1>
               <p className="text-xs sm:text-sm text-slate-200 mt-1 flex items-center gap-1.5 drop-shadow-sm">
@@ -214,12 +214,12 @@ export default function MarketDetailPage({
               </p>
             </div>
 
-            <div className="pointer-events-auto flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 shrink-0 pt-2 sm:pt-0">
               <a
                 href={`tel:${market.phone.replace(/[^0-9+]/g, '')}`}
-                className="px-4 py-2.5 rounded-2xl bg-white text-emerald-800 font-bold text-xs flex items-center gap-1.5 hover:bg-emerald-50 transition-colors shadow-lg"
+                className="px-4 py-2.5 rounded-2xl bg-white text-emerald-800 font-bold text-xs flex items-center justify-center gap-1.5 hover:bg-emerald-50 transition-colors shadow-lg whitespace-nowrap"
               >
-                <Phone className="w-4 h-4 text-emerald-600" />
+                <Phone className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>{market.phone}</span>
               </a>
 
@@ -227,9 +227,9 @@ export default function MarketDetailPage({
                 href={`https://maps.google.com/?q=${encodeURIComponent(market.name + ' ' + market.address)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2.5 rounded-2xl bg-emerald-600 text-white font-bold text-xs flex items-center gap-1.5 hover:bg-emerald-700 transition-colors shadow-lg"
+                className="px-4 py-2.5 rounded-2xl bg-emerald-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 hover:bg-emerald-700 transition-colors shadow-lg whitespace-nowrap"
               >
-                <Navigation className="w-4 h-4" />
+                <Navigation className="w-4 h-4 shrink-0" />
                 <span>Open Directions</span>
               </a>
             </div>
@@ -253,12 +253,12 @@ export default function MarketDetailPage({
               </p>
 
               {/* Eco stats pill */}
-              <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/80 dark:border-emerald-900/60 flex items-center justify-between text-xs">
+              <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/80 dark:border-emerald-900/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                 <div className="flex items-center gap-2 text-emerald-800 dark:text-emerald-300 font-bold">
-                  <Leaf className="w-4 h-4 text-emerald-600" />
+                  <Leaf className="w-4 h-4 text-emerald-600 shrink-0" />
                   <span>Estimated Food Distance: <strong>{market.distanceKm || 3.5} km</strong></span>
                 </div>
-                <span className="px-2.5 py-1 rounded-full bg-emerald-600 text-white font-mono text-[10px] font-bold">
+                <span className="self-start sm:self-auto px-3 py-1.5 rounded-full bg-emerald-600 text-white font-mono text-[10px] font-bold whitespace-nowrap shrink-0 shadow-xs">
                   -{( (market.distanceKm || 3.5) * 0.45 ).toFixed(1)} kg CO₂e / Basket
                 </span>
               </div>
@@ -272,7 +272,7 @@ export default function MarketDetailPage({
               </h2>
 
               <div className="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-700">
-                <table className="w-full text-left text-xs">
+                <table className="w-full text-left text-xs min-w-[480px]">
                   <thead className="bg-slate-100 dark:bg-slate-800/80 font-bold text-slate-700 dark:text-slate-300">
                     <tr>
                       <th scope="col" className="py-3 px-4">Day of Week</th>
@@ -281,25 +281,36 @@ export default function MarketDetailPage({
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                    {market.weeklySchedule?.map((s, idx) => (
-                      <tr key={idx} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
-                        <td className="py-3 px-4 font-semibold text-slate-800 dark:text-slate-200">
-                          {s.day}
-                        </td>
-                        <td className="py-3 px-4 font-mono text-slate-600 dark:text-slate-400">
-                          {s.hours}
-                        </td>
-                        <td className="py-3 px-4 text-right font-medium">
-                          <span className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
-                            s.status.toLowerCase().includes('open') 
-                              ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300' 
-                              : 'bg-slate-100 dark:bg-slate-800 text-slate-500'
-                          }`}>
-                            {s.status}
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
+                    {market.weeklySchedule?.map((s, idx) => {
+                      const isOpen = s.status.toLowerCase().includes('open');
+                      const noteMatch = s.status.match(/\((.*?)\)/);
+                      const note = noteMatch ? noteMatch[1] : null;
+
+                      return (
+                        <tr key={idx} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                          <td className="py-3 px-4 font-semibold text-slate-800 dark:text-slate-200 whitespace-nowrap">
+                            {s.day}
+                          </td>
+                          <td className="py-3 px-4 font-mono text-slate-600 dark:text-slate-400">
+                            {s.hours}
+                          </td>
+                          <td className="py-3 px-4 text-right font-medium">
+                            <span className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
+                              isOpen 
+                                ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300' 
+                                : 'bg-slate-100 dark:bg-slate-800 text-slate-500'
+                            }`}>
+                              {isOpen ? 'Open' : 'Closed'}
+                            </span>
+                            {note && (
+                              <span className="block text-[10px] text-slate-400 font-normal mt-0.5 whitespace-nowrap">
+                                ({note})
+                              </span>
+                            )}
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>

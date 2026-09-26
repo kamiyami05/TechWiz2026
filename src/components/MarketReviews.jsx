@@ -206,7 +206,7 @@ export default function MarketReviews({
   const starLabels = ['', '1/5 - Poor', '2/5 - Fair', '3/5 - Good', '4/5 - Very Good', '5/5 - Exceptional!'];
 
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:px-8 sm:pt-8 sm:pb-4 pb-4 border border-slate-200 dark:border-slate-700 shadow-sm space-y-8 my-8">
+    <div className="bg-white dark:bg-slate-800 rounded-3xl p-4 sm:px-8 sm:pt-8 sm:pb-4 pb-4 border border-slate-200 dark:border-slate-700 shadow-sm space-y-8 my-8">
       
       {/* Header Summary */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-6 border-b border-slate-100 dark:border-slate-700">
@@ -438,43 +438,45 @@ export default function MarketReviews({
             return (
               <div 
                 key={rev.id}
-                className="p-5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 hover:border-slate-300 transition-all space-y-3"
+                className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 hover:border-slate-300 transition-all space-y-3"
               >
                 {/* Reviewer Header */}
-                <div className="flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                  <div className="flex items-center gap-2.5 min-w-0">
                     <div className="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 font-extrabold flex items-center justify-center text-xs shrink-0">
                       {rev.author ? rev.author.charAt(0).toUpperCase() : 'U'}
                     </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-extrabold text-sm text-slate-900 dark:text-white">
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <span className="font-extrabold text-sm text-slate-900 dark:text-white truncate">
                           {rev.author}
                         </span>
                         {rev.verifiedShopper && (
-                          <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
+                          <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800 shrink-0">
                             <ShieldCheck className="w-3 h-3 text-emerald-600" />
                             <span>Verified Shopper</span>
                           </span>
                         )}
                       </div>
-                      <span className="text-[11px] text-slate-400 font-mono font-medium">
+                      <span className="text-[11px] text-slate-400 font-mono font-medium block">
                         {rev.date}
                       </span>
                     </div>
                   </div>
 
                   {/* Stars & Score */}
-                  <div className="flex items-center gap-1 text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2.5 py-1 rounded-xl border border-amber-200/60 dark:border-amber-900/60">
+                  <div className="flex items-center gap-1 text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2.5 py-1 rounded-xl border border-amber-200/60 dark:border-amber-900/60 self-start sm:self-auto shrink-0 shadow-2xs">
                     <span className="text-xs font-black text-amber-600 dark:text-amber-400 mr-1">
                       {rev.rating}.0
                     </span>
-                    {[1, 2, 3, 4, 5].map(s => (
-                      <Star 
-                        key={s} 
-                        className={`w-3.5 h-3.5 ${s <= rev.rating ? 'fill-amber-400 text-amber-400' : 'text-slate-300'}`} 
-                      />
-                    ))}
+                    <div className="flex items-center">
+                      {[1, 2, 3, 4, 5].map(s => (
+                        <Star 
+                          key={s} 
+                          className={`w-3.5 h-3.5 ${s <= rev.rating ? 'fill-amber-400 text-amber-400' : 'text-slate-300'}`} 
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
 

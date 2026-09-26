@@ -80,7 +80,7 @@ export default function ChatbotWidget() {
         <button
           onClick={() => setIsOpen(true)}
           aria-label="Open FarmBot AI Assistant"
-          className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full shadow-2xl shadow-emerald-700/40 hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer focus:outline-none focus:ring-4 focus:ring-emerald-400 group overflow-hidden"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-2xl shadow-emerald-700/40 hover:scale-110 active:scale-95 transition-all flex items-center justify-center cursor-pointer focus:outline-none focus:ring-4 focus:ring-emerald-400 group overflow-hidden"
         >
           <img 
             src="/chatbot-avatar.png" 
