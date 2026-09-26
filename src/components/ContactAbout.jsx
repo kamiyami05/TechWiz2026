@@ -339,10 +339,12 @@ export default function ContactAbout({ hideHeader = false }) {
 
                 {/* Topic Selector */}
                 <div>
-                  <label className="block font-bold text-slate-700 dark:text-slate-300 mb-1">
+                  <label htmlFor="contact-inquiry-topic" className="block font-bold text-slate-700 dark:text-slate-300 mb-1">
                     Inquiry Topic / Proposal Area:
                   </label>
                   <select
+                    id="contact-inquiry-topic"
+                    name="inquiryTopic"
                     value={feedbackForm.topic}
                     onChange={e => setFeedbackForm({ ...feedbackForm, topic: e.target.value })}
                     className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500"

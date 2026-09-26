@@ -187,12 +187,15 @@ export default function Hero({ onApplyQuickFilter }) {
 
           <form onSubmit={handleQuickSearch} className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mb-4">
             {/* Area */}
+            {/* Area */}
             <div>
-              <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1 flex items-center gap-1">
+              <label htmlFor="hero-district-select" className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1 flex items-center gap-1">
                 <MapPin className="w-3 h-3 text-emerald-600" />
                 <span>District / Area:</span>
               </label>
               <select
+                id="hero-district-select"
+                name="districtArea"
                 value={selectedArea}
                 onChange={e => setSelectedArea(e.target.value)}
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs font-semibold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500"
@@ -205,11 +208,13 @@ export default function Hero({ onApplyQuickFilter }) {
 
             {/* Day of Week */}
             <div>
-              <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1 flex items-center gap-1">
+              <label htmlFor="hero-operating-day-select" className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1 flex items-center gap-1">
                 <Calendar className="w-3 h-3 text-emerald-600" />
                 <span>Operating Day:</span>
               </label>
               <select
+                id="hero-operating-day-select"
+                name="operatingDay"
                 value={selectedDay}
                 onChange={e => setSelectedDay(e.target.value)}
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs font-semibold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500"
@@ -222,11 +227,13 @@ export default function Hero({ onApplyQuickFilter }) {
 
             {/* Produce Type */}
             <div>
-              <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1 flex items-center gap-1">
+              <label htmlFor="hero-produce-category-select" className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1 flex items-center gap-1">
                 <Carrot className="w-3 h-3 text-emerald-600" />
                 <span>Produce Category:</span>
               </label>
               <select
+                id="hero-produce-category-select"
+                name="produceCategory"
                 value={selectedProduceType}
                 onChange={e => setSelectedProduceType(e.target.value)}
                 className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs font-semibold text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500"

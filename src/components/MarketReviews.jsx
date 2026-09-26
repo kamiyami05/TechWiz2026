@@ -330,11 +330,13 @@ export default function MarketReviews({
 
           {/* Review Textarea and Submit Button side by side with top alignment */}
           <div>
-            <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+            <label htmlFor="review-comment-textarea" className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
               Your Review & Comments:
             </label>
             <div className="flex flex-col sm:flex-row items-start gap-3">
               <textarea
+                id="review-comment-textarea"
+                name="reviewComment"
                 rows="3"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}

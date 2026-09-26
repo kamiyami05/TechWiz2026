@@ -201,10 +201,12 @@ export default function MarketsPage({ onToggleBookmark, isBookmarked }) {
 
             {/* Area Filter */}
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+              <label htmlFor="markets-filter-district" className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
                 Filter by District:
               </label>
               <select
+                id="markets-filter-district"
+                name="filterDistrict"
                 value={filterArea}
                 onChange={e => {
                   setFilterArea(e.target.value);
@@ -223,10 +225,12 @@ export default function MarketsPage({ onToggleBookmark, isBookmarked }) {
 
             {/* Day Filter */}
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+              <label htmlFor="markets-filter-day" className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
                 Day of Week:
               </label>
               <select
+                id="markets-filter-day"
+                name="filterOperatingDay"
                 value={filterDay}
                 onChange={e => {
                   setFilterDay(e.target.value);
@@ -245,10 +249,12 @@ export default function MarketsPage({ onToggleBookmark, isBookmarked }) {
 
             {/* Produce Filter */}
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+              <label htmlFor="markets-filter-produce" className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
                 Produce Type:
               </label>
               <select
+                id="markets-filter-produce"
+                name="filterProduceCategory"
                 value={filterProduce}
                 onChange={e => {
                   setFilterProduce(e.target.value);
@@ -271,10 +277,12 @@ export default function MarketsPage({ onToggleBookmark, isBookmarked }) {
 
             {/* Sort Dropdown */}
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+              <label htmlFor="markets-sort-by" className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
                 Sort Markets:
               </label>
               <select
+                id="markets-sort-by"
+                name="sortOrder"
                 value={sortBy}
                 onChange={e => setSortBy(e.target.value)}
                 className="w-full px-3 py-2 text-xs rounded-xl bg-stone-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"

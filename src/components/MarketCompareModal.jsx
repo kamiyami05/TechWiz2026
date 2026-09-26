@@ -103,10 +103,12 @@ export default function MarketCompareModal({
           {/* Selectors Bar */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+              <label htmlFor="compare-market-select-a" className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
                 Market Location A:
               </label>
               <select
+                id="compare-market-select-a"
+                name="compareMarketA"
                 value={marketAId}
                 onChange={(e) => setMarketAId(e.target.value)}
                 className="w-full text-xs font-bold rounded-xl border border-slate-300 dark:border-slate-700 bg-stone-50 dark:bg-slate-800 p-2.5 focus:ring-2 focus:ring-emerald-500 cursor-pointer"
@@ -120,10 +122,12 @@ export default function MarketCompareModal({
             </div>
 
             <div>
-              <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+              <label htmlFor="compare-market-select-b" className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
                 Market Location B:
               </label>
               <select
+                id="compare-market-select-b"
+                name="compareMarketB"
                 value={marketBId}
                 onChange={(e) => setMarketBId(e.target.value)}
                 className="w-full text-xs font-bold rounded-xl border border-slate-300 dark:border-slate-700 bg-stone-50 dark:bg-slate-800 p-2.5 focus:ring-2 focus:ring-emerald-500 cursor-pointer"

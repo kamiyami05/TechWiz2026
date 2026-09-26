@@ -136,10 +136,12 @@ export default function MarketDirectory({
             
             {/* Area Filter */}
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+              <label htmlFor="directory-filter-district" className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
                 Filter by District:
               </label>
               <select
+                id="directory-filter-district"
+                name="directoryFilterDistrict"
                 value={filterArea}
                 onChange={e => setFilterArea(e.target.value)}
                 className="w-full px-3 py-2 text-xs rounded-xl bg-stone-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
@@ -152,10 +154,12 @@ export default function MarketDirectory({
 
             {/* Day Filter */}
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+              <label htmlFor="directory-filter-day" className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
                 Day of Week:
               </label>
               <select
+                id="directory-filter-day"
+                name="directoryFilterDay"
                 value={filterDay}
                 onChange={e => setFilterDay(e.target.value)}
                 className="w-full px-3 py-2 text-xs rounded-xl bg-stone-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
@@ -168,10 +172,12 @@ export default function MarketDirectory({
 
             {/* Produce Filter */}
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+              <label htmlFor="directory-filter-produce" className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
                 Produce Type:
               </label>
               <select
+                id="directory-filter-produce"
+                name="directoryFilterProduce"
                 value={filterProduce}
                 onChange={e => setFilterProduce(e.target.value)}
                 className="w-full px-3 py-2 text-xs rounded-xl bg-stone-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
@@ -187,10 +193,12 @@ export default function MarketDirectory({
 
             {/* Sort Dropdown */}
             <div>
-              <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
+              <label htmlFor="directory-sort-by" className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
                 Sort Markets:
               </label>
               <select
+                id="directory-sort-by"
+                name="directorySortOrder"
                 value={sortBy}
                 onChange={e => setSortBy(e.target.value)}
                 className="w-full px-3 py-2 text-xs rounded-xl bg-stone-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"

@@ -19,24 +19,77 @@ export default function MarketDetailPage({
 
   const market = markets.find(m => m.id === id);
 
-  // If market not found, render 404-style recovery screen
+  // If market not found, render 404-style recovery screen with alternative recommendations
   if (!market) {
+    const popularMarkets = markets.slice(0, 3);
     return (
-      <div className="py-20 max-w-xl mx-auto px-4 text-center animate-fade-in">
-        <Store className="w-16 h-16 text-emerald-600/60 mx-auto mb-4" />
+      <div className="py-16 md:py-24 max-w-2xl mx-auto px-4 text-center animate-fade-in">
+        <div className="w-16 h-16 rounded-3xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 flex items-center justify-center mx-auto mb-4 shadow-sm">
+          <Store className="w-8 h-8" />
+        </div>
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-700 dark:text-rose-400 text-xs font-bold uppercase tracking-wider mb-3">
+          <span>404 • Market Profile Not Found</span>
+        </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-2">
           Farmers Market Not Found
         </h1>
-        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-6">
-          The requested market profile could not be located. It may have moved or been updated.
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-6 max-w-md mx-auto leading-relaxed">
+          We could not locate any active market profile with the identifier <code className="px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-emerald-700 dark:text-emerald-400">"{id}"</code>. It may have been updated, relocated, or temporarily delisted.
         </p>
-        <Link
-          to="/markets"
-          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Return to Market Directory</span>
-        </Link>
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+          <Link
+            to="/markets"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs shadow-lg shadow-emerald-600/25 transition-all"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Return to Market Directory</span>
+          </Link>
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs border border-slate-200 dark:border-slate-700 transition-all shadow-sm"
+          >
+            <span>Explore FreshFind Home</span>
+          </Link>
+        </div>
+
+        {/* Popular Markets Alternatives */}
+        <div className="text-left bg-white dark:bg-slate-800/80 rounded-3xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+          <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4 flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+            <span>Or explore these verified local markets instead:</span>
+          </h3>
+          <div className="space-y-3">
+            {popularMarkets.map((m) => (
+              <Link
+                key={m.id}
+                to={`/markets/${m.id}`}
+                className="flex items-center justify-between p-3 rounded-2xl bg-stone-50 dark:bg-slate-900/60 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 border border-slate-200/80 dark:border-slate-700/80 transition-all group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xl overflow-hidden bg-slate-200 shrink-0">
+                    <img src={m.image} alt={m.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors">
+                      {m.name}
+                    </h4>
+                    <p className="text-[11px] text-slate-500 flex items-center gap-1 mt-0.5">
+                      <MapPin className="w-3 h-3 text-emerald-600 shrink-0" />
+                      <span>{m.area}</span>
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 text-xs">
+                  <span className="flex items-center gap-1 font-bold text-amber-500">
+                    <Star className="w-3.5 h-3.5 fill-amber-400" />
+                    <span>{m.rating}</span>
+                  </span>
+                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
