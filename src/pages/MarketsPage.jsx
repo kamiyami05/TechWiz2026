@@ -14,8 +14,8 @@ export default function MarketsPage({ onToggleBookmark, isBookmarked }) {
   const [filterArea, setFilterArea] = useState(() => searchParams.get('area') || 'all');
   const [filterDay, setFilterDay] = useState(() => searchParams.get('day') || 'all');
   const [filterProduce, setFilterProduce] = useState(() => searchParams.get('produce') || 'all');
-  const [searchTerm, setSearchTerm] = useState(() => searchParams.get('q') || '');
-  const [sortBy, setSortBy] = useState(() => searchParams.get('sort') || 'alphabetical'); // 'alphabetical' | 'rating' | 'open-now'
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortBy, setSortBy] = useState('alphabetical'); // 'alphabetical' | 'rating' | 'open-now'
   const [showEcoStats, setShowEcoStats] = useState(true);
 
   // Market comparison state
@@ -39,13 +39,9 @@ export default function MarketsPage({ onToggleBookmark, isBookmarked }) {
     const area = searchParams.get('area');
     const day = searchParams.get('day');
     const produce = searchParams.get('produce');
-    const q = searchParams.get('q');
-    const sort = searchParams.get('sort');
     if (area) setFilterArea(area);
     if (day) setFilterDay(day);
     if (produce) setFilterProduce(produce);
-    if (q !== null && q !== undefined) setSearchTerm(q);
-    if (sort) setSortBy(sort);
   }, [searchParams]);
 
   // Determine current day of week and current decimal hour
